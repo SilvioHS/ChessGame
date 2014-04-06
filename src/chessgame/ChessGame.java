@@ -1,22 +1,37 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package chessgame;
-
+import java.awt.*;
+import java.awt.event.*;
+import java.awt.image.*;
+import java.util.ArrayList;
+import java.util.Random;
+import javax.swing.*;
 /**
  *
- * @author Nick
+ * @author Qilin Fu
  */
-public class ChessGame {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+public class ChessGame extends JApplet implements Runnable { 
+    private Thread thread;
+    public void start() {
+        thread = new Thread(this);
+        thread.setPriority(Thread.MIN_PRIORITY);
+        thread.start();
     }
-    
+
+    public void run() {
+
+        Thread me = Thread.currentThread();
+        while (thread == me) {
+            repaint();
+            try {
+                thread.sleep(25);
+            } catch (InterruptedException e) {
+                break;
+            }
+        }
+        thread = null;
+    }
+    public static void main(String[] args) {  
+          ChessGame demo = new ChessGame();
+          new ChessBoard();
+    }  
 }
