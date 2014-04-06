@@ -6,10 +6,40 @@
 
 package chessgame;
 
+import java.awt.Image;
+
 /**
  *
- * @author 
+ * @author Nick
  */
-public class ChessPiece {
+public abstract class ChessPiece {
+    
+    Image image;
+    String color;
+    int boardPosition;
+    
+    public ChessPiece(Image image, String color, int boardPosition){
+        this.image = image;
+        this.color = color;
+        this.boardPosition = boardPosition;
+    }
+    
+    public Image getImage(){
+        return this.image;
+    }
+    
+    public String getColor(){
+        return this.color;
+    }
+    
+    public int getBoardPosition(){
+        return this.boardPosition;
+    }
+    
+    public void setBoardPosition(int boardPosition){
+        this.boardPosition = boardPosition;
+    }
+    
+    public abstract boolean isValidMove(int boardPosition);
     
 }
