@@ -32,6 +32,9 @@ public class ChessGame extends JApplet implements Runnable {
     }
     public static void main(String[] args) {  
           ChessGame demo = new ChessGame();
-          new ChessBoard();
+          JFrame frame = new JFrame();
+        frame.getContentPane().add(new ChessBoard());
+        frame.setSize(660, 690);
+        frame.setVisible(true);
     }  
 }
