@@ -134,6 +134,7 @@ public class CheckerDrag extends java.applet.Applet
 
                                int x = e.getX ();
                                int y = e.getY ();
+                               System.out.println("x: " + x + " y: " + y);
 
                                // If mouse is over draggable checker at time
                                // of press (i.e., contains (x, y) returns
@@ -167,6 +168,7 @@ public class CheckerDrag extends java.applet.Applet
                                // radius.
                                    // 如果(x, y)仍处于棋子范围内则返回true
                                    // CHECKERDIM / 2为半径
+                               System.out.println("contains: " + ((cox - x) * (cox - x) + (coy - y) * (coy - y) < SQUAREDIM  * SQUAREDIM));
 
                                return (cox - x) * (cox - x) +
                                       (coy - y) * (coy - y) <
