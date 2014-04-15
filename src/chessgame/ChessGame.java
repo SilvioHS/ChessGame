@@ -20,24 +20,7 @@ public class ChessGame extends JApplet implements Runnable {
    // Dragging flag -- set to true when user presses mouse button over chess
    // and cleared to false when user releases mouse button.
    
-   //***************
-   //Set coordinate
-   //***************
-    boolean inDrag = false;
-   // Left coordinate of chessboard's upper-left corner.
-   int boardx = 0;
-   // Top coordinate of chessboard's upper-left corner.
-   int boardy = 0;
-   // Left coordinate of chess piece origin (upper-left corner).
-   int ox = 320;
-   // Top coordinate of chess piece origin (upper-left corner).
-   int oy = 45;
-   // Left displacement between mouse coordinates at time of press and chess
-   // piece origin.
-   int relx;
-   // Top displacement between mouse coordinates at time of press and chess
-   // piece origin.
-   int rely;
+   
    
    //*****************
    //Chess piece
@@ -46,6 +29,7 @@ public class ChessGame extends JApplet implements Runnable {
    Image image;
    int index;
    Pawntest pawn = new Pawntest();//Just for testing
+   Pawntest pawn2 = new Pawntest();
    Container contain;
     private Thread thread;
     public void start() {
@@ -74,27 +58,46 @@ public class ChessGame extends JApplet implements Runnable {
         frame.setSize(660,690);
         frame.setVisible(true);
         chessboard.add(pawn, BorderLayout.LINE_START);
+        chessboard.add(pawn2,BorderLayout.LINE_START);
 //        chessboard.add(pawn);  
 //        pawn.setLocation(0, 0);
         DragPieceListener listener = new DragPieceListener();  //MouseListener
+        DragPieceListener listener2 = new DragPieceListener();
         pawn.addMouseListener(listener);  //add mouselistener to image
         pawn.addMouseMotionListener(listener);
-        index = (ox - 40)/80 +(oy - 40)/80*8;
+        pawn2.addMouseListener(listener2);
+        pawn2.addMouseMotionListener(listener2);
+        //index = (ox)/80 +(oy)/80*8;
 //        for(int i = 0; i<64; i++)
 //            pieces[i] = null;
 //        pieces[index] = pawn;
     }
-    public void setChessLocation(Pawntest aPawn, int xx, int yy){//Just for test, set the selected chess piece(a JLabel)'s location
+    public void setChessLocation(Pawntest aPawn, int xx, int yy){//Just for test, set the selected chess piece(a JButton)'s location
         aPawn.setLocation(xx, yy);
-        index = (xx - 40)/80 +(yy - 40)/80*8;
+        index = (xx)/80 +(yy)/80*8;
         System.out.println("index: " + index);
     }
-//    public void setChessLocation(ChessPiece aPiece, int xx, int yy){//Just for test, set the selected chess piece(a JLabel)'s location
-//        pieces[index].setLocation(xx, yy);
-//        index = (xx - 40)/80 +(yy - 40)/80*8;
-//    }
+    
     private class DragPieceListener implements MouseInputListener{
-        
+        //***************
+   //Set coordinate
+   //***************
+    boolean inDrag = false;
+   // Left coordinate of chessboard's upper-left corner.
+   int boardx = 0;
+   // Top coordinate of chessboard's upper-left corner.
+   int boardy = 0;
+   // Left coordinate of chess piece origin (upper-left corner).
+   int ox = 280;
+   // Top coordinate of chess piece origin (upper-left corner).
+   int oy = 5;
+   // Left displacement between mouse coordinates at time of press and chess
+   // piece origin.
+   int relx;
+   // Top displacement between mouse coordinates at time of press and chess
+   // piece origin.
+   int rely;
+        Point point = new Point(0, 0);
         boolean contains (int x, int y){
             // Calculate center of draggable chess piece.
             int cox = ox + SQUAREDIM / 2;
@@ -107,10 +110,12 @@ public class ChessGame extends JApplet implements Runnable {
         }
         public void mousePressed(MouseEvent e){
             Pawntest tmpPawn = (Pawntest)e.getSource();
+            point = SwingUtilities.convertPoint(tmpPawn, e.getPoint(), tmpPawn.getParent());
+            System.out.println("point: " + point);
             // Obtain mouse coordinates at time of press.
-            int x = e.getX ();
-            int y = e.getY ();
-            System.out.println("x: " + x + " y: " + y);
+            int x = point.x;
+            int y = point.y;
+            //System.out.println("x: " + tmpPawn.getX() + " y: " + tmpPawn.getY() + " point:" + e.getPoint() + " what? " + tmpPawn.getParent());
             // If mouse is over draggable chess piece at time
             // of press (i.e., contains (x, y) returns
             // true), save distance between current mouse
@@ -125,12 +130,15 @@ public class ChessGame extends JApplet implements Runnable {
             
         }
         public void mouseDragged(MouseEvent e){
+            Pawntest tmpPawn = (Pawntest)e.getSource();
+            Point newPoint = SwingUtilities.convertPoint(tmpPawn, e.getPoint(), tmpPawn.getParent());
+            point = newPoint;
             if (inDrag){
                 // Calculate draggable chess piece's new
                 // origin (the upper-left corner of
                 // the chess piece).
-                int tmpox = e.getX () - relx;
-                int tmpoy = e.getY () - rely;
+                int tmpox = newPoint.x - relx;
+                int tmpoy = newPoint.y - rely;
 
                 // If the chess piece is not being moved
                 // (at least partly) off board, 
@@ -143,17 +151,22 @@ public class ChessGame extends JApplet implements Runnable {
                 if (tmpox > boardx &&tmpoy > boardy && tmpox + SQUAREDIM < boardx + BOARDDIM && tmpoy + SQUAREDIM < boardy + BOARDDIM){
                     ox = tmpox;
                     oy = tmpoy;
-                    setChessLocation(pawn,ox,oy);
+                    setChessLocation(tmpPawn,ox,oy);
                     //setChessLocation(pieces[index],ox,oy);//give new location to selected chess piece
                 }
             }
         }
         public void mouseReleased(MouseEvent e){
+            Pawntest tmpPawn = (Pawntest)e.getSource();
             // When mouse is released, clear inDrag (to
             // indicate no drag in progress) if inDrag is
             // already set.
             if (inDrag)
                 inDrag = false;
+            //Pawntest tmpPawn = (Pawntest)e.getSource();
+            ox = ox/80 *80;
+            oy = oy/80 *80;
+            setChessLocation(tmpPawn,ox,oy);
         }
         public void mouseEntered(MouseEvent e) {
         }

@@ -20,6 +20,8 @@ import javax.imageio.ImageIO;
 //Just for testing dragging piece, delete or ignore it as you want, by Qilin Fu.
 public class Pawntest extends JButton {
     private Image pawnImage;
+    private int coordinateX;
+    private int coordinateY;
     
     public Pawntest() {
         try {
@@ -33,9 +35,21 @@ public class Pawntest extends JButton {
         this.setSize(80, 80);
         this.setIcon(new ImageIcon(pawnImage));
     }
-//    @Override
-//    protected void paintComponent(Graphics g) {
-//        super.paintComponent(g);
-//        g.drawImage(pawnImage, 0, 0, this);
-//    }
+
+    public int getCoordinateX() {
+        return coordinateX;
+    }
+
+    public void setCoordinateX(int coordinateX) {
+        this.coordinateX = coordinateX;
+    }
+
+    public int getCoordinateY() {
+        return coordinateY;
+    }
+
+    public void setCoordinateY(int coordinateY) {
+        this.coordinateY = coordinateY;
+    }
+    
 }
