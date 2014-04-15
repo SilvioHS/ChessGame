@@ -9,6 +9,7 @@ package chessgame;
 import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
+import javax.swing.*;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -27,6 +28,7 @@ public class Test
    JLabel Pic; //图片，用于拖动
    JFrame frame;
    JPanel panel;
+   
    
    public Test() 
    {
@@ -96,6 +98,16 @@ public class Test
    }
     public static void main(String[] args) 
     {
-          new Test();
+          //new Test();
+        JFrame frame1 = new JFrame("TEST");
+        ChessBoard chessboard = new ChessBoard();
+        Pawntest pawn = new Pawntest();
+        pawn.setSize(80, 80);
+        chessboard.add(pawn);
+        frame1.add(chessboard);
+        frame1.setSize(660, 690);
+        frame1.setVisible(true);
+        frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
    } 
 }
