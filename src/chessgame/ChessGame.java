@@ -25,7 +25,7 @@ public class ChessGame extends JApplet implements Runnable {
    //*****************
    //Chess piece
    //*****************
-   ChessPiece[] pieces;
+   Pawntest[] pieces = new Pawntest[64];
    Image image;
    int index;
    Pawntest pawn = new Pawntest();//Just for testing
@@ -67,6 +67,7 @@ public class ChessGame extends JApplet implements Runnable {
         pawn.addMouseMotionListener(listener);
         pawn2.addMouseListener(listener2);
         pawn2.addMouseMotionListener(listener2);
+        
         //index = (ox)/80 +(oy)/80*8;
 //        for(int i = 0; i<64; i++)
 //            pieces[i] = null;
@@ -76,6 +77,7 @@ public class ChessGame extends JApplet implements Runnable {
         aPawn.setLocation(xx, yy);
         index = (xx)/80 +(yy)/80*8;
         System.out.println("index: " + index);
+        pieces[index] = aPawn;
     }
     
     private class DragPieceListener implements MouseInputListener{
