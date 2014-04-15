@@ -13,6 +13,8 @@ import java.awt.Image;
  * @author Nick
  */
 public class Pawn extends ChessPiece{
+    
+    boolean firstMove = true;
 
     public Pawn(Image image, String color, int boardPosition) {
         super(image, color, boardPosition);
@@ -20,7 +22,28 @@ public class Pawn extends ChessPiece{
 
     @Override
     public boolean isValidMove(int boardPosition) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean validMove = false;
+        
+        if(this.getColor().equals("white")){
+            
+            if(this.getBoardPosition() == boardPosition-8){
+                validMove = true;
+            }else if(this.getBoardPosition() == boardPosition-16 && firstMove){
+                validMove = true;
+            }
+        
+        //black
+        }else{
+        
+            if(this.getBoardPosition() == boardPosition+8){
+                validMove = true;
+            }else if(this.getBoardPosition() == boardPosition+16 && firstMove){
+                validMove = true;
+            }
+        }
+        
+        return validMove;
     }
     
 }
