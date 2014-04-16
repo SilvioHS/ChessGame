@@ -6,11 +6,10 @@
         <group/>
 =======
         <group>
-            <file>file:/C:/Users/xiaoweii/Documents/NetBeansProjects/ChessGame/src/chessgame/ChessGame.java</file>
-            <file>file:/C:/Users/xiaoweii/Documents/NetBeansProjects/ChessGame/src/chessgame/Pawntest.java</file>
-            <file>file:/C:/Users/xiaoweii/Documents/NetBeansProjects/ChessGame/src/chessgame/Test.java</file>
-            <file>file:/C:/Users/xiaoweii/Documents/NetBeansProjects/ChessGame/src/chessgame/CheckerDrag.java</file>
-            <file>file:/C:/Users/xiaoweii/Documents/NetBeansProjects/ChessGame/src/chessgame/ChessBoard.java</file>
+            <file>file:/C:/Users/Nick/Documents/NetBeansProjects/ChessGame/src/chessgame/ChessPiece.java</file>
+            <file>file:/C:/Users/Nick/Documents/NetBeansProjects/ChessGame/src/chessgame/Pawn.java</file>
+            <file>file:/C:/Users/Nick/Documents/NetBeansProjects/ChessGame/src/chessgame/ChessGame.java</file>
+            <file>file:/C:/Users/Nick/Documents/NetBeansProjects/ChessGame/src/chessgame/ChessBoard.java</file>
         </group>
 >>>>>>> origin/master
     </open-files>
