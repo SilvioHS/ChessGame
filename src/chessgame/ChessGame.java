@@ -8,6 +8,9 @@ import javax.swing.*;
 import java.awt.event.MouseEvent;
 import javax.swing.event.MouseInputListener;
 import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 /**
  *
  * @author Qilin Fu
@@ -25,13 +28,13 @@ public class ChessGame extends JApplet implements Runnable {
    //*****************
    //Chess piece
    //*****************
-   Pawntest[] pieces = new Pawntest[64];
+   ChessPiece[] pieces;
    Image image;
    int index;
-   Pawntest pawn = new Pawntest();//Just for testing
-   Pawntest pawn2 = new Pawntest();
-   Container contain;
+   
+   
     private Thread thread;
+    
     public void start() {
         thread = new Thread(this);
         thread.setPriority(Thread.MIN_PRIORITY);
@@ -52,32 +55,46 @@ public class ChessGame extends JApplet implements Runnable {
         thread = null;
     }
     public void init(){
+        
+        try {
+            image = ImageIO.read(new File("src/image/pawn_white.png"));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        String color = new String();
         JFrame frame = new JFrame();//new a JFrame
         JPanel chessboard = new ChessBoard();
+        chessboard.setLayout(null);
         frame.getContentPane().add(chessboard);//new a ChessBoard that extends JPanel
         frame.setSize(660,690);
         frame.setVisible(true);
-        chessboard.add(pawn, BorderLayout.LINE_START);
-        chessboard.add(pawn2,BorderLayout.LINE_START);
-//        chessboard.add(pawn);  
-//        pawn.setLocation(0, 0);
+        Pawn pawn = new Pawn(image,color,0);//Just for testing
+        Pawn pawn2 = new Pawn(image,color,1);
+        Pawn pawn3 = new Pawn(image,color,2);
+        Pawn pawn4 = new Pawn(image,color,2);
+        Pawn pawn5 = new Pawn(image,color,2);
+        Pawn pawn6 = new Pawn(image,color,2);
+        Pawn pawn7 = new Pawn(image,color,2);
+        Pawn pawn8 = new Pawn(image,color,2);
+        chessboard.add(pawn);
+        chessboard.add(pawn2);
+        setChessLocation(pawn,0,80);
+        setChessLocation(pawn2,80,80);
         DragPieceListener listener = new DragPieceListener();  //MouseListener
         DragPieceListener listener2 = new DragPieceListener();
         pawn.addMouseListener(listener);  //add mouselistener to image
         pawn.addMouseMotionListener(listener);
         pawn2.addMouseListener(listener2);
         pawn2.addMouseMotionListener(listener2);
-        
         //index = (ox)/80 +(oy)/80*8;
 //        for(int i = 0; i<64; i++)
 //            pieces[i] = null;
 //        pieces[index] = pawn;
     }
-    public void setChessLocation(Pawntest aPawn, int xx, int yy){//Just for test, set the selected chess piece(a JButton)'s location
+    public void setChessLocation(Pawn aPawn, int xx, int yy){//Just for test, set the selected chess piece(a JButton)'s location
         aPawn.setLocation(xx, yy);
         index = (xx)/80 +(yy)/80*8;
         System.out.println("index: " + index);
-        pieces[index] = aPawn;
     }
     
     private class DragPieceListener implements MouseInputListener{
@@ -90,9 +107,9 @@ public class ChessGame extends JApplet implements Runnable {
    // Top coordinate of chessboard's upper-left corner.
    int boardy = 0;
    // Left coordinate of chess piece origin (upper-left corner).
-   int ox = 280;
+   int ox = 0;
    // Top coordinate of chess piece origin (upper-left corner).
-   int oy = 5;
+   int oy = 0;
    // Left displacement between mouse coordinates at time of press and chess
    // piece origin.
    int relx;
@@ -111,13 +128,13 @@ public class ChessGame extends JApplet implements Runnable {
             return (cox - x) * (cox - x) + (coy - y) * (coy - y) < SQUAREDIM  * SQUAREDIM ;
         }
         public void mousePressed(MouseEvent e){
-            Pawntest tmpPawn = (Pawntest)e.getSource();
+            Pawn tmpPawn = (Pawn)e.getSource();
             point = SwingUtilities.convertPoint(tmpPawn, e.getPoint(), tmpPawn.getParent());
             System.out.println("point: " + point);
             // Obtain mouse coordinates at time of press.
             int x = point.x;
             int y = point.y;
-            //System.out.println("x: " + tmpPawn.getX() + " y: " + tmpPawn.getY() + " point:" + e.getPoint() + " what? " + tmpPawn.getParent());
+            
             // If mouse is over draggable chess piece at time
             // of press (i.e., contains (x, y) returns
             // true), save distance between current mouse
@@ -132,7 +149,7 @@ public class ChessGame extends JApplet implements Runnable {
             
         }
         public void mouseDragged(MouseEvent e){
-            Pawntest tmpPawn = (Pawntest)e.getSource();
+            Pawn tmpPawn = (Pawn)e.getSource();
             Point newPoint = SwingUtilities.convertPoint(tmpPawn, e.getPoint(), tmpPawn.getParent());
             point = newPoint;
             if (inDrag){
@@ -159,16 +176,18 @@ public class ChessGame extends JApplet implements Runnable {
             }
         }
         public void mouseReleased(MouseEvent e){
-            Pawntest tmpPawn = (Pawntest)e.getSource();
+            Pawn tmpPawn = (Pawn)e.getSource();
             // When mouse is released, clear inDrag (to
             // indicate no drag in progress) if inDrag is
             // already set.
             if (inDrag)
                 inDrag = false;
             //Pawntest tmpPawn = (Pawntest)e.getSource();
-            ox = ox/80 *80;
-            oy = oy/80 *80;
-            setChessLocation(tmpPawn,ox,oy);
+            int cox = ox + SQUAREDIM/2;
+            int coy = oy + SQUAREDIM/2;
+            cox = cox/80 *80 + 40 - 65/2;
+            coy = coy/80 *80 + 40 - 65/2;
+            setChessLocation(tmpPawn,cox,coy);
         }
         public void mouseEntered(MouseEvent e) {
         }

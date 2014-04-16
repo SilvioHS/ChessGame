@@ -7,17 +7,28 @@
 package chessgame;
 
 import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 
 /**
  *
  * @author Nick
  */
 public class Pawn extends ChessPiece{
-    
     boolean firstMove = true;
 
     public Pawn(Image image, String color, int boardPosition) {
         super(image, color, boardPosition);
+        
+        this.setBorder(BorderFactory.createRaisedBevelBorder());
+        this.setContentAreaFilled(false);
+	this.setBorderPainted(false);
+	this.setOpaque(false);
+        this.setSize(65, 65);
+        this.setIcon(new ImageIcon(image));
     }
 
     @Override
