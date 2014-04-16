@@ -74,13 +74,23 @@ public class ChessGame extends JApplet implements Runnable {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+        
+        
+        
+        
+        
         String color = new String();
         JFrame frame = new JFrame();//new a JFrame
         JPanel chessboard = new ChessBoard();
         chessboard.setLayout(null);
         frame.getContentPane().add(chessboard);//new a ChessBoard that extends JPanel
+        Menu demo = new Menu();
+        frame.setJMenuBar(demo.createMenuBar());
         frame.setSize(660,690);
         frame.setVisible(true);
+        
+        //dropdown menu
+        
         
         //white
         Pawn pawn = new Pawn(pawn_w, color,8);//Just for testing
