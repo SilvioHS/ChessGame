@@ -28,8 +28,9 @@ public class ChessGame extends JApplet implements Runnable {
    //*****************
    //Chess piece
    //*****************
-   ChessPiece[] pieces;
-   Image pawn_w, rook_w, knight_w, bishop_w, queen_w, king_w;
+   ChessPiece[] pieces = new ChessPiece[64];
+   Image pawn_w, rook_w, knight_w, bishop_w, queen_w, king_w, pawn_b, rook_b,
+           knight_b, bishop_b, queen_b, king_b;
    int index;
    
    
@@ -59,10 +60,17 @@ public class ChessGame extends JApplet implements Runnable {
         try {
             pawn_w = ImageIO.read(new File("src/image/pawn_white.png"));
             rook_w = ImageIO.read(new File("src/image/rook_white.png"));
-            knight_w = ImageIO.read(new File("src/image/kngiht_white.png"));
-            bishop_w = ImageIO.read(new File("src/image/bishop_white.png")); //spelling....
+            knight_w = ImageIO.read(new File("src/image/kngiht_white.png")); //spelling....
+            bishop_w = ImageIO.read(new File("src/image/bishop_white.png")); 
             queen_w = ImageIO.read(new File("src/image/queen_white.png"));
             king_w = ImageIO.read(new File("src/image/king_white.png"));
+            
+            pawn_b = ImageIO.read(new File("src/image/pawn_black.png"));
+            rook_b = ImageIO.read(new File("src/image/rook_black.png"));
+            knight_b = ImageIO.read(new File("src/image/kngiht_black.png")); //spelling....
+            bishop_b = ImageIO.read(new File("src/image/bishop_black.png")); 
+            queen_b = ImageIO.read(new File("src/image/queen_black.png"));
+            king_b = ImageIO.read(new File("src/image/king_black.png"));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -73,6 +81,8 @@ public class ChessGame extends JApplet implements Runnable {
         frame.getContentPane().add(chessboard);//new a ChessBoard that extends JPanel
         frame.setSize(660,690);
         frame.setVisible(true);
+        
+        //white
         Pawn pawn = new Pawn(pawn_w, color,8);//Just for testing
         Pawn pawn2 = new Pawn(pawn_w, color,9);
         Pawn pawn3 = new Pawn(pawn_w, color,10);
@@ -93,6 +103,30 @@ public class ChessGame extends JApplet implements Runnable {
         Pawn knight2 = new Pawn(knight_w, color, 6);
         Pawn rook2 = new Pawn(rook_w, color, 7);
         
+        //black
+        
+        Pawn b_pawn = new Pawn(pawn_b, color,48);//Just for testing
+        Pawn b_pawn2 = new Pawn(pawn_b, color,49);
+        Pawn b_pawn3 = new Pawn(pawn_b, color,50);
+        Pawn b_pawn4 = new Pawn(pawn_b, color,51);
+        Pawn b_pawn5 = new Pawn(pawn_b, color,52);
+        Pawn b_pawn6 = new Pawn(pawn_b, color,53);
+        Pawn b_pawn7 = new Pawn(pawn_b, color,54);
+        Pawn b_pawn8 = new Pawn(pawn_b, color,55);
+        
+        //just going to create regular pieces as pawns too for now
+        
+        Pawn b_rook1 = new Pawn(rook_b, color, 56);
+        Pawn b_knight1 = new Pawn(knight_b, color,57);
+        Pawn b_bishop1 = new Pawn(bishop_b, color, 58);
+        Pawn b_queen = new Pawn(queen_b, color, 59);
+        Pawn b_king = new Pawn(king_b, color, 60);
+        Pawn b_bishop2 = new Pawn(bishop_b, color, 61);
+        Pawn b_knight2 = new Pawn(knight_b, color, 62);
+        Pawn b_rook2 = new Pawn(rook_b, color, 63);
+        
+        
+        //white
         chessboard.add(pawn);
         chessboard.add(pawn2);
         chessboard.add(pawn3);
@@ -126,8 +160,46 @@ public class ChessGame extends JApplet implements Runnable {
         setChessLocation(queen, 240, 0);
         setChessLocation(king, 320, 0);
         setChessLocation(bishop2, 400, 0);
-        setChessLocation(knight1, 480, 0);
+        setChessLocation(knight2, 480, 0);
         setChessLocation(rook2, 560, 0);
+        
+        //black
+        
+        chessboard.add(b_pawn);
+        chessboard.add(b_pawn2);
+        chessboard.add(b_pawn3);
+        chessboard.add(b_pawn4);
+        chessboard.add(b_pawn5);
+        chessboard.add(b_pawn6);
+        chessboard.add(b_pawn7);
+        chessboard.add(b_pawn8);
+        
+        chessboard.add(b_rook1);
+        chessboard.add(b_knight1);
+        chessboard.add(b_bishop1);
+        chessboard.add(b_queen);
+        chessboard.add(b_king);
+        chessboard.add(b_bishop2);
+        chessboard.add(b_knight2);
+        chessboard.add(b_rook2);
+        
+        setChessLocation(b_pawn,0,480);
+        setChessLocation(b_pawn2,80,480);
+        setChessLocation(b_pawn3,160,480);
+        setChessLocation(b_pawn4,240,480);
+        setChessLocation(b_pawn5,320,480);
+        setChessLocation(b_pawn6,400,480);
+        setChessLocation(b_pawn7,480,480);
+        setChessLocation(b_pawn8,560,480);
+        
+        setChessLocation(b_rook1, 0, 560);
+        setChessLocation(b_knight1, 80, 560);
+        setChessLocation(b_bishop1, 160, 560);
+        setChessLocation(b_queen, 240, 560);
+        setChessLocation(b_king, 320, 560);
+        setChessLocation(b_bishop2, 400, 560);
+        setChessLocation(b_knight2, 480, 560);
+        setChessLocation(b_rook2, 560, 560);
         
         DragPieceListener listener = new DragPieceListener();  //MouseListener
         DragPieceListener listener2 = new DragPieceListener();
