@@ -29,7 +29,7 @@ public class ChessGame extends JApplet implements Runnable {
    //Chess piece
    //*****************
    ChessPiece[] pieces;
-   Image image;
+   Image pawn_w, rook_w, knight_w, bishop_w, queen_w, king_w;
    int index;
    
    
@@ -57,7 +57,12 @@ public class ChessGame extends JApplet implements Runnable {
     public void init(){
         
         try {
-            image = ImageIO.read(new File("src/image/pawn_white.png"));
+            pawn_w = ImageIO.read(new File("src/image/pawn_white.png"));
+            rook_w = ImageIO.read(new File("src/image/rook_white.png"));
+            knight_w = ImageIO.read(new File("src/image/kngiht_white.png"));
+            bishop_w = ImageIO.read(new File("src/image/bishop_white.png")); //spelling....
+            queen_w = ImageIO.read(new File("src/image/queen_white.png"));
+            king_w = ImageIO.read(new File("src/image/king_white.png"));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -68,24 +73,70 @@ public class ChessGame extends JApplet implements Runnable {
         frame.getContentPane().add(chessboard);//new a ChessBoard that extends JPanel
         frame.setSize(660,690);
         frame.setVisible(true);
-        Pawn pawn = new Pawn(image,color,0);//Just for testing
-        Pawn pawn2 = new Pawn(image,color,1);
-        Pawn pawn3 = new Pawn(image,color,2);
-        Pawn pawn4 = new Pawn(image,color,2);
-        Pawn pawn5 = new Pawn(image,color,2);
-        Pawn pawn6 = new Pawn(image,color,2);
-        Pawn pawn7 = new Pawn(image,color,2);
-        Pawn pawn8 = new Pawn(image,color,2);
+        Pawn pawn = new Pawn(pawn_w, color,8);//Just for testing
+        Pawn pawn2 = new Pawn(pawn_w, color,9);
+        Pawn pawn3 = new Pawn(pawn_w, color,10);
+        Pawn pawn4 = new Pawn(pawn_w, color,11);
+        Pawn pawn5 = new Pawn(pawn_w, color,12);
+        Pawn pawn6 = new Pawn(pawn_w, color,13);
+        Pawn pawn7 = new Pawn(pawn_w, color,14);
+        Pawn pawn8 = new Pawn(pawn_w, color,15);
+        
+        //just going to create regular pieces as pawns too for now
+        
+        Pawn rook1 = new Pawn(rook_w, color, 0);
+        Pawn knight1 = new Pawn(knight_w, color, 1);
+        Pawn bishop1 = new Pawn(bishop_w, color, 2);
+        Pawn queen = new Pawn(queen_w, color, 3);
+        Pawn king = new Pawn(king_w, color, 4);
+        Pawn bishop2 = new Pawn(bishop_w, color, 5);
+        Pawn knight2 = new Pawn(knight_w, color, 6);
+        Pawn rook2 = new Pawn(rook_w, color, 7);
+        
         chessboard.add(pawn);
         chessboard.add(pawn2);
+        chessboard.add(pawn3);
+        chessboard.add(pawn4);
+        chessboard.add(pawn5);
+        chessboard.add(pawn6);
+        chessboard.add(pawn7);
+        chessboard.add(pawn8);
+        
+        chessboard.add(rook1);
+        chessboard.add(knight1);
+        chessboard.add(bishop1);
+        chessboard.add(queen);
+        chessboard.add(king);
+        chessboard.add(bishop2);
+        chessboard.add(knight2);
+        chessboard.add(rook2);
+        
         setChessLocation(pawn,0,80);
         setChessLocation(pawn2,80,80);
+        setChessLocation(pawn3,160,80);
+        setChessLocation(pawn4,240,80);
+        setChessLocation(pawn5,320,80);
+        setChessLocation(pawn6,400,80);
+        setChessLocation(pawn7,480,80);
+        setChessLocation(pawn8,560,80);
+        
+        setChessLocation(rook1, 0, 0);
+        setChessLocation(knight1, 80, 0);
+        setChessLocation(bishop1, 160, 0);
+        setChessLocation(queen, 240, 0);
+        setChessLocation(king, 320, 0);
+        setChessLocation(bishop2, 400, 0);
+        setChessLocation(knight1, 480, 0);
+        setChessLocation(rook2, 560, 0);
+        
         DragPieceListener listener = new DragPieceListener();  //MouseListener
         DragPieceListener listener2 = new DragPieceListener();
         pawn.addMouseListener(listener);  //add mouselistener to image
         pawn.addMouseMotionListener(listener);
         pawn2.addMouseListener(listener2);
         pawn2.addMouseMotionListener(listener2);
+        //need to add mouse listeners for rest of pawns
+        
         //index = (ox)/80 +(oy)/80*8;
 //        for(int i = 0; i<64; i++)
 //            pieces[i] = null;
