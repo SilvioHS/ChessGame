@@ -12,7 +12,7 @@ import javax.swing.*;
  *
  * @author Nick
  */
-public abstract class ChessPiece {//Changed to extends JLabel, each piece is contained in a JLabel, by Qilin Fu
+public abstract class ChessPiece extends JButton {//Changed to extends JLabel, each piece is contained in a JLabel, by Qilin Fu
     
     Image image;
     String color;
