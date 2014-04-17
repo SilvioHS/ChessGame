@@ -60,14 +60,14 @@ public class ChessGame extends JApplet implements Runnable {
         try {
             pawn_w = ImageIO.read(new File("src/image/pawn_white.png"));
             rook_w = ImageIO.read(new File("src/image/rook_white.png"));
-            knight_w = ImageIO.read(new File("src/image/kngiht_white.png")); //spelling....
+            knight_w = ImageIO.read(new File("src/image/knight_white.png")); //spelling....
             bishop_w = ImageIO.read(new File("src/image/bishop_white.png")); 
             queen_w = ImageIO.read(new File("src/image/queen_white.png"));
             king_w = ImageIO.read(new File("src/image/king_white.png"));
             
             pawn_b = ImageIO.read(new File("src/image/pawn_black.png"));
             rook_b = ImageIO.read(new File("src/image/rook_black.png"));
-            knight_b = ImageIO.read(new File("src/image/kngiht_black.png")); //spelling....
+            knight_b = ImageIO.read(new File("src/image/knight_black.png")); //spelling....
             bishop_b = ImageIO.read(new File("src/image/bishop_black.png")); 
             queen_b = ImageIO.read(new File("src/image/queen_black.png"));
             king_b = ImageIO.read(new File("src/image/king_black.png"));

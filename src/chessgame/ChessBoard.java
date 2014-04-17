@@ -21,7 +21,7 @@ public class ChessBoard extends JPanel {
     
     public ChessBoard() {
         try {
-            image = ImageIO.read(new File("src/image/ChessBroad80X80.jpg"));
+            image = ImageIO.read(new File("src/image/ChessBoard80X80.jpg"));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
