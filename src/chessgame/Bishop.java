@@ -6,6 +6,8 @@
 package chessgame;
 
 import java.awt.Image;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -15,6 +17,13 @@ public class Bishop extends ChessPiece {
 
     public Bishop(Image image, String color, int boardPosition) {
         super(image, color, boardPosition);
+        
+        this.setBorder(BorderFactory.createRaisedBevelBorder());
+        this.setContentAreaFilled(false);
+	this.setBorderPainted(false);
+	this.setOpaque(false);
+        this.setSize(65, 65);
+        this.setIcon(new ImageIcon(image));
     }
 
     @Override
