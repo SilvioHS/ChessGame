@@ -32,24 +32,24 @@ public class Pawn extends ChessPiece{
     }
 
     @Override
-    public boolean isValidMove(int boardPosition) {
+    public boolean isValidMove(int newPosition) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         boolean validMove = false;
         
         if(this.getColor().equals("white")){
             
-            if(this.getBoardPosition() == boardPosition-8){
+            if(this.getBoardPosition() == newPosition-8){
                 validMove = true;
-            }else if(this.getBoardPosition() == boardPosition-16 && firstMove){
+            }else if(this.getBoardPosition() == newPosition-16 && firstMove){
                 validMove = true;
             }
         
         //black
         }else{
         
-            if(this.getBoardPosition() == boardPosition+8){
+            if(this.getBoardPosition() == newPosition+8){
                 validMove = true;
-            }else if(this.getBoardPosition() == boardPosition+16 && firstMove){
+            }else if(this.getBoardPosition() == newPosition+16 && firstMove){
                 validMove = true;
             }
         }
