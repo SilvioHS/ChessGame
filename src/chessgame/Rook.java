@@ -38,7 +38,7 @@ public class Rook extends ChessPiece {
         if (ChessBoard.getFile(this.getBoardPosition()) == ChessBoard.getFile(newPosition)) {
             validMove = true;
             //are there any pieces in between
-            if (this.getBoardPosition() > newPosition) {
+            if (this.getBoardPosition() < newPosition) {
                 for (int i = this.getBoardPosition()+8; i < newPosition; i += 8) {
                     if (ChessBoard.getIndex(i) != null) {
                         validMove = false;
@@ -46,7 +46,7 @@ public class Rook extends ChessPiece {
                     }
                 }
             } else {
-                for (int i = this.getBoardPosition()-8; i < newPosition; i -= 8) {
+                for (int i = this.getBoardPosition()-8; i > newPosition; i -= 8) {
                     if (ChessBoard.getIndex(i) != null) {
                         validMove = false;
                         break;
@@ -64,7 +64,7 @@ public class Rook extends ChessPiece {
         if (ChessBoard.getRank(this.getBoardPosition()) == ChessBoard.getRank(newPosition)) {
             //are there any pieces in between
             
-            if (this.getBoardPosition() > newPosition) {
+            if (this.getBoardPosition() < newPosition) {
                 for (int i = this.getBoardPosition()+1; i < newPosition; i++) {
                     if (ChessBoard.getIndex(i) != null) {
                         validMove = false;
@@ -72,7 +72,7 @@ public class Rook extends ChessPiece {
                     }
                 }
             } else {
-                for (int i = this.getBoardPosition()-1; i < newPosition; i--) {
+                for (int i = this.getBoardPosition()-1; i > newPosition; i--) {
                     if (ChessBoard.getIndex(i) != null) {
                         validMove = false;
                         break;
