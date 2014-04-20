@@ -33,7 +33,6 @@ public class Rook extends ChessPiece {
     public boolean isValidMove(int newPosition) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         boolean validMove = false;
-        int inBetween = 0;
 
         //8 to 1 file
         if (ChessBoard.getFile(this.getBoardPosition()) == ChessBoard.getFile(newPosition)) {
@@ -65,6 +64,29 @@ public class Rook extends ChessPiece {
 
         if (ChessBoard.getRank(this.getBoardPosition()) == ChessBoard.getRank(newPosition)) {
             //are there any pieces in between
+            
+            if (this.getBoardPosition() > newPosition) {
+                for (int i = this.getBoardPosition(); i < newPosition; i++) {
+                    if (ChessBoard.getIndex(i) != null) {
+                        validMove = false;
+                        break;
+                    }
+                }
+            } else {
+                for (int i = this.getBoardPosition(); i < newPosition; i--) {
+                    if (ChessBoard.getIndex(i) != null) {
+                        validMove = false;
+                        break;
+                    }
+                }
+            }
+
+            if (ChessBoard.getIndex(newPosition) != null) {
+                if ((ChessBoard.getIndex(newPosition) != null) && (ChessBoard.getIndex(this.getBoardPosition()).getColor().equals(ChessBoard.getIndex(newPosition).getColor()))) {
+                    validMove = false;
+                }
+            }
+            
             validMove = true;
         }
 
