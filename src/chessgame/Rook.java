@@ -39,14 +39,14 @@ public class Rook extends ChessPiece {
             validMove = true;
             //are there any pieces in between
             if (this.getBoardPosition() > newPosition) {
-                for (int i = this.getBoardPosition(); i < newPosition; i += 8) {
+                for (int i = this.getBoardPosition()+8; i < newPosition; i += 8) {
                     if (ChessBoard.getIndex(i) != null) {
                         validMove = false;
                         break;
                     }
                 }
             } else {
-                for (int i = this.getBoardPosition(); i < newPosition; i -= 8) {
+                for (int i = this.getBoardPosition()-8; i < newPosition; i -= 8) {
                     if (ChessBoard.getIndex(i) != null) {
                         validMove = false;
                         break;
@@ -55,8 +55,7 @@ public class Rook extends ChessPiece {
             }
 
             if (ChessBoard.getIndex(newPosition) != null) {
-                if ((ChessBoard.getIndex(newPosition) != null) && (ChessBoard.getIndex(this.getBoardPosition()).getColor()
-                        == ChessBoard.getIndex(newPosition).getColor())) {
+                if ((ChessBoard.getIndex(newPosition) != null) && (ChessBoard.getIndex(this.getBoardPosition()).getColor().equals(ChessBoard.getIndex(newPosition).getColor()))) {
                     validMove = false;
                 }
             }
@@ -66,14 +65,14 @@ public class Rook extends ChessPiece {
             //are there any pieces in between
             
             if (this.getBoardPosition() > newPosition) {
-                for (int i = this.getBoardPosition(); i < newPosition; i++) {
+                for (int i = this.getBoardPosition()+1; i < newPosition; i++) {
                     if (ChessBoard.getIndex(i) != null) {
                         validMove = false;
                         break;
                     }
                 }
             } else {
-                for (int i = this.getBoardPosition(); i < newPosition; i--) {
+                for (int i = this.getBoardPosition()-1; i < newPosition; i--) {
                     if (ChessBoard.getIndex(i) != null) {
                         validMove = false;
                         break;
