@@ -63,6 +63,7 @@ public class Rook extends ChessPiece {
 
         if (ChessBoard.getRank(this.getBoardPosition()) == ChessBoard.getRank(newPosition)) {
             //are there any pieces in between
+            validMove = true;
             
             if (this.getBoardPosition() < newPosition) {
                 for (int i = this.getBoardPosition()+1; i < newPosition; i++) {
@@ -86,7 +87,7 @@ public class Rook extends ChessPiece {
                 }
             }
             
-            validMove = true;
+            
         }
 
         return validMove;
