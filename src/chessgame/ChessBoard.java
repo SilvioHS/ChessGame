@@ -18,6 +18,7 @@ import java.awt.BorderLayout;
  */
 public class ChessBoard extends JPanel {
     private Image image;
+    public static ChessPiece[] pieces = new ChessPiece[64];
     
     public ChessBoard() {
         try {
@@ -33,7 +34,11 @@ public class ChessBoard extends JPanel {
         g.drawImage(image, 0, 0, this);
     }
     
-    public int getFile(int pos){
+    public static ChessPiece getIndex(int index){
+        return pieces[index];
+    }
+    
+    public static int getFile(int pos){
         int file = 0;
         
         if (pos < 8){
@@ -57,7 +62,7 @@ public class ChessBoard extends JPanel {
         return file;
     }
     
-    public char getRank(int pos){
+    public static char getRank(int pos){
         char rank = 'x';
         
         if (pos % 8 == 0){
