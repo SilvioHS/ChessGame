@@ -53,16 +53,14 @@ public class Rook extends ChessPiece {
                     }
                 }
             }
-
-            if (ChessBoard.getIndex(newPosition) != null) {
                 if ((ChessBoard.getIndex(newPosition) != null) && (ChessBoard.getIndex(this.getBoardPosition()).getColor().equals(ChessBoard.getIndex(newPosition).getColor()))) {
                     validMove = false;
                 }
-            }
         }
 
         if (ChessBoard.getRank(this.getBoardPosition()) == ChessBoard.getRank(newPosition)) {
             //are there any pieces in between
+            validMove = true;
             
             if (this.getBoardPosition() < newPosition) {
                 for (int i = this.getBoardPosition()+1; i < newPosition; i++) {
@@ -80,13 +78,11 @@ public class Rook extends ChessPiece {
                 }
             }
 
-            if (ChessBoard.getIndex(newPosition) != null) {
                 if ((ChessBoard.getIndex(newPosition) != null) && (ChessBoard.getIndex(this.getBoardPosition()).getColor().equals(ChessBoard.getIndex(newPosition).getColor()))) {
                     validMove = false;
                 }
-            }
             
-            validMove = true;
+            
         }
 
         return validMove;
