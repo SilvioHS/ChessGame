@@ -20,6 +20,8 @@ public class Bishop extends ChessPiece {
     @Override
     public boolean isValidMove(int newPosition) {
         boolean isValid = false;
+        
+        if(ChessBoard.getRank(this.getBoardPosition()) != ChessBoard.getRank(newPosition)){
 
         if (this.getBoardPosition() < newPosition) {
             if (Math.abs(this.getBoardPosition() - newPosition) % 7 == 0) {
@@ -68,6 +70,9 @@ public class Bishop extends ChessPiece {
                 isValid = false;
             }
         }
+        
+        }
+        
         return isValid;
     }
 
