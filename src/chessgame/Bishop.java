@@ -20,59 +20,59 @@ public class Bishop extends ChessPiece {
     @Override
     public boolean isValidMove(int newPosition) {
         boolean isValid = false;
-        
-        if(ChessBoard.getRank(this.getBoardPosition()) != ChessBoard.getRank(newPosition)){
 
-        if (this.getBoardPosition() < newPosition) {
-            if (Math.abs(this.getBoardPosition() - newPosition) % 7 == 0) {
-                isValid = true;
-                for (int i = this.getBoardPosition() + 7; i < newPosition; i += 7) {
-                    if (ChessBoard.getIndex(i) != null) {
-                        isValid = false;
-                        break;
+        if (ChessBoard.getRank(this.getBoardPosition()) != ChessBoard.getRank(newPosition)) {
+
+            if (this.getBoardPosition() < newPosition) {
+                if (Math.abs(this.getBoardPosition() - newPosition) % 7 == 0) {
+                    isValid = true;
+                    for (int i = this.getBoardPosition() + 7; i < newPosition; i += 7) {
+                        if (ChessBoard.getIndex(i) != null) {
+                            isValid = false;
+                            break;
+                        }
+                    }
+                } else if (Math.abs(this.getBoardPosition() - newPosition) % 9 == 0) {
+                    isValid = true;
+                    for (int i = this.getBoardPosition() + 9; i < newPosition; i += 9) {
+                        if (ChessBoard.getIndex(i) != null) {
+                            isValid = false;
+                            break;
+                        }
                     }
                 }
-            } else if (Math.abs(this.getBoardPosition() - newPosition) % 9 == 0) {
-                isValid = true;
-                for (int i = this.getBoardPosition() + 9; i < newPosition; i += 9) {
-                    if (ChessBoard.getIndex(i) != null) {
-                        isValid = false;
-                        break;
+
+                if ((ChessBoard.getIndex(newPosition) != null)
+                        && (ChessBoard.getIndex(this.getBoardPosition()).getColor().equals(ChessBoard.getIndex(newPosition).getColor()))) {
+                    isValid = false;
+                }
+            } else if (this.getBoardPosition() > newPosition) {
+                if (Math.abs(this.getBoardPosition() - newPosition) % 7 == 0) {
+                    isValid = true;
+                    for (int i = this.getBoardPosition() - 7; i > newPosition; i -= 7) {
+                        if (ChessBoard.getIndex(i) != null) {
+                            isValid = false;
+                            break;
+                        }
                     }
+                } else if (Math.abs(this.getBoardPosition() - newPosition) % 9 == 0) {
+                    isValid = true;
+                    for (int i = this.getBoardPosition() - 9; i > newPosition; i -= 9) {
+                        if (ChessBoard.getIndex(i) != null) {
+                            isValid = false;
+                            break;
+                        }
+                    }
+                }
+
+                if ((ChessBoard.getIndex(newPosition) != null)
+                        && (ChessBoard.getIndex(this.getBoardPosition()).getColor().equals(ChessBoard.getIndex(newPosition).getColor()))) {
+                    isValid = false;
                 }
             }
 
-            if ((ChessBoard.getIndex(newPosition) != null)
-                    && (ChessBoard.getIndex(this.getBoardPosition()).getColor().equals(ChessBoard.getIndex(newPosition).getColor()))) {
-                isValid = false;
-            }
-        } else if (this.getBoardPosition() > newPosition) {
-            if (Math.abs(this.getBoardPosition() - newPosition) % 7 == 0) {
-                isValid = true;
-                for (int i = this.getBoardPosition() - 7; i > newPosition; i -= 7) {
-                    if (ChessBoard.getIndex(i) != null) {
-                        isValid = false;
-                        break;
-                    }
-                }
-            } else if (Math.abs(this.getBoardPosition() - newPosition) % 9 == 0) {
-                isValid = true;
-                for (int i = this.getBoardPosition() - 9; i > newPosition; i -= 9) {
-                    if (ChessBoard.getIndex(i) != null) {
-                        isValid = false;
-                        break;
-                    }
-                }
-            }
-
-            if ((ChessBoard.getIndex(newPosition) != null)
-                    && (ChessBoard.getIndex(this.getBoardPosition()).getColor().equals(ChessBoard.getIndex(newPosition).getColor()))) {
-                isValid = false;
-            }
         }
-        
-        }
-        
+
         return isValid;
     }
 
