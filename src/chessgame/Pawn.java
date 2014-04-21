@@ -53,7 +53,7 @@ public class Pawn extends ChessPiece{
                 validMove = true;
             }
         }
-        
+        this.firstMove = false;
         return validMove;
     }
     
