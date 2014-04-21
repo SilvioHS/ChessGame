@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package chessgame;
 
 import java.awt.Image;
@@ -14,11 +13,11 @@ import javax.swing.ImageIcon;
  *
  * @author Nick
  */
-public class King extends ChessPiece{
+public class King extends ChessPiece {
 
     public King(Image image, String color, int boardPosition) {
         super(image, color, boardPosition);
-        
+
         this.setBorder(BorderFactory.createRaisedBevelBorder());
         this.setContentAreaFilled(false);
         this.setBorderPainted(false);
@@ -28,12 +27,20 @@ public class King extends ChessPiece{
     }
 
     @Override
-    public boolean isValidMove(int boardPosition) {
+    public boolean isValidMove(int newPosition) {
         boolean validMove = false;
-        
-        
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        if ((Math.abs((int) ChessBoard.getRank(this.getBoardPosition()) - (int) ChessBoard.getRank(newPosition)) <= 1)
+                && (Math.abs(ChessBoard.getFile(this.getBoardPosition()) - ChessBoard.getFile(newPosition)) <= 1)) {
+            validMove = true;
+
+            //except if it's a rook and they can castle but we'll worry about that later
+            if (ChessBoard.getIndex(newPosition).getColor().equals(this.getColor())) {
+                validMove = false;
+            }
+        }
+
         return validMove;
     }
-    
+
 }

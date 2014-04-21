@@ -30,6 +30,7 @@ public class Rook extends ChessPiece {
     }
 
     //rook valid move
+    @Override
     public boolean isValidMove(int newPosition) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         boolean validMove = false;
