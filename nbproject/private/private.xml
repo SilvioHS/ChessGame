@@ -5,12 +5,19 @@
         <group>
             <file>file:/C:/Users/Nick/Documents/NetBeansProjects/ChessGame/src/chessgame/Knight.java</file>
             <file>file:/C:/Users/Nick/Documents/NetBeansProjects/ChessGame/src/chessgame/ChessPiece.java</file>
+<<<<<<< HEAD
+=======
+            <file>file:/C:/Users/Nick/Documents/NetBeansProjects/ChessGame/src/chessgame/CheckerDrag.java</file>
+>>>>>>> c77dee17888c1b5df6a619dd5eb6e12a02f6ce2f
             <file>file:/C:/Users/Nick/Documents/NetBeansProjects/ChessGame/src/chessgame/King.java</file>
             <file>file:/C:/Users/Nick/Documents/NetBeansProjects/ChessGame/src/chessgame/Pawn.java</file>
             <file>file:/C:/Users/Nick/Documents/NetBeansProjects/ChessGame/src/chessgame/ChessGame.java</file>
             <file>file:/C:/Users/Nick/Documents/NetBeansProjects/ChessGame/src/chessgame/Bishop.java</file>
             <file>file:/C:/Users/Nick/Documents/NetBeansProjects/ChessGame/src/chessgame/ChessBoard.java</file>
+<<<<<<< HEAD
             <file>file:/C:/Users/Nick/Documents/NetBeansProjects/ChessGame/src/chessgame/Menu.java</file>
+=======
+>>>>>>> c77dee17888c1b5df6a619dd5eb6e12a02f6ce2f
             <file>file:/C:/Users/Nick/Documents/NetBeansProjects/ChessGame/src/chessgame/Rook.java</file>
         </group>
     </open-files>

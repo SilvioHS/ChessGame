@@ -53,7 +53,6 @@ public class Pawn extends ChessPiece{
                 validMove = true;
             }
         }
-        
         return validMove;
     }
     
