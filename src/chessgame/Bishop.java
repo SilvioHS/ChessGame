@@ -30,7 +30,7 @@ public class Bishop extends ChessPiece {
     public boolean isValidMove(int newPosition) {
         boolean isValid = false;
 
-        if (ChessBoard.getRank(this.getBoardPosition()) != ChessBoard.getRank(newPosition)) {
+        if (ChessBoard.getFile(this.getBoardPosition()) != ChessBoard.getFile(newPosition)) {
 
             if (this.getBoardPosition() < newPosition) {
                 if (Math.abs(this.getBoardPosition() - newPosition) % 7 == 0) {
