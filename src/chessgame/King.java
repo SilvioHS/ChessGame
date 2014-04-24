@@ -35,7 +35,7 @@ public class King extends ChessPiece {
             validMove = true;
 
             //except if it's a rook and they can castle but we'll worry about that later
-            if (ChessBoard.getIndex(newPosition).getColor().equals(this.getColor())) {
+            if (ChessBoard.getIndex(newPosition) != null && ChessBoard.getIndex(newPosition).getColor().equals(this.getColor())) {
                 validMove = false;
             }
         }

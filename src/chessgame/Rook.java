@@ -36,7 +36,7 @@ public class Rook extends ChessPiece {
         boolean validMove = false;
 
         //8 to 1 file
-        if (ChessBoard.getFile(this.getBoardPosition()) == ChessBoard.getFile(newPosition)) {
+        if (ChessBoard.getRank(this.getBoardPosition()) == ChessBoard.getRank(newPosition)) {
             validMove = true;
             //are there any pieces in between
             if (this.getBoardPosition() < newPosition) {
@@ -58,8 +58,9 @@ public class Rook extends ChessPiece {
                     validMove = false;
                 }
         }
-
-        if (ChessBoard.getRank(this.getBoardPosition()) == ChessBoard.getRank(newPosition)) {
+        
+        //if same file
+        if (ChessBoard.getFile(this.getBoardPosition()) == ChessBoard.getFile(newPosition)) {
             //are there any pieces in between
             validMove = true;
             
