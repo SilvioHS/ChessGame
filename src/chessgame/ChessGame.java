@@ -28,7 +28,7 @@ public class ChessGame extends JApplet implements Runnable {
    //*****************
    //Chess piece
    //*****************
-   ChessPiece[] pieces = new ChessPiece[64];
+   //ChessPiece[] pieces = new ChessPiece[64];
    Image pawn_w, rook_w, knight_w, bishop_w, queen_w, king_w, pawn_b, rook_b,
            knight_b, bishop_b, queen_b, king_b;
    int index;
@@ -387,7 +387,7 @@ public class ChessGame extends JApplet implements Runnable {
             cox = cox/SQUAREDIM *SQUAREDIM + SQUAREDIM/2 - 65/2;
             coy = coy/SQUAREDIM *SQUAREDIM + SQUAREDIM/2 - 65/2;
             
-            pieces[index] = tmpPiece;
+            ChessBoard.pieces[index] = tmpPiece;
             if(tmpPiece.isValidMove(index)){
                 setChessLocation(tmpPiece,cox,coy);
                 tmpPiece.setBoardPosition(index);
