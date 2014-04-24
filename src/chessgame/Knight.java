@@ -41,7 +41,7 @@ public class Knight extends ChessPiece {
             validMove = true;
         }
 
-        if (ChessBoard.getIndex(newPosition).getColor().equals(this.getColor())) {
+        if (ChessBoard.getIndex(newPosition) != null && ChessBoard.getIndex(newPosition).getColor().equals(this.getColor())) {
             validMove = false;
         }
 
