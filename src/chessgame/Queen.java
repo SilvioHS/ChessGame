@@ -38,6 +38,9 @@ public class Queen extends ChessPiece{
 
     @Override
     public boolean isValidMove(int newPosition) {
+        
+        bishopQ.setBoardPosition(this.getBoardPosition());
+        rookQ.setBoardPosition(this.getBoardPosition()); 
                
         return ((bishopQ.isValidMove(newPosition)) || (rookQ.isValidMove(newPosition)));
     }
