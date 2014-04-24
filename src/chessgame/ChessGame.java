@@ -28,10 +28,11 @@ public class ChessGame extends JApplet implements Runnable {
    //*****************
    //Chess piece
    //*****************
-   //ChessPiece[] pieces = new ChessPiece[64];
+   ChessPiece[] pieces = new ChessPiece[64];
    Image pawn_w, rook_w, knight_w, bishop_w, queen_w, king_w, pawn_b, rook_b,
            knight_b, bishop_b, queen_b, king_b;
    int index;
+   
    
    
     private Thread thread;
@@ -79,61 +80,64 @@ public class ChessGame extends JApplet implements Runnable {
         
         
         
-        String color = new String();
+        String white = new String();
+        white = "white";
+        String black = new String();
+        black = "black";
         JFrame frame = new JFrame();//new a JFrame
         JPanel chessboard = new ChessBoard();
         chessboard.setLayout(null);
         frame.getContentPane().add(chessboard);//new a ChessBoard that extends JPanel
         Menu demo = new Menu();
         frame.setJMenuBar(demo.createMenuBar());
-        frame.setSize(660,690);
+        frame.setSize(660,705);
         frame.setVisible(true);
         
         //dropdown menu
         
         
         //white
-        Pawn pawn = new Pawn(pawn_w, color,8);//Just for testing
-        Pawn pawn2 = new Pawn(pawn_w, color,9);
-        Pawn pawn3 = new Pawn(pawn_w, color,10);
-        Pawn pawn4 = new Pawn(pawn_w, color,11);
-        Pawn pawn5 = new Pawn(pawn_w, color,12);
-        Pawn pawn6 = new Pawn(pawn_w, color,13);
-        Pawn pawn7 = new Pawn(pawn_w, color,14);
-        Pawn pawn8 = new Pawn(pawn_w, color,15);
+        Pawn pawn = new Pawn(pawn_w, white,8);//Just for testing
+        Pawn pawn2 = new Pawn(pawn_w, white,9);
+        Pawn pawn3 = new Pawn(pawn_w, white,10);
+        Pawn pawn4 = new Pawn(pawn_w, white,11);
+        Pawn pawn5 = new Pawn(pawn_w, white,12);
+        Pawn pawn6 = new Pawn(pawn_w, white,13);
+        Pawn pawn7 = new Pawn(pawn_w, white,14);
+        Pawn pawn8 = new Pawn(pawn_w, white,15);
         
         //just going to create regular pieces as pawns too for now
         
-        Pawn rook1 = new Pawn(rook_w, color, 0);
-        Pawn knight1 = new Pawn(knight_w, color, 1);
-        Pawn bishop1 = new Pawn(bishop_w, color, 2);
-        Pawn queen = new Pawn(queen_w, color, 3);
-        Pawn king = new Pawn(king_w, color, 4);
-        Pawn bishop2 = new Pawn(bishop_w, color, 5);
-        Pawn knight2 = new Pawn(knight_w, color, 6);
-        Pawn rook2 = new Pawn(rook_w, color, 7);
+        Rook rook1 = new Rook(rook_w, white, 0);
+        Knight knight1 = new Knight(knight_w, white, 1);
+        Bishop bishop1 = new Bishop(bishop_w, white, 2);
+        Pawn queen = new Pawn(queen_w, white, 3);
+        King king = new King(king_w, white, 4);
+        Bishop bishop2 = new Bishop(bishop_w, white, 5);
+        Knight knight2 = new Knight(knight_w, white, 6);
+        Rook rook2 = new Rook(rook_w, white, 7);
         
         //black
         
-        Pawn b_pawn = new Pawn(pawn_b, color,48);//Just for testing
-        Pawn b_pawn2 = new Pawn(pawn_b, color,49);
-        Pawn b_pawn3 = new Pawn(pawn_b, color,50);
-        Pawn b_pawn4 = new Pawn(pawn_b, color,51);
-        Pawn b_pawn5 = new Pawn(pawn_b, color,52);
-        Pawn b_pawn6 = new Pawn(pawn_b, color,53);
-        Pawn b_pawn7 = new Pawn(pawn_b, color,54);
-        Pawn b_pawn8 = new Pawn(pawn_b, color,55);
+        Pawn b_pawn = new Pawn(pawn_b, black,48);//Just for testing
+        Pawn b_pawn2 = new Pawn(pawn_b, black,49);
+        Pawn b_pawn3 = new Pawn(pawn_b, black,50);
+        Pawn b_pawn4 = new Pawn(pawn_b, black,51);
+        Pawn b_pawn5 = new Pawn(pawn_b, black,52);
+        Pawn b_pawn6 = new Pawn(pawn_b, black,53);
+        Pawn b_pawn7 = new Pawn(pawn_b, black,54);
+        Pawn b_pawn8 = new Pawn(pawn_b, black,55);
         
         //just going to create regular pieces as pawns too for now
         
-        Pawn b_rook1 = new Pawn(rook_b, color, 56);
-        Pawn b_knight1 = new Pawn(knight_b, color,57);
-        Pawn b_bishop1 = new Pawn(bishop_b, color, 58);
-        Pawn b_queen = new Pawn(queen_b, color, 59);
-        Pawn b_king = new Pawn(king_b, color, 60);
-        Pawn b_bishop2 = new Pawn(bishop_b, color, 61);
-        Pawn b_knight2 = new Pawn(knight_b, color, 62);
-        Pawn b_rook2 = new Pawn(rook_b, color, 63);
+        Rook b_rook1 = new Rook(rook_b, black, 56);
+        Knight b_knight1 = new Knight(knight_b, black,57);
+        Bishop b_bishop1 = new Bishop(bishop_b, black, 58);
+        Pawn b_queen = new Pawn(queen_b, black, 59);
+        King b_king = new King(king_b, black, 60);
+        Bishop b_bishop2 = new Bishop(bishop_b, black, 61);
+        Knight b_knight2 = new Knight(knight_b, black, 62);
+        Rook b_rook2 = new Rook(rook_b, black, 63);
         
         
         //white
@@ -155,23 +159,23 @@ public class ChessGame extends JApplet implements Runnable {
         chessboard.add(knight2);
         chessboard.add(rook2);
         
-        setChessLocation(pawn,0,80);
-        setChessLocation(pawn2,80,80);
-        setChessLocation(pawn3,160,80);
-        setChessLocation(pawn4,240,80);
-        setChessLocation(pawn5,320,80);
-        setChessLocation(pawn6,400,80);
-        setChessLocation(pawn7,480,80);
-        setChessLocation(pawn8,560,80);
+        setChessLocation(pawn,8,88);
+        setChessLocation(pawn2,88,88);
+        setChessLocation(pawn3,168,88);
+        setChessLocation(pawn4,248,88);
+        setChessLocation(pawn5,328,88);
+        setChessLocation(pawn6,408,88);
+        setChessLocation(pawn7,488,88);
+        setChessLocation(pawn8,568,88);
         
-        setChessLocation(rook1, 0, 0);
-        setChessLocation(knight1, 80, 0);
-        setChessLocation(bishop1, 160, 0);
-        setChessLocation(queen, 240, 0);
-        setChessLocation(king, 320, 0);
-        setChessLocation(bishop2, 400, 0);
-        setChessLocation(knight2, 480, 0);
-        setChessLocation(rook2, 560, 0);
+        setChessLocation(rook1, 8, 8);
+        setChessLocation(knight1, 88, 8);
+        setChessLocation(bishop1, 168, 8);
+        setChessLocation(queen, 248, 8);
+        setChessLocation(king, 328, 8);
+        setChessLocation(bishop2, 408, 8);
+        setChessLocation(knight2, 488, 8);
+        setChessLocation(rook2, 568, 8);
         
         //black
         
@@ -193,30 +197,122 @@ public class ChessGame extends JApplet implements Runnable {
         chessboard.add(b_knight2);
         chessboard.add(b_rook2);
         
-        setChessLocation(b_pawn,0,480);
-        setChessLocation(b_pawn2,80,480);
-        setChessLocation(b_pawn3,160,480);
-        setChessLocation(b_pawn4,240,480);
-        setChessLocation(b_pawn5,320,480);
-        setChessLocation(b_pawn6,400,480);
-        setChessLocation(b_pawn7,480,480);
-        setChessLocation(b_pawn8,560,480);
+        setChessLocation(b_pawn,8,488);
+        setChessLocation(b_pawn2,88,488);
+        setChessLocation(b_pawn3,168,488);
+        setChessLocation(b_pawn4,248,488);
+        setChessLocation(b_pawn5,328,488);
+        setChessLocation(b_pawn6,408,488);
+        setChessLocation(b_pawn7,488,488);
+        setChessLocation(b_pawn8,568,488);
         
-        setChessLocation(b_rook1, 0, 560);
-        setChessLocation(b_knight1, 80, 560);
-        setChessLocation(b_bishop1, 160, 560);
-        setChessLocation(b_queen, 240, 560);
-        setChessLocation(b_king, 320, 560);
-        setChessLocation(b_bishop2, 400, 560);
-        setChessLocation(b_knight2, 480, 560);
-        setChessLocation(b_rook2, 560, 560);
+        setChessLocation(b_rook1, 8, 568);
+        setChessLocation(b_knight1, 88, 568);
+        setChessLocation(b_bishop1, 168, 568);
+        setChessLocation(b_queen, 248, 568);
+        setChessLocation(b_king, 328, 568);
+        setChessLocation(b_bishop2, 408, 568);
+        setChessLocation(b_knight2, 488, 568);
+        setChessLocation(b_rook2, 568, 568);
         
-        DragPieceListener listener = new DragPieceListener();  //MouseListener
-        DragPieceListener listener2 = new DragPieceListener();
-        pawn.addMouseListener(listener);  //add mouselistener to image
-        pawn.addMouseMotionListener(listener);
-        pawn2.addMouseListener(listener2);
-        pawn2.addMouseMotionListener(listener2);
+        DragPieceListener WhitePawnlistener = new DragPieceListener();  //white MouseListener
+        DragPieceListener WhitePawnlistener2 = new DragPieceListener();
+        DragPieceListener WhitePawnlistener3 = new DragPieceListener();
+        DragPieceListener WhitePawnlistener4 = new DragPieceListener();
+        DragPieceListener WhitePawnlistener5 = new DragPieceListener();
+        DragPieceListener WhitePawnlistener6 = new DragPieceListener();
+        DragPieceListener WhitePawnlistener7 = new DragPieceListener();
+        DragPieceListener WhitePawnlistener8 = new DragPieceListener();
+        DragPieceListener WhiteRooklistener = new DragPieceListener();
+        DragPieceListener WhiteKnightlistener = new DragPieceListener();
+        DragPieceListener WhiteBishoplistener = new DragPieceListener();
+        DragPieceListener WhiteQueenlistener = new DragPieceListener();
+        DragPieceListener WhiteKinglistener = new DragPieceListener();
+        DragPieceListener WhiteBishoplistener2 = new DragPieceListener();
+        DragPieceListener WhiteKnightlistener2 = new DragPieceListener();
+        DragPieceListener WhiteRooklistener2 = new DragPieceListener();
+        
+        DragPieceListener BlackPawnlistener = new DragPieceListener();  //blalk MouseListener
+        DragPieceListener BlackPawnlistener2 = new DragPieceListener();
+        DragPieceListener BlackPawnlistener3 = new DragPieceListener();
+        DragPieceListener BlackPawnlistener4 = new DragPieceListener();
+        DragPieceListener BlackPawnlistener5 = new DragPieceListener();
+        DragPieceListener BlackPawnlistener6 = new DragPieceListener();
+        DragPieceListener BlackPawnlistener7 = new DragPieceListener();
+        DragPieceListener BlackPawnlistener8 = new DragPieceListener();
+        DragPieceListener BlackRooklistener = new DragPieceListener();
+        DragPieceListener BlackKnightlistener = new DragPieceListener();
+        DragPieceListener BlackBishoplistener = new DragPieceListener();
+        DragPieceListener BlackQueenlistener = new DragPieceListener();
+        DragPieceListener BlackKinglistener = new DragPieceListener();
+        DragPieceListener BlackBishoplistener2 = new DragPieceListener();
+        DragPieceListener BlackKnightlistener2 = new DragPieceListener();
+        DragPieceListener BlackRooklistener2 = new DragPieceListener();
+        pawn.addMouseListener(WhitePawnlistener);  // white add mouselistener to image
+        pawn.addMouseMotionListener(WhitePawnlistener);
+        pawn2.addMouseListener(WhitePawnlistener2);
+        pawn2.addMouseMotionListener(WhitePawnlistener2);
+        pawn3.addMouseListener(WhitePawnlistener3);
+        pawn3.addMouseMotionListener(WhitePawnlistener3);
+        pawn4.addMouseListener(WhitePawnlistener4);
+        pawn4.addMouseMotionListener(WhitePawnlistener4);
+        pawn5.addMouseListener(WhitePawnlistener5);
+        pawn5.addMouseMotionListener(WhitePawnlistener5);
+        pawn6.addMouseListener(WhitePawnlistener6);
+        pawn6.addMouseMotionListener(WhitePawnlistener6);
+        pawn7.addMouseListener(WhitePawnlistener7);
+        pawn7.addMouseMotionListener(WhitePawnlistener7);
+        pawn8.addMouseListener(WhitePawnlistener8);
+        pawn8.addMouseMotionListener(WhitePawnlistener8);
+        rook1.addMouseListener(WhiteRooklistener);
+        rook1.addMouseMotionListener(WhiteRooklistener);
+        rook2.addMouseListener(WhiteRooklistener2);
+        rook2.addMouseMotionListener(WhiteRooklistener2);
+        knight1.addMouseListener(WhiteKnightlistener);
+        knight1.addMouseMotionListener(WhiteKnightlistener);
+        knight2.addMouseListener(WhiteKnightlistener2);
+        knight2.addMouseMotionListener(WhiteKnightlistener2);
+        bishop1.addMouseListener(WhiteBishoplistener);
+        bishop1.addMouseMotionListener(WhiteBishoplistener);
+        bishop2.addMouseListener(WhiteBishoplistener2);
+        bishop2.addMouseMotionListener(WhiteBishoplistener2);
+        king.addMouseListener(WhiteKinglistener);
+        king.addMouseMotionListener(WhiteKinglistener);
+        queen.addMouseListener(WhiteQueenlistener);
+        queen.addMouseMotionListener(WhiteQueenlistener);
+        
+        b_pawn.addMouseListener(BlackPawnlistener);  // Black add mouselistener to image
+        b_pawn.addMouseMotionListener(BlackPawnlistener);
+        b_pawn2.addMouseListener(BlackPawnlistener2);
+        b_pawn2.addMouseMotionListener(BlackPawnlistener2);
+        b_pawn3.addMouseListener(BlackPawnlistener3);
+        b_pawn3.addMouseMotionListener(BlackPawnlistener3);
+        b_pawn4.addMouseListener(BlackPawnlistener4);
+        b_pawn4.addMouseMotionListener(BlackPawnlistener4);
+        b_pawn5.addMouseListener(BlackPawnlistener5);
+        b_pawn5.addMouseMotionListener(BlackPawnlistener5);
+        b_pawn6.addMouseListener(BlackPawnlistener6);
+        b_pawn6.addMouseMotionListener(BlackPawnlistener6);
+        b_pawn7.addMouseListener(BlackPawnlistener7);
+        b_pawn7.addMouseMotionListener(BlackPawnlistener7);
+        b_pawn8.addMouseListener(BlackPawnlistener8);
+        b_pawn8.addMouseMotionListener(BlackPawnlistener8);
+        b_rook1.addMouseListener(BlackRooklistener);
+        b_rook1.addMouseMotionListener(BlackRooklistener);
+        b_rook2.addMouseListener(BlackRooklistener2);
+        b_rook2.addMouseMotionListener(BlackRooklistener2);
+        b_knight1.addMouseListener(BlackKnightlistener);
+        b_knight1.addMouseMotionListener(BlackKnightlistener);
+        b_knight2.addMouseListener(BlackKnightlistener2);
+        b_knight2.addMouseMotionListener(BlackKnightlistener2);
+        b_bishop1.addMouseListener(BlackBishoplistener);
+        b_bishop1.addMouseMotionListener(BlackBishoplistener);
+        b_bishop2.addMouseListener(BlackBishoplistener2);
+        b_bishop2.addMouseMotionListener(BlackBishoplistener2);
+        b_king.addMouseListener(BlackKinglistener);
+        b_king.addMouseMotionListener(BlackKinglistener);
+        b_queen.addMouseListener(BlackQueenlistener);
+        b_queen.addMouseMotionListener(BlackQueenlistener);
         //need to add mouse listeners for rest of pawns
         
         //index = (ox)/80 +(oy)/80*8;
@@ -224,56 +320,40 @@ public class ChessGame extends JApplet implements Runnable {
 //            pieces[i] = null;
 //        pieces[index] = pawn;
     }
-    public void setChessLocation(Pawn aPawn, int xx, int yy){//Just for test, set the selected chess piece(a JButton)'s location
-        aPawn.setLocation(xx, yy);
-        index = (xx)/80 +(yy)/80*8;
-        System.out.println("index: " + index);
+    public void setChessLocation(ChessPiece aPiece, int xx, int yy){//Just for test, set the selected chess piece(a JButton)'s location
+        aPiece.setLocation(xx, yy);       
+        
     }
     
     private class DragPieceListener implements MouseInputListener{
         //***************
-   //Set coordinate
-   //***************
-    boolean inDrag = false;
-   // Left coordinate of chessboard's upper-left corner.
-   int boardx = 0;
-   // Top coordinate of chessboard's upper-left corner.
-   int boardy = 0;
-   // Left coordinate of chess piece origin (upper-left corner).
-   int ox = 0;
-   // Top coordinate of chess piece origin (upper-left corner).
-   int oy = 0;
-   // Left displacement between mouse coordinates at time of press and chess
-   // piece origin.
-   int relx;
-   // Top displacement between mouse coordinates at time of press and chess
-   // piece origin.
-   int rely;
+        //Set coordinate
+        //***************
+        boolean inDrag = false;
+        int boardx = 0;
+        int boardy = 0;
+        int ox = 0;
+        int oy = 0;
+        int relx;
+        int rely;
         Point point = new Point(0, 0);
+        
         boolean contains (int x, int y){
             // Calculate center of draggable chess piece.
             int cox = ox + SQUAREDIM / 2;
             int coy = oy + SQUAREDIM / 2;
-            // Return true if (x, y) locates with bounds
-            // of draggable chess piece. SQUAREDIM / 2 is the
-            // radius.
-            System.out.println("contains: " + ((cox - x) * (cox - x) + (coy - y) * (coy - y) < SQUAREDIM  * SQUAREDIM));
             return (cox - x) * (cox - x) + (coy - y) * (coy - y) < SQUAREDIM  * SQUAREDIM ;
         }
         public void mousePressed(MouseEvent e){
-            Pawn tmpPawn = (Pawn)e.getSource();
-            point = SwingUtilities.convertPoint(tmpPawn, e.getPoint(), tmpPawn.getParent());
-            System.out.println("point: " + point);
-            // Obtain mouse coordinates at time of press.
+            ChessPiece tmpPiece = (ChessPiece)e.getSource();
+            point = SwingUtilities.convertPoint(tmpPiece, e.getPoint(), tmpPiece.getParent());
+            
             int x = point.x;
             int y = point.y;
-            
-            // If mouse is over draggable chess piece at time
-            // of press (i.e., contains (x, y) returns
-            // true), save distance between current mouse
-            // coordinates and draggable chess piece origin
-            // (which will always be positive) and set drag
-            // flag to true (to indicate drag in progress).
+            ox = x/SQUAREDIM*SQUAREDIM;
+            oy = y/SQUAREDIM*SQUAREDIM;
+            index = ox/SQUAREDIM +oy/SQUAREDIM*8;
+
             if (contains (x, y)){
                 relx = x - ox;
                 rely = y - oy;
@@ -282,45 +362,38 @@ public class ChessGame extends JApplet implements Runnable {
             
         }
         public void mouseDragged(MouseEvent e){
-            Pawn tmpPawn = (Pawn)e.getSource();
-            Point newPoint = SwingUtilities.convertPoint(tmpPawn, e.getPoint(), tmpPawn.getParent());
+             ChessPiece tmpPiece = (ChessPiece)e.getSource();
+            Point newPoint = SwingUtilities.convertPoint(tmpPiece, e.getPoint(), tmpPiece.getParent());
             point = newPoint;
             if (inDrag){
-                // Calculate draggable chess piece's new
-                // origin (the upper-left corner of
-                // the chess piece).
+
                 int tmpox = newPoint.x - relx;
                 int tmpoy = newPoint.y - rely;
 
-                // If the chess piece is not being moved
-                // (at least partly) off board, 
-                // assign the previously calculated
-                // origin (tmpox, tmpoy) as the
-                // permanent origin (ox, oy), and
-                // redraw the display area (with the
-                // draggable chess piece at the new
-                // coordinates).
-                if (tmpox > boardx &&tmpoy > boardy && tmpox + SQUAREDIM < boardx + BOARDDIM && tmpoy + SQUAREDIM < boardy + BOARDDIM){
+                if (tmpox > boardx &&tmpoy > boardy && tmpox + SQUAREDIM < boardx + BOARDDIM + SQUAREDIM && tmpoy + SQUAREDIM < boardy + BOARDDIM + SQUAREDIM){
                     ox = tmpox;
                     oy = tmpoy;
-                    setChessLocation(tmpPawn,ox,oy);
-                    //setChessLocation(pieces[index],ox,oy);//give new location to selected chess piece
+                    index = ox/SQUAREDIM +oy/SQUAREDIM*8;                
+                    setChessLocation(tmpPiece,ox,oy);
                 }
             }
         }
         public void mouseReleased(MouseEvent e){
-            Pawn tmpPawn = (Pawn)e.getSource();
-            // When mouse is released, clear inDrag (to
-            // indicate no drag in progress) if inDrag is
-            // already set.
+            ChessPiece tmpPiece = (ChessPiece)e.getSource();
             if (inDrag)
                 inDrag = false;
-            //Pawntest tmpPawn = (Pawntest)e.getSource();
             int cox = ox + SQUAREDIM/2;
             int coy = oy + SQUAREDIM/2;
-            cox = cox/80 *80 + 40 - 65/2;
-            coy = coy/80 *80 + 40 - 65/2;
-            setChessLocation(tmpPawn,cox,coy);
+            cox = cox/SQUAREDIM *SQUAREDIM + SQUAREDIM/2 - 65/2;
+            coy = coy/SQUAREDIM *SQUAREDIM + SQUAREDIM/2 - 65/2;
+            
+            pieces[index] = tmpPiece;
+            if(tmpPiece.isValidMove(index)){
+                setChessLocation(tmpPiece,cox,coy);
+                tmpPiece.setBoardPosition(index);
+            }    
+            else
+                setChessLocation(tmpPiece,tmpPiece.getBoardPosition()%8*80+8,tmpPiece.getBoardPosition()/8*80+8);
         }
         public void mouseEntered(MouseEvent e) {
         }
