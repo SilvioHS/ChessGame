@@ -98,46 +98,78 @@ public class ChessGame extends JApplet implements Runnable {
         
         //white
         Pawn pawn = new Pawn(pawn_w, white,8);//Just for testing
+        ChessBoard.pieces[8] = pawn;
         Pawn pawn2 = new Pawn(pawn_w, white,9);
+        ChessBoard.pieces[9] = pawn2;
         Pawn pawn3 = new Pawn(pawn_w, white,10);
+        ChessBoard.pieces[10] = pawn3;
         Pawn pawn4 = new Pawn(pawn_w, white,11);
+        ChessBoard.pieces[11] = pawn4;
         Pawn pawn5 = new Pawn(pawn_w, white,12);
+        ChessBoard.pieces[12] = pawn5;
         Pawn pawn6 = new Pawn(pawn_w, white,13);
+        ChessBoard.pieces[13] = pawn6;
         Pawn pawn7 = new Pawn(pawn_w, white,14);
+        ChessBoard.pieces[14] = pawn7;
         Pawn pawn8 = new Pawn(pawn_w, white,15);
+        ChessBoard.pieces[15] = pawn8;
         
         //just going to create regular pieces as pawns too for now
         
         Rook rook1 = new Rook(rook_w, white, 0);
+        ChessBoard.pieces[0] = rook1;
         Knight knight1 = new Knight(knight_w, white, 1);
+        ChessBoard.pieces[1] = knight1;
         Bishop bishop1 = new Bishop(bishop_w, white, 2);
-        Pawn queen = new Pawn(queen_w, white, 3);
+        ChessBoard.pieces[2] = bishop1;
+        Queen queen = new Queen(queen_w, white, 3);
+        ChessBoard.pieces[3] = queen;
         King king = new King(king_w, white, 4);
+        ChessBoard.pieces[4] = king;
         Bishop bishop2 = new Bishop(bishop_w, white, 5);
+        ChessBoard.pieces[5] = bishop2;
         Knight knight2 = new Knight(knight_w, white, 6);
+        ChessBoard.pieces[6] = knight2;
         Rook rook2 = new Rook(rook_w, white, 7);
+        ChessBoard.pieces[7] = rook2;
         
         //black
         
         Pawn b_pawn = new Pawn(pawn_b, black,48);//Just for testing
+        ChessBoard.pieces[48] = b_pawn;
         Pawn b_pawn2 = new Pawn(pawn_b, black,49);
+        ChessBoard.pieces[49] = b_pawn2;
         Pawn b_pawn3 = new Pawn(pawn_b, black,50);
+        ChessBoard.pieces[50] = b_pawn3;
         Pawn b_pawn4 = new Pawn(pawn_b, black,51);
+        ChessBoard.pieces[51] = b_pawn4;
         Pawn b_pawn5 = new Pawn(pawn_b, black,52);
+        ChessBoard.pieces[52] = b_pawn5;
         Pawn b_pawn6 = new Pawn(pawn_b, black,53);
+        ChessBoard.pieces[53] = b_pawn6;
         Pawn b_pawn7 = new Pawn(pawn_b, black,54);
+        ChessBoard.pieces[54] = b_pawn7;
         Pawn b_pawn8 = new Pawn(pawn_b, black,55);
+        ChessBoard.pieces[55] = b_pawn8;
         
         //just going to create regular pieces as pawns too for now
         
         Rook b_rook1 = new Rook(rook_b, black, 56);
+        ChessBoard.pieces[56] = b_rook1;
         Knight b_knight1 = new Knight(knight_b, black,57);
+        ChessBoard.pieces[57] = b_knight1;
         Bishop b_bishop1 = new Bishop(bishop_b, black, 58);
-        Pawn b_queen = new Pawn(queen_b, black, 59);
+        ChessBoard.pieces[58] = b_bishop1;
+        Queen b_queen = new Queen(queen_b, black, 59);
+        ChessBoard.pieces[59] = b_queen;
         King b_king = new King(king_b, black, 60);
+        ChessBoard.pieces[60] = b_king;
         Bishop b_bishop2 = new Bishop(bishop_b, black, 61);
+        ChessBoard.pieces[61] = b_bishop2;
         Knight b_knight2 = new Knight(knight_b, black, 62);
+        ChessBoard.pieces[62] = b_knight2;
         Rook b_rook2 = new Rook(rook_b, black, 63);
+        ChessBoard.pieces[63] = b_rook2;
         
         
         //white
@@ -336,6 +368,7 @@ public class ChessGame extends JApplet implements Runnable {
         int oy = 0;
         int relx;
         int rely;
+        int lastIndex;
         Point point = new Point(0, 0);
         
         boolean contains (int x, int y){
@@ -353,6 +386,7 @@ public class ChessGame extends JApplet implements Runnable {
             ox = x/SQUAREDIM*SQUAREDIM;
             oy = y/SQUAREDIM*SQUAREDIM;
             index = ox/SQUAREDIM +oy/SQUAREDIM*8;
+            lastIndex = index;
 
             if (contains (x, y)){
                 relx = x - ox;
@@ -387,13 +421,19 @@ public class ChessGame extends JApplet implements Runnable {
             cox = cox/SQUAREDIM *SQUAREDIM + SQUAREDIM/2 - 65/2;
             coy = coy/SQUAREDIM *SQUAREDIM + SQUAREDIM/2 - 65/2;
             
-            ChessBoard.pieces[index] = tmpPiece;
+            
+            
             if(tmpPiece.isValidMove(index)){
                 setChessLocation(tmpPiece,cox,coy);
                 tmpPiece.setBoardPosition(index);
+                ChessBoard.pieces[index] = tmpPiece;
+                ChessBoard.pieces[lastIndex] = null;
+                
             }    
             else
                 setChessLocation(tmpPiece,tmpPiece.getBoardPosition()%8*80+8,tmpPiece.getBoardPosition()/8*80+8);
+//            System.out.println("lastIndex: "+ lastIndex +ChessBoard.pieces[lastIndex]);
+//            System.out.println("index: "+ index +ChessBoard.pieces[index]);
         }
         public void mouseEntered(MouseEvent e) {
         }

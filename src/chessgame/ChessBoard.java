@@ -32,6 +32,7 @@ public class ChessBoard extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(image, 0, 0, this);
+        
     }
     
     public static ChessPiece getIndex(int index){

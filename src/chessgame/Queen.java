@@ -32,15 +32,15 @@ public class Queen extends ChessPiece{
         this.setSize(65, 65);
         this.setIcon(new ImageIcon(image));
         
-        bishopQ = new Bishop(null, null, this.boardPosition);
-        rookQ = new Rook(null, null, this.boardPosition);
+        //bishopQ = new Bishop(null, null, this.boardPosition);
+        //rookQ = new Rook(null, null, this.boardPosition);
     }
 
     @Override
     public boolean isValidMove(int newPosition) {
                
-        return ((bishopQ.isValidMove(newPosition)) || (rookQ.isValidMove(newPosition)));
-        
+        //return ((bishopQ.isValidMove(newPosition)) || (rookQ.isValidMove(newPosition)));
+        return false;
     }
     
 }
