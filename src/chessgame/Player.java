@@ -38,6 +38,7 @@ public class Player {
     
     public boolean isChecked(){
         
+        this.isChecked = false;
         //pseduocode
         //this is not as efficient as having each player have their own separate
         //arrayLists of pieces but that may be a hassle to keep track of/update.
