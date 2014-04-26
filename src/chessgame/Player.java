@@ -32,23 +32,27 @@ public class Player {
         return this.isTurn;
     }
     
+    public String getColor(){
+        return this.color;
+    }
+    
     public boolean isChecked(){
         
         //pseduocode
         //this is not as efficient as having each player have their own separate
         //arrayLists of pieces but that may be a hassle to keep track of/update.
-        /*
-        for(int i = 0; i < ChessBoard.pieces.size; i++){
+        
+        for(int i = 0; i < ChessBoard.pieces.length; i++){
             //these can be combined into 1 if but it's long so i broke into 2
-            if (ChessBoard.getIndex(i).getColor() != this.getColor()){        
-                if(ChessBoard.getIndex(i).isValidMove(ChessBoard.getIndex(this.positionOfKing)){
+            if (ChessBoard.getIndex(i).getColor().equals(this.getColor()) == false){        
+                if(ChessBoard.getIndex(i).isValidMove(this.positionOfKing)){
                     this.isChecked = true;
                     break;
                 }
             }
         }
         
-        */
+        
         
         return this.isChecked;
     }
