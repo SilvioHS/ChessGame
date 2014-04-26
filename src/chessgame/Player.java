@@ -61,6 +61,7 @@ public class Player {
     
     public boolean isCheckMated(){
         boolean checkmated = true;
+        boolean occupiedSquare = false;
         
         /* pseudo code
         //call isValidMove for this player's king on all index's +/- 9 , just a 
@@ -97,7 +98,48 @@ public class Player {
         //cycle through all of this player's color's pieces, simulate their moves
         //see if they're still in check.....
         
+        //does this work? netbeans recommend it "enhanced loop" apparently it does
+        // https://blogs.oracle.com/CoreJavaTechTips/entry/using_enhanced_for_loops_with
+        
+        for (ChessPiece piece : ChessBoard.pieces) {
+            if(piece.getColor().equals(this.getColor())){
+                for(int i = 0; i < ChessBoard.pieces.length; i++){
+                    if(piece.isValidMove(i)){
+                        int oldIndex = i;
+                        
+                        //this might need to be a deep copy? or something
+                        //copy old piece before replacing
+                        if(ChessBoard.pieces[i] != null){
+                            ChessPiece oldPiece = ChessBoard.pieces[i];
+                            occupiedSquare = true;
+                        }
+                        //move this piece to new square
+                        ChessBoard.pieces[i] = piece;
+                        
+                        if(!this.isChecked){
+                            checkmated = false;
+                            if(occupiedSquare){
+                                //put the pieces back
+                                ChessBoard.pieces[i] = oldPiece;
+                                ChessBoard.pieces[oldIndex] = piece;
+                            }
+                            
+                            break;
+                        }else{
+                            //put the pieces back
+                            if(occupiedSquare){
+                                ChessBoard.pieces[i] = oldPiece;
+                                ChessBoard.pieces[oldIndex] = piece;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
         */
+        
+        
         
         return checkmated;
     }
