@@ -44,7 +44,7 @@ public class Player {
         
         for(int i = 0; i < ChessBoard.pieces.length; i++){
             //these can be combined into 1 if but it's long so i broke into 2
-            if (ChessBoard.getIndex(i).getColor().equals(this.getColor()) == false){        
+            if (ChessBoard.getIndex(i) != null && ChessBoard.getIndex(i).getColor().equals(this.getColor()) == false){        
                 if(ChessBoard.getIndex(i).isValidMove(this.positionOfKing)){
                     this.isChecked = true;
                     break;
