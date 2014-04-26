@@ -15,6 +15,7 @@ public class Player {
     String color;
     boolean isTurn;
     boolean isChecked;
+    boolean isCheckmated;
     
     //make it easy to keep track of king's position on board, if we do not have
     //each player have own array of pieces
@@ -56,6 +57,39 @@ public class Player {
         
         
         return this.isChecked;
+    }
+    
+    public boolean isCheckMated(){
+        boolean checkmated = true;
+        
+        /* pseudo code
+        //call isValidMove for this player's king on all index's +/- 9 , just a 
+        //quick lazy way to see if it can move anywhere
+        for(int i = this.positionOfKing; i < this.positionOfKing + 9; i++){
+            if(this.King.isValidMove(i){
+                
+                //update king's location on board, remove pieces it can take
+                int kingOldPosition = this.positionOfKing;
+                ChessBoard.getIndex(i).setBoardPosition(some dummy index?);
+                this.King.setBoardPosition(i);
+                
+                if(this.isChecked() == false){
+                    checkmated = false;       
+                    //put king back to it's original location, put pieces it took
+                    //back to there's
+                    this.King.setBoardPosition(kingOldPosition);
+                    ChessBoard.getIndex(dummy index).setBoardPosition(i);
+                    break;
+                }
+            }
+        }
+        
+        //cycle through all of this player's color's pieces, simulate their moves
+        //see if they're still in check.....
+        
+        */
+        
+        return checkmated;
     }
     
     public void setIsChecked(boolean check){
