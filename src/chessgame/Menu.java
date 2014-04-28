@@ -29,10 +29,14 @@ import javax.swing.JFrame;
  * This class exists solely to show you what menus look like.
  * It has no menu-related event handling.
  */
-public class Menu {
-    JTextArea output;
-    JScrollPane scrollPane;
-
+public class Menu implements ActionListener{
+    
+    ChessGame game;
+        
+    public Menu(ChessGame g){
+        game = g;
+    }
+    
     public JMenuBar createMenuBar() {
         JMenuBar menuBar;
         JMenu menu, submenu;
@@ -49,12 +53,15 @@ public class Menu {
 
         //a group of JMenuItems
         menuItem = new JMenuItem("New",KeyEvent.VK_N);
+        menuItem.addActionListener(this);
         menu.add(menuItem);
 
         menuItem = new JMenuItem("Save", KeyEvent.VK_S);
+        menuItem.addActionListener(this);
         menu.add(menuItem);
 
         menuItem = new JMenuItem("Load", KeyEvent.VK_L);
+        menuItem.addActionListener(this);
         menu.add(menuItem);
 
         
@@ -140,4 +147,16 @@ public class Menu {
 
         return menuBar;
     }
+    
+    public void actionPerformed(ActionEvent e) {
+        if(e.getActionCommand().equals("New")){
+            System.out.println("New Game");
+            game.newGame();
+        } else if(e.getActionCommand().equals("Save")){
+            System.out.println("Clear Game");
+            //game.clearGame();
+        }
+        
+    }
+    
 }
