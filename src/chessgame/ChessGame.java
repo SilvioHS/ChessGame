@@ -463,8 +463,8 @@ public class ChessGame extends JApplet implements Runnable {
             }    
             else
                 setChessLocation(tmpPiece,tmpPiece.getBoardPosition()%8*80+8,tmpPiece.getBoardPosition()/8*80+8);
-//            System.out.println("lastIndex: "+ lastIndex +ChessBoard.pieces[lastIndex]);
-//            System.out.println("index: "+ index +ChessBoard.pieces[index]);
+           //System.out.println("lastIndex: "+ lastIndex +ChessBoard.pieces[lastIndex]);
+           //System.out.println("index: "+ index +ChessBoard.pieces[index]);
         }
         public void mouseEntered(MouseEvent e) {
         }

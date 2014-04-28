@@ -37,7 +37,9 @@ public class Player {
         return this.color;
     }
     
-    public boolean isChecked(){
+    public boolean isChecked(int index){
+        
+        //index is piece that get's 'taken' in simulation for isChecked
         
         this.isChecked = false;
         //pseduocode
@@ -46,7 +48,7 @@ public class Player {
         
         for(int i = 0; i < ChessBoard.pieces.length; i++){
             //these can be combined into 1 if but it's long so i broke into 2
-            if (ChessBoard.getIndex(i) != null && ChessBoard.getIndex(i).getColor().equals(this.getColor()) == false){        
+            if (i != index && ChessBoard.getIndex(i) != null && ChessBoard.getIndex(i).getColor().equals(this.getColor()) == false){        
                 if(ChessBoard.getIndex(i).isValidMove(this.positionOfKing)){
                     this.isChecked = true;
                     break;
@@ -70,7 +72,7 @@ public class Player {
             if(this.King.isValidMove(i){
                 
                 //update king's location on board, remove pieces it can take
-                if(ChessBoard.pieces[i] != null)
+                if(ChessBoard.pieces[i] != null && ChessBoard.pieces[i].getColor() != this.getColor())
                     oldPiece = ChessBoard.pieces[i];
                     boolean occupiedSquare = true;
                 }
@@ -101,6 +103,9 @@ public class Player {
         //does this work? netbeans recommend it "enhanced loop" apparently it does
         // https://blogs.oracle.com/CoreJavaTechTips/entry/using_enhanced_for_loops_with
         
+        //new idea 4/28: give isChecked a parameter index of whatever piece gets
+        //'taken' in the simulation, exclude checking that piece in the isChecked() method
+        
         for (ChessPiece piece : ChessBoard.pieces) {
             if(piece.getColor().equals(this.getColor())){
                 for(int i = 0; i < ChessBoard.pieces.length; i++){
@@ -109,7 +114,7 @@ public class Player {
                         
                         //this might need to be a deep copy? or something
                         //copy old piece before replacing
-                        if(ChessBoard.pieces[i] != null){
+                        if(ChessBoard.pieces[i] != null && ChessBoard.pieces[i].getColor() != this.getColor()){
                             ChessPiece oldPiece = ChessBoard.pieces[i];
                             occupiedSquare = true;
                         }
