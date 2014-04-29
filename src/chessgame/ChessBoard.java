@@ -16,11 +16,11 @@ import java.awt.BorderLayout;
  *
  * @author xiaoweii
  */
-public class ChessBoard extends JPanel {
+public  class ChessBoard extends JPanel {
     private Image image;
     public static ChessPiece[] pieces = new ChessPiece[64];
     
-    public ChessBoard() {
+    public  ChessBoard() {
         try {
             image = ImageIO.read(new File("src/image/ChessBoard80X80.jpg"));
         } catch (IOException ex) {
