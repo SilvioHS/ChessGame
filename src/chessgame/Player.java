@@ -68,6 +68,9 @@ public class Player {
         /* pseudo code
         //call isValidMove for this player's king on all index's +/- 9 , just a 
         //quick lazy way to see if it can move anywhere
+        
+        //int oldKingPos;
+        
         for(int i = this.positionOfKing; i < this.positionOfKing + 9; i++){
             if(this.King.isValidMove(i){
                 
@@ -77,19 +80,21 @@ public class Player {
                     boolean occupiedSquare = true;
                 }
                 ChessBoard.pieces[i] = this.King;
+                oldKingPos = this.positionOfKing; 
+                this.positionOfKing = i;
                              
                 if(this.isChecked() == false){
                     checkmated = false;       
                     //put king back to it's original location, put pieces it took
                     //back to there's
-                    ChessBoard[this.positionOfKing] = this.King;
+                    ChessBoard[oldKingPos] = this.King;
                     if(occupiedSquare){
                         ChessBoard[i] = oldPiece;
                     }
                     break;
                 }else{
                     //need to put them back anyway
-                    ChessBoard[this.positionOfKing] = this.King;
+                    ChessBoard[oldKingPos] = this.King;
                     if(occupiedSquare){
                         ChessBoard[i] = oldPiece;
                     }
