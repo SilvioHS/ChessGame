@@ -93,6 +93,13 @@ public class DragPieceListener implements MouseInputListener
             
             if(tmpPiece.isValidMove(game.index))
             {
+                
+                //take piece need to check for pawn
+                if(ChessBoard.pieces[game.index] != null){
+                    game.chessboard.remove(ChessBoard.pieces[game.index]);
+                    ChessBoard.pieces[game.index] = null;              
+                }
+                
                 game.setChessLocation(tmpPiece,cox,coy);
                 tmpPiece.setBoardPosition(game.index);
                 ChessBoard.pieces[game.index] = tmpPiece;
