@@ -38,18 +38,27 @@ public class Pawn extends ChessPiece{
         
         if(this.getColor().equals("white")){
             
-            if(this.getBoardPosition() == newPosition-8){
+            if(this.getBoardPosition() == newPosition-8 && ChessBoard.pieces[newPosition] == null){
                 validMove = true;
             }else if(this.getBoardPosition() == newPosition-16 && firstMove){
+                validMove = true;
+            }else if((Math.abs((int) ChessBoard.getRank(this.getBoardPosition()) - (int) ChessBoard.getRank(newPosition)) == 1)
+                    && (ChessBoard.getFile(this.getBoardPosition()) - ChessBoard.getFile(newPosition) == 1)
+                    && ChessBoard.getIndex(newPosition) != null && ChessBoard.getIndex(newPosition).getColor().equals("black")){
                 validMove = true;
             }
         
         //black
         }else{
         
-            if(this.getBoardPosition() == newPosition+8){
+            if(this.getBoardPosition() == newPosition +8 && ChessBoard.pieces[newPosition] == null){
                 validMove = true;
             }else if(this.getBoardPosition() == newPosition+16 && firstMove){
+                validMove = true;
+            }
+            else if((Math.abs((int) ChessBoard.getRank(this.getBoardPosition()) - (int) ChessBoard.getRank(newPosition)) == 1)
+                    && (ChessBoard.getFile(this.getBoardPosition()) - ChessBoard.getFile(newPosition) == -1)
+                    && ChessBoard.getIndex(newPosition) != null && ChessBoard.getIndex(newPosition).getColor().equals("white")){
                 validMove = true;
             }
         }
