@@ -70,11 +70,13 @@ public class DragPieceListener implements MouseInputListener
 
                 int tmpox = newPoint.x - relx;
                 int tmpoy = newPoint.y - rely;
+                int cox = tmpox + SQUAREDIM/2;
+                int coy = tmpoy + SQUAREDIM/2;
+                game.index = cox/SQUAREDIM +coy/SQUAREDIM*8; 
 
                 if (tmpox > boardx &&tmpoy > boardy && tmpox + SQUAREDIM < boardx + game.BOARDDIM + SQUAREDIM && tmpoy + SQUAREDIM < boardy + game.BOARDDIM + SQUAREDIM){
                     ox = tmpox;
-                    oy = tmpoy;
-                    game.index = ox/SQUAREDIM +oy/SQUAREDIM*8;                
+                    oy = tmpoy;              
                     game.setChessLocation(tmpPiece,ox,oy);
                 }
             }
@@ -100,7 +102,7 @@ public class DragPieceListener implements MouseInputListener
                     ChessBoard.pieces[game.index] = null;              
                 }
                 
-                game.setChessLocation(tmpPiece,cox,coy);
+                game.setChessLocation(tmpPiece,game.coordinate.getPieceX(game.index),game.coordinate.getPieceY(game.index));
                 tmpPiece.setBoardPosition(game.index);
                 ChessBoard.pieces[game.index] = tmpPiece;
                 ChessBoard.pieces[lastIndex] = null;
@@ -115,7 +117,7 @@ public class DragPieceListener implements MouseInputListener
                 
             }    
             else
-                game.setChessLocation(tmpPiece,tmpPiece.getBoardPosition()%8*80+8,tmpPiece.getBoardPosition()/8*80+8);
+                game.setChessLocation(tmpPiece,game.coordinate.getPieceX(lastIndex),game.coordinate.getPieceY(lastIndex));
 
            //System.out.println("lastIndex: "+ lastIndex +ChessBoard.pieces[lastIndex]);
            //System.out.println("index: "+ index +ChessBoard.pieces[index]);

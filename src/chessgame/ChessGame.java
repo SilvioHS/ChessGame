@@ -27,6 +27,7 @@ public class ChessGame extends JApplet implements Runnable {
    Player blackplayer;
    String colorsTurn = "white";
    int index;
+   Coordinate coordinate = new Coordinate();
    
    
    
