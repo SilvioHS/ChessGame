@@ -8,21 +8,13 @@ package chessgame;
 
 
 
-import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JCheckBoxMenuItem;
-import javax.swing.JRadioButtonMenuItem;
-import javax.swing.ButtonGroup;
 import javax.swing.JMenuBar;
-import javax.swing.KeyStroke;
-import javax.swing.ImageIcon;
-
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.JScrollPane;
-import javax.swing.JFrame;
+import javax.swing.JFileChooser;
 
 
 /*
@@ -32,6 +24,7 @@ import javax.swing.JFrame;
 public class Menu implements ActionListener{
     
     ChessGame game;
+    JFileChooser fc;
         
     public Menu(ChessGame g){
         game = g;
@@ -79,6 +72,7 @@ public class Menu implements ActionListener{
         menu.addSeparator();
 
         menuItem = new JMenuItem("Quit", KeyEvent.VK_L);
+        menuItem.addActionListener(this);
         menu.add(menuItem);
 
         
@@ -149,14 +143,35 @@ public class Menu implements ActionListener{
     }
     
     public void actionPerformed(ActionEvent e) {
+        
         if(e.getActionCommand().equals("New")){
             System.out.println("New Game");
             game.newGame();
         } else if(e.getActionCommand().equals("Save")){
+            fc = new JFileChooser();
+            fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+            int returnVal = fc.showSaveDialog(null);
+ 
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                File file = fc.getSelectedFile();
+                //System.out.println("Save Game");
+                game.saveGame(file);
+            }
+            
+            
+        } else if(e.getActionCommand().equals("Load")){
+            fc = new JFileChooser();
+            fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+            int returnVal = fc.showOpenDialog(null);
+            
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                File file = fc.getSelectedFile();
+                //System.out.println("Load Game");
+                game.loadGame(file);
+            }
+        } else if(e.getActionCommand().equals("Quit")){
             System.out.println("Clear Game");
-            //game.clearGame();
+            game.clearGame();
         }
-        
     }
-    
 }

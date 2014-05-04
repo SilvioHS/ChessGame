@@ -2,6 +2,7 @@ package chessgame;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.MouseEvent;
+import java.io.File;
 import javax.swing.event.MouseInputListener;
 
 /**
@@ -16,11 +17,12 @@ public class ChessGame extends JApplet implements Runnable {
    // Dragging flag -- set to true when user presses mouse button over chess
    // and cleared to false when user releases mouse button.
    
+   
    //game window
    JFrame frame;
    
    //chessboard panel
-   JPanel chessboard;
+   ChessBoard chessboard;
    
 
    Player whiteplayer;
@@ -28,7 +30,8 @@ public class ChessGame extends JApplet implements Runnable {
    String colorsTurn = "white";
    int index;
    Coordinate coordinate = new Coordinate();
-   
+   SaveGame savegame;
+   LoadGame loadgame;
    
    
     private Thread thread;
@@ -59,6 +62,7 @@ public class ChessGame extends JApplet implements Runnable {
         
         
         frame = new JFrame();//new a JFrame
+        
         chessboard = new ChessBoard();
         chessboard.setLayout(null);
         frame.getContentPane().add(chessboard);//new a ChessBoard that extends JPanel
@@ -100,15 +104,24 @@ public class ChessGame extends JApplet implements Runnable {
         
         //remove all piece components from chessboard
         chessboard.removeAll();
+        
+        chessboard.update(chessboard.getGraphics());
     }
     
-    
-    public void saveGame(){
-        //save piece array, player turn and score to file
+    //save piece array, player turn and score to file
+    public void saveGame(File f){
+        savegame = new SaveGame(f, chessboard);
+        System.out.println("Gamed Saved.");
+        
+        
     }
     
-    public void loadGame(){
-        //load piece array, player turn and score from file
+    //load piece array, player turn and score from file
+    public void loadGame(File f){
+        clearGame();
+        loadgame = new LoadGame(f, chessboard, this);
+        System.out.println("Gamed Loaded.");
+        
     }
     
     public static void setChessLocation(ChessPiece aPiece, int xx, int yy){//Just for test, set the selected chess piece(a JButton)'s location
@@ -125,7 +138,9 @@ public class ChessGame extends JApplet implements Runnable {
     }
     public static void main(String[] args) 
     {  
-          ChessGame demo = new ChessGame();
-          demo.init();
+
+        
+        ChessGame demo = new ChessGame();
+        demo.init();
     }  
 }
