@@ -95,24 +95,37 @@ public class DragPieceListener implements MouseInputListener
             
             if(tmpPiece.isValidMove(game.index))
             {
-                
+                String move = "";
                 //take piece need to check for pawn
                 if(ChessBoard.pieces[game.index] != null){
+                    
+                    move = tmpPiece.toString() + " took " + ChessBoard.pieces[game.index].toString() + " \n";
+                    
+                    //ChessGame.textarea.
                     game.chessboard.remove(ChessBoard.pieces[game.index]);
                     ChessBoard.pieces[game.index] = null;              
+                }
+                if(!move.isEmpty()){
+                    ChessGame.textarea.append(move);
+                }else{
+                    move = tmpPiece.toString() + " moved to " + ChessBoard.getRank(game.index) + ChessBoard.getFile(game.index) + " \n";
+                    ChessGame.textarea.append(move);
                 }
                 
                 game.setChessLocation(tmpPiece,game.coordinate.getPieceX(game.index),game.coordinate.getPieceY(game.index));
                 tmpPiece.setBoardPosition(game.index);
                 ChessBoard.pieces[game.index] = tmpPiece;
                 ChessBoard.pieces[lastIndex] = null;
+                
                 if(game.colorsTurn.equals("white"))
                 {
                     game.colorsTurn = "black";
+                    ChessGame.textarea.append("Black's turn to move \n");
                 }
                 else
                 {
                     game.colorsTurn = "white";
+                    ChessGame.textarea.append("White's turn to move \n");
                 }
                 
             }    
