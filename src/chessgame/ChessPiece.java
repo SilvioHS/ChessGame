@@ -40,6 +40,14 @@ public abstract class ChessPiece extends JButton {//Changed to extends JLabel, e
         this.boardPosition = boardPosition;
     }
     
+    @Override
+    public String toString(){
+        String result = "";
+        result  += this.getColor() + " " + this.getClass().getSimpleName()  + " at " + 
+                ChessBoard.getRank(this.getBoardPosition()) + ChessBoard.getFile(this.getBoardPosition());
+        return result;
+    }
+    
     public abstract boolean isValidMove(int boardPosition);
     
 }

@@ -33,6 +33,11 @@ public class ChessGame extends JApplet implements Runnable {
    SaveGame savegame;
    LoadGame loadgame;
    
+   //text area
+   static JTextArea textarea;
+   JScrollPane scroll;
+   
+   
    
     private Thread thread;
     
@@ -63,13 +68,35 @@ public class ChessGame extends JApplet implements Runnable {
         
         frame = new JFrame();//new a JFrame
         
+        textarea = new JTextArea("Whites' turn to move \n");
+        textarea.setLocation(660, 300);
+        textarea.setSize(300, 300);
+        textarea.setLineWrap(true);
+        textarea.setEditable(false);
+        textarea.setVisible(true);
+        //textarea.setText("");
+        
+        
+        //scroll
+        scroll = new JScrollPane(textarea);
+        scroll.setLocation(660, 490);
+        scroll.setSize(375, 150);
+        scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        
+        
+       
         chessboard = new ChessBoard();
         chessboard.setLayout(null);
-        frame.getContentPane().add(chessboard);//new a ChessBoard that extends JPanel
+        
+        frame.add(scroll);
+        frame.getContentPane().add(chessboard);//new a ChessBoard that extends 
+        
         Menu demo = new Menu(this);
         frame.setJMenuBar(demo.createMenuBar());
-        frame.setSize(660,705);
+        frame.setSize(1060,705);
         frame.setVisible(true);
+        frame.setResizable(false);
         newGame();
     }
     
