@@ -20,13 +20,8 @@ public class Bishop extends ChessPiece {
         
         this.setBorder(BorderFactory.createRaisedBevelBorder());
         this.setContentAreaFilled(false);
-<<<<<<< HEAD
         this.setBorderPainted(false);
         this.setOpaque(false);
-=======
-	this.setBorderPainted(false);
-	this.setOpaque(false);
->>>>>>> f4e841a1bbe0cc9d194c63e2f80910dadc665b8b
         this.setSize(65, 65);
         this.setIcon(new ImageIcon(image));
     }
@@ -35,12 +30,8 @@ public class Bishop extends ChessPiece {
     public boolean isValidMove(int newPosition) {
         boolean isValid = false;
 
-<<<<<<< HEAD
         if (ChessBoard.getFile(this.getBoardPosition()) != ChessBoard.getFile(newPosition)) {
 
-=======
-        if (ChessBoard.getRank(this.getBoardPosition()) != ChessBoard.getRank(newPosition)) {
->>>>>>> f4e841a1bbe0cc9d194c63e2f80910dadc665b8b
             if (this.getBoardPosition() < newPosition) {
                 if (Math.abs(this.getBoardPosition() - newPosition) % 7 == 0) {
                     isValid = true;
@@ -88,17 +79,10 @@ public class Bishop extends ChessPiece {
                     isValid = false;
                 }
             }
-<<<<<<< HEAD
 
-=======
->>>>>>> f4e841a1bbe0cc9d194c63e2f80910dadc665b8b
         }
 
         return isValid;
     }
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> f4e841a1bbe0cc9d194c63e2f80910dadc665b8b
 }
