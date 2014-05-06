@@ -304,7 +304,7 @@ public class Player {
         return this.color;
     }
     
-   public boolean isChecked(int index){
+   public boolean isChecked(){
         
         //index is piece that get's 'taken' in simulation for isChecked
         
@@ -315,7 +315,7 @@ public class Player {
         
         for(int i = 0; i < ChessBoard.pieces.length; i++){
             //these can be combined into 1 if but it's long so i broke into 2
-            if (i != index && ChessBoard.getIndex(i) != null && ChessBoard.getIndex(i).getColor().equals(this.getColor()) == false){        
+            if (ChessBoard.getIndex(i) != null && ChessBoard.getIndex(i).getColor().equals(this.getColor()) == false){        
                 if(ChessBoard.getIndex(i).isValidMove(this.positionOfKing)){
                     this.isChecked = true;
                     break;
@@ -331,22 +331,22 @@ public class Player {
     public boolean isCheckMated(){
         boolean checkmated = true;
         boolean occupiedSquare = false;
+        ChessPiece oldPiece = new Pawn(null, null, 0);
         
-        /* pseudo code
         //call isValidMove for this player's king on all index's +/- 9 , just a 
         //quick lazy way to see if it can move anywhere
+        /* pseudo code
+        int oldKingPos;
         
-        //int oldKingPos;
-        
-        for(int i = this.positionOfKing; i < this.positionOfKing + 9; i++){
-            if(this.King.isValidMove(i){
+        for(int i = this.positionOfKing-9; i < this.positionOfKing + 9; i++){
+            if(ChessBoard.getIndex(this.positionOfKing).isValidMove(i)){
                 
                 //update king's location on board, remove pieces it can take
-                if(ChessBoard.pieces[i] != null && ChessBoard.pieces[i].getColor() != this.getColor())
+                if(ChessBoard.pieces[i] != null && ChessBoard.pieces[i].getColor().equals(this.getColor())){
                     oldPiece = ChessBoard.pieces[i];
-                    boolean occupiedSquare = true;
+                    occupiedSquare = true;
                 }
-                ChessBoard.pieces[i] = this.King;
+                ChessBoard.pieces[i] = ChessBoard.getIndex(this.positionOfKing);
                 oldKingPos = this.positionOfKing; 
                 this.positionOfKing = i;
                              
@@ -354,16 +354,16 @@ public class Player {
                     checkmated = false;       
                     //put king back to it's original location, put pieces it took
                     //back to there's
-                    ChessBoard[oldKingPos] = this.King;
+                    ChessBoard.pieces[oldKingPos] = ChessBoard.getIndex(this.positionOfKing);
                     if(occupiedSquare){
-                        ChessBoard[i] = oldPiece;
+                        ChessBoard.pieces[i] = oldPiece;
                     }
                     break;
                 }else{
                     //need to put them back anyway
-                    ChessBoard[oldKingPos] = this.King;
+                    ChessBoard.pieces[oldKingPos] = ChessBoard.getIndex(this.positionOfKing);
                     if(occupiedSquare){
-                        ChessBoard[i] = oldPiece;
+                        ChessBoard.pieces[i] = oldPiece;
                     }
                 }
             }
