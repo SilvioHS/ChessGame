@@ -368,6 +368,8 @@ public class Player {
                 }
             }
         }
+                
+                
         
         //cycle through all of this player's color's pieces, simulate their moves
         //see if they're still in check.....
@@ -386,8 +388,8 @@ public class Player {
                         
                         //this might need to be a deep copy? or something
                         //copy old piece before replacing
-                        if(ChessBoard.pieces[i] != null && ChessBoard.pieces[i].getColor() != this.getColor()){
-                            ChessPiece oldPiece = ChessBoard.pieces[i];
+                        if(ChessBoard.pieces[i] != null && ChessBoard.pieces[i].getColor().equals(this.getColor())){
+                            oldPiece = ChessBoard.pieces[i];
                             occupiedSquare = true;
                         }
                         //move this piece to new square
@@ -414,8 +416,8 @@ public class Player {
             }
         }
         
-        */
         
+        */
         
         
         return checkmated;
