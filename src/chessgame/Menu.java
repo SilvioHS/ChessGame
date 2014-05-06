@@ -65,8 +65,12 @@ public class Menu implements ActionListener{
         submenu.setMnemonic(KeyEvent.VK_P);
         menu.add(submenu);
 
-        cbMenuItem = new JCheckBoxMenuItem("Enable TurnTimer");
+        cbMenuItem = new JCheckBoxMenuItem("Show TurnTimer");
         cbMenuItem.setMnemonic(KeyEvent.VK_T);
+        submenu.add(cbMenuItem);
+        
+        cbMenuItem = new JCheckBoxMenuItem("Show Valid Moves");
+        cbMenuItem.setMnemonic(KeyEvent.VK_V);
         submenu.add(cbMenuItem);
 
         menu.addSeparator();
@@ -117,7 +121,7 @@ public class Menu implements ActionListener{
         
         //View Menu
         menu = new JMenu("View");
-        menu.setMnemonic(KeyEvent.VK_T);
+        menu.setMnemonic(KeyEvent.VK_V);
         menuBar.add(menu);
         
         menuItem = new JMenuItem("Player Stats", KeyEvent.VK_S);
