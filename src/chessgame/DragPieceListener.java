@@ -59,6 +59,7 @@ public class DragPieceListener implements MouseInputListener {
             relx = x - ox;
             rely = y - oy;
             inDrag = true;
+            game.chessboard.moveToFront(tmpPiece);
         }
 
     }

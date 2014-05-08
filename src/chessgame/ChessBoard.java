@@ -16,7 +16,7 @@ import java.awt.BorderLayout;
  *
  * @author xiaoweii
  */
-public  class ChessBoard extends JPanel {
+public  class ChessBoard extends JLayeredPane {
     private Image image;
     public static ChessPiece[] pieces = new ChessPiece[65];
     

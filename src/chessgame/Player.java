@@ -11,7 +11,7 @@ import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import javax.swing.JPanel;
+import javax.swing.JLayeredPane;
 
 /**
  *
@@ -28,7 +28,7 @@ public class Player {
     //each player have own array of pieces
     int positionOfKing;
     
-    public Player(String color,JPanel board,ChessGame game)
+    public Player(String color,JLayeredPane board,ChessGame game)
     {
         String white = new String();
         white = "white";
@@ -79,22 +79,22 @@ public class Player {
                 Rook rook2 = new Rook(rook_w, white, 7);
                 ChessBoard.pieces[7] = rook2;
 
-                board.add(pawn);
-                board.add(pawn2);
-                board.add(pawn3);
-                board.add(pawn4);
-                board.add(pawn5);
-                board.add(pawn6);
-                board.add(pawn7);
-                board.add(pawn8);
-                board.add(rook1);
-                board.add(knight1);
-                board.add(bishop1);
-                board.add(queen);
-                board.add(king);
-                board.add(bishop2);
-                board.add(knight2);
-                board.add(rook2);
+                board.add(pawn,JLayeredPane.DEFAULT_LAYER);
+                board.add(pawn2,JLayeredPane.DEFAULT_LAYER);
+                board.add(pawn3,JLayeredPane.DEFAULT_LAYER);
+                board.add(pawn4,JLayeredPane.DEFAULT_LAYER);
+                board.add(pawn5,JLayeredPane.DEFAULT_LAYER);
+                board.add(pawn6,JLayeredPane.DEFAULT_LAYER);
+                board.add(pawn7,JLayeredPane.DEFAULT_LAYER);
+                board.add(pawn8,JLayeredPane.DEFAULT_LAYER);
+                board.add(rook1,JLayeredPane.DEFAULT_LAYER);
+                board.add(knight1,JLayeredPane.DEFAULT_LAYER);
+                board.add(bishop1,JLayeredPane.DEFAULT_LAYER);
+                board.add(queen,JLayeredPane.DEFAULT_LAYER);
+                board.add(king,JLayeredPane.DEFAULT_LAYER);
+                board.add(bishop2,JLayeredPane.DEFAULT_LAYER);
+                board.add(knight2,JLayeredPane.DEFAULT_LAYER);
+                board.add(rook2,JLayeredPane.DEFAULT_LAYER);
 
                 ChessGame.setChessLocation(pawn, 8, 88);
                 ChessGame.setChessLocation(pawn2, 88, 88);
@@ -208,22 +208,22 @@ public class Player {
                 Rook b_rook2 = new Rook(rook_b, black, 63);
                 ChessBoard.pieces[63] = b_rook2;
 
-                board.add(b_pawn);
-                board.add(b_pawn2);
-                board.add(b_pawn3);
-                board.add(b_pawn4);
-                board.add(b_pawn5);
-                board.add(b_pawn6);
-                board.add(b_pawn7);
-                board.add(b_pawn8);
-                board.add(b_rook1);
-                board.add(b_knight1);
-                board.add(b_bishop1);
-                board.add(b_queen);
-                board.add(b_king);
-                board.add(b_bishop2);
-                board.add(b_knight2);
-                board.add(b_rook2);
+                board.add(b_pawn,JLayeredPane.DEFAULT_LAYER);
+                board.add(b_pawn2,JLayeredPane.DEFAULT_LAYER);
+                board.add(b_pawn3,JLayeredPane.DEFAULT_LAYER);
+                board.add(b_pawn4,JLayeredPane.DEFAULT_LAYER);
+                board.add(b_pawn5,JLayeredPane.DEFAULT_LAYER);
+                board.add(b_pawn6,JLayeredPane.DEFAULT_LAYER);
+                board.add(b_pawn7,JLayeredPane.DEFAULT_LAYER);
+                board.add(b_pawn8,JLayeredPane.DEFAULT_LAYER);
+                board.add(b_rook1,JLayeredPane.DEFAULT_LAYER);
+                board.add(b_knight1,JLayeredPane.DEFAULT_LAYER);
+                board.add(b_bishop1,JLayeredPane.DEFAULT_LAYER);
+                board.add(b_queen,JLayeredPane.DEFAULT_LAYER);
+                board.add(b_king,JLayeredPane.DEFAULT_LAYER);
+                board.add(b_bishop2,JLayeredPane.DEFAULT_LAYER);
+                board.add(b_knight2,JLayeredPane.DEFAULT_LAYER);
+                board.add(b_rook2,JLayeredPane.DEFAULT_LAYER);
 
                 setChessLocation(b_pawn, 8, 488);
                 setChessLocation(b_pawn2, 88, 488);
