@@ -1,10 +1,7 @@
 package chessgame;
 
-import java.awt.*;
 import javax.swing.*;
-import java.awt.event.MouseEvent;
 import java.io.File;
-import javax.swing.event.MouseInputListener;
 
 /**
  *
@@ -29,9 +26,8 @@ public class ChessGame extends JApplet implements Runnable {
     //main menu bar
     Menu dropmenu;
 
-    //text area
-    JTextArea textarea;
-    JScrollPane scroll;
+    GameLog gamelog;
+    
 
     //game objects
     Player whiteplayer;
@@ -72,20 +68,8 @@ public class ChessGame extends JApplet implements Runnable {
         //new a JFrame window
         frame = new JFrame();
 
-        //game log text area
-        textarea = new JTextArea("Whites' turn to move \n");
-        textarea.setLocation(660, 300);
-        textarea.setSize(300, 300);
-        textarea.setLineWrap(true);
-        textarea.setEditable(false);
-        textarea.setVisible(true);
-        //scrolling pane for game log text area
-        scroll = new JScrollPane(textarea);
-        scroll.setLocation(660, 490);
-        scroll.setSize(375, 150);
-        scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-        frame.add(scroll);
+        //init gamelog
+        gamelog = new GameLog(this);
         
         //chessboard gui
         chessboard = new ChessBoard();
@@ -107,13 +91,12 @@ public class ChessGame extends JApplet implements Runnable {
 
         //reset game board before initializing newgame
         clearGame();
+        
         whiteplayer = new Player("white", chessboard, this);
         blackplayer = new Player("black", chessboard, this);
+        colorsTurn = "white";
+        gamelog.logCurrentTurn(colorsTurn);
 
-        //index = (ox)/80 +(oy)/80*8;
-//        for(int i = 0; i<64; i++)
-//            pieces[i] = null;
-//        pieces[index] = pawn;
     }
 
     public void clearGame() {
@@ -126,8 +109,12 @@ public class ChessGame extends JApplet implements Runnable {
 
         //remove all piece components from chessboard
         chessboard.removeAll();
-
-        chessboard.update(chessboard.getGraphics());
+        
+        //clear game log
+        gamelog.clearLog();
+        
+        //refresh graphics
+        frame.update(frame.getGraphics());
     }
 
     //save piece array, player turn and score to file

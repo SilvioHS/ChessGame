@@ -181,14 +181,14 @@ public class DragPieceListener implements MouseInputListener {
 
             if (game.colorsTurn.equals("white")) {
                 game.colorsTurn = "black";
-                gamelog.logCurrentTurn("Black");
+                gamelog.logCurrentTurn("black");
                 game.blackplayer.isTurn = true;
                 game.whiteplayer.isTurn = false;
                             
                 //ChessGame.textarea.append("Black's turn to move \n");
             } else if (game.colorsTurn.equals("black")) {
                 game.colorsTurn = "white";
-                gamelog.logCurrentTurn("White");
+                gamelog.logCurrentTurn("white");
                 game.blackplayer.isTurn = true;
                 game.whiteplayer.isTurn = false;
                 //ChessGame.textarea.append("White's turn to move \n");

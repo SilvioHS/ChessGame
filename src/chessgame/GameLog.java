@@ -1,6 +1,7 @@
 
 package chessgame;
 
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 /**
@@ -10,6 +11,7 @@ import javax.swing.JTextArea;
 public class GameLog {
     private ChessGame game;
     static JTextArea textlog;
+    private JScrollPane scroll;
     private String move;
     private int whiteScore = 0;
     private int blackScore = 0;
@@ -17,7 +19,22 @@ public class GameLog {
     
     public GameLog(ChessGame g){
         game = g;
-        textlog = game.textarea;
+        
+        //game log text area
+        textlog = new JTextArea();
+        textlog.setLocation(660, 300);
+        textlog.setSize(300, 300);
+        textlog.setLineWrap(true);
+        textlog.setEditable(false);
+        textlog.setVisible(true);
+        //scrolling pane for game log text area
+        scroll = new JScrollPane(textlog);
+        scroll.setLocation(660, 490);
+        scroll.setSize(375, 150);
+        scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        g.frame.add(scroll);
+        
         move = "";
     }
     
@@ -51,5 +68,13 @@ public class GameLog {
     
     public void logScore(){
         
+    }
+    
+    public String getLog(){
+        return textlog.getText();
+    }
+    
+    public void clearLog(){
+        textlog.setText("");
     }
 }
