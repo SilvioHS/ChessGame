@@ -37,6 +37,9 @@ public class Player {
         this.color = color;
         try {
             if (color.equals("white")) {
+                
+                positionOfKing = 4;
+                
                 pawn_w = ImageIO.read(new File("src/image/pawn_white.png"));
                 rook_w = ImageIO.read(new File("src/image/rook_white.png"));
                 knight_w = ImageIO.read(new File("src/image/knight_white.png")); //spelling....
@@ -162,6 +165,9 @@ public class Player {
 
             }
             if (color.equals("black")) {
+                
+                positionOfKing = 60;
+                
                 pawn_b = ImageIO.read(new File("src/image/pawn_black.png"));
                 rook_b = ImageIO.read(new File("src/image/rook_black.png"));
                 knight_b = ImageIO.read(new File("src/image/knight_black.png")); //spelling....
@@ -302,6 +308,14 @@ public class Player {
     
     public String getColor(){
         return this.color;
+    }
+    
+    public int getPositionOfKing(){
+        return this.positionOfKing;
+    }
+    
+    public void setPositionOfKing(int positionOfKing){
+        this.positionOfKing = positionOfKing; 
     }
     
    public boolean isChecked(){

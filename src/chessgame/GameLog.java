@@ -45,6 +45,10 @@ public class GameLog {
         textlog.append(turn + "'s turn to move \n");
     }
     
+    public void logText(String s){
+        textlog.append(s + " \n");
+    }
+    
     public void logScore(){
         
     }

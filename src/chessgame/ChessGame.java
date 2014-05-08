@@ -30,7 +30,7 @@ public class ChessGame extends JApplet implements Runnable {
     Menu dropmenu;
 
     //text area
-    static JTextArea textarea;
+    JTextArea textarea;
     JScrollPane scroll;
 
     //game objects
