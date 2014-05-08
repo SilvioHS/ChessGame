@@ -399,35 +399,40 @@ public class Player {
         //new idea 4/28: give isChecked a parameter index of whatever piece gets
         //'taken' in the simulation, exclude checking that piece in the isChecked() method
         
+        //MAY NEED TO MOVE THEM TO 65TH INDEX NOT 64TH BECAUSE INTERFERES WITH 
+        //THE 64TH INDEX BEING DONE BY DRAG LISTENER
         for (ChessPiece piece : ChessBoard.pieces) {
             if(piece != null && piece.getColor().equals(this.getColor())){
                 for(int i = 0; i < ChessBoard.pieces.length-1; i++){
-                    System.out.println(i);
                     if(piece.isValidMove(i)){
-                        int oldIndex = i;
+                        int oldIndex = piece.getBoardPosition();
                         occupiedSquare = false;
                         //this might need to be a deep copy? or something
                         //copy old piece before replacing
                         if(ChessBoard.pieces[i] != null && !ChessBoard.pieces[i].getColor().equals(this.getColor())){
                             occupiedSquare = true;
+                            ChessBoard.pieces[oldIndex].setBoardPosition(64);
                             ChessBoard.pieces[64] = ChessBoard.pieces[i];
-                            ChessBoard.pieces[64].setBoardPosition(64);
+                            
                         }
                         //move this piece to new square
-                        ChessBoard.pieces[i] = piece;
                         piece.setBoardPosition(i);
+                        ChessBoard.pieces[i] = piece;
+                        
                         
                         if(!this.isChecked){
                             checkmated = false;
                             if(occupiedSquare){
                                 //put the pieces back
-                                ChessBoard.pieces[i] = ChessBoard.pieces[64];
-                                ChessBoard.pieces[i].setBoardPosition(i);
-                                ChessBoard.pieces[oldIndex] = piece;
-                                ChessBoard.pieces[oldIndex].setBoardPosition(oldIndex);
+                                ChessBoard.pieces[i].setBoardPosition(oldIndex);
+                                ChessBoard.pieces[oldIndex] = ChessBoard.pieces[i];                     
+                                ChessBoard.pieces[64].setBoardPosition(i);
+                                ChessBoard.pieces[i] = ChessBoard.pieces[64];  
+                                ChessBoard.pieces[64] = null;
+                                
                             }else{
-                                ChessBoard.pieces[oldIndex] = piece;
-                                ChessBoard.pieces[oldIndex].setBoardPosition(oldIndex);
+                                ChessBoard.pieces[i].setBoardPosition(oldIndex);
+                                ChessBoard.pieces[oldIndex] = ChessBoard.pieces[i];
                                 ChessBoard.pieces[i] = null;
                             }
                             
@@ -435,10 +440,11 @@ public class Player {
                         }else{
                             //put the pieces back
                             if(occupiedSquare){
-                                ChessBoard.pieces[oldIndex] = piece;ChessBoard.pieces[i] = ChessBoard.pieces[64];
-                                ChessBoard.pieces[i].setBoardPosition(i);
-                                ChessBoard.pieces[oldIndex] = piece;
-                                ChessBoard.pieces[oldIndex].setBoardPosition(oldIndex);
+                                ChessBoard.pieces[i].setBoardPosition(oldIndex);
+                                ChessBoard.pieces[oldIndex] = ChessBoard.pieces[i];                     
+                                ChessBoard.pieces[64].setBoardPosition(i);
+                                ChessBoard.pieces[i] = ChessBoard.pieces[64];  
+                                ChessBoard.pieces[64] = null;
                             }else{
                                 ChessBoard.pieces[oldIndex] = piece;
                                 ChessBoard.pieces[oldIndex].setBoardPosition(oldIndex);
@@ -449,7 +455,6 @@ public class Player {
                 }
             }
         }
-        
         */
         
         if(checkmated){

@@ -74,9 +74,10 @@ public class Bishop extends ChessPiece {
                     }
                 }
 
-                if ((ChessBoard.getIndex(newPosition) != null)
-                        && (ChessBoard.getIndex(this.getBoardPosition()).getColor().equals(ChessBoard.getIndex(newPosition).getColor()))) {
-                    isValid = false;
+                if (ChessBoard.getIndex(newPosition) != null){
+                    if(ChessBoard.getIndex(this.getBoardPosition()).getColor().equals(ChessBoard.getIndex(newPosition).getColor())) {
+                        isValid = false;
+                    }
                 }
             }
 

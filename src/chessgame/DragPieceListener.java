@@ -166,10 +166,11 @@ public class DragPieceListener implements MouseInputListener {
                 } else {
                     ChessBoard.pieces[game.index] = null;
                 }
+                /*
                 if(game.whiteplayer.isCheckMated()){
                     System.out.println("game over");
                 }
-
+                */
                 return;
 
             }
