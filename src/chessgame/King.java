@@ -15,6 +15,8 @@ import javax.swing.ImageIcon;
  */
 public class King extends ChessPiece {
 
+    private boolean firstMove = true;
+
     public King(Image image, String color, int boardPosition) {
         super(image, color, boardPosition);
 
@@ -24,6 +26,14 @@ public class King extends ChessPiece {
         this.setOpaque(false);
         this.setSize(65, 65);
         this.setIcon(new ImageIcon(image));
+    }
+
+    public boolean getFirstMove() {
+        return firstMove;
+    }
+
+    public void setFirstMove(boolean firstMove) {
+        this.firstMove = firstMove;
     }
 
     @Override

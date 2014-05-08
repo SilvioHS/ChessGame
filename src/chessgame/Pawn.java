@@ -18,7 +18,7 @@ import javax.swing.ImageIcon;
  * @author Nick
  */
 public class Pawn extends ChessPiece{
-    boolean firstMove = true;
+    private boolean firstMove = true;
 
     public Pawn(Image image, String color, int boardPosition) {
         super(image, color, boardPosition);
@@ -29,6 +29,14 @@ public class Pawn extends ChessPiece{
 	this.setOpaque(false);
         this.setSize(65, 65);
         this.setIcon(new ImageIcon(image));
+    }
+    
+    public boolean getFirstMove(){
+        return firstMove;
+    }
+    
+    public void setFirstMove(boolean firstMove){
+        this.firstMove = firstMove;
     }
 
     @Override

@@ -171,6 +171,14 @@ public class DragPieceListener implements MouseInputListener {
 
             }
             
+            if(tmpPiece instanceof Pawn && ((Pawn)tmpPiece).getFirstMove()){
+                ((Pawn)tmpPiece).setFirstMove(false);
+            }else if(tmpPiece instanceof Rook && ((Rook)tmpPiece).getFirstMove()){
+                 ((Rook)tmpPiece).setFirstMove(false);
+            }else if (tmpPiece instanceof King && ((King)tmpPiece).getFirstMove()){
+                ((King)tmpPiece).setFirstMove(false);
+            }
+            
             //if taking temp2 was legal remove it from the board 
             if (tmpPiece2 != null) {
                     game.chessboard.remove(ChessBoard.pieces[64]);
