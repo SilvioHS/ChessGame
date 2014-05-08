@@ -12,6 +12,7 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Nick/Documents/NetBeansProjects/ChessGame/src/chessgame/Knight.java</file>
             <file>file:/C:/Users/Nick/Documents/NetBeansProjects/ChessGame/src/chessgame/ChessPiece.java</file>
             <file>file:/C:/Users/Nick/Documents/NetBeansProjects/ChessGame/src/chessgame/Queen.java</file>
@@ -25,6 +26,13 @@
             <file>file:/C:/Users/Nick/Documents/NetBeansProjects/ChessGame/src/chessgame/DragPieceListener.java</file>
             <file>file:/C:/Users/Nick/Documents/NetBeansProjects/ChessGame/src/chessgame/ChessBoard.java</file>
             <file>file:/C:/Users/Nick/Documents/NetBeansProjects/ChessGame/src/chessgame/Rook.java</file>
+=======
+            <file>file:/C:/Users/Kevin%20Velasco/Documents/NetBeansProjects/ChessGame/src/chessgame/ChessGame.java</file>
+            <file>file:/C:/Users/Kevin%20Velasco/Documents/NetBeansProjects/ChessGame/src/chessgame/GameLog.java</file>
+            <file>file:/C:/Users/Kevin%20Velasco/Documents/NetBeansProjects/ChessGame/src/chessgame/Player.java</file>
+            <file>file:/C:/Users/Kevin%20Velasco/Documents/NetBeansProjects/ChessGame/src/chessgame/Bishop.java</file>
+            <file>file:/C:/Users/Kevin%20Velasco/Documents/NetBeansProjects/ChessGame/src/chessgame/DragPieceListener.java</file>
+>>>>>>> 8e98803aa1b282c45b1e03950cd441c40aa3b076
         </group>
     </open-files>
 </project-private>

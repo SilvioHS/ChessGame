@@ -171,6 +171,7 @@ public class DragPieceListener implements MouseInputListener {
 
             }
             
+<<<<<<< HEAD
             if(tmpPiece instanceof Pawn && ((Pawn)tmpPiece).getFirstMove()){
                 ((Pawn)tmpPiece).setFirstMove(false);
             }else if(tmpPiece instanceof Rook && ((Rook)tmpPiece).getFirstMove()){
@@ -179,6 +180,8 @@ public class DragPieceListener implements MouseInputListener {
                 ((King)tmpPiece).setFirstMove(false);
             }
             
+=======
+>>>>>>> 8e98803aa1b282c45b1e03950cd441c40aa3b076
             //if taking temp2 was legal remove it from the board 
             if (tmpPiece2 != null) {
                     game.chessboard.remove(ChessBoard.pieces[64]);
@@ -189,14 +192,22 @@ public class DragPieceListener implements MouseInputListener {
 
             if (game.colorsTurn.equals("white")) {
                 game.colorsTurn = "black";
+<<<<<<< HEAD
                 gamelog.logCurrentTurn("black");
+=======
+                gamelog.logCurrentTurn("Black");
+>>>>>>> 8e98803aa1b282c45b1e03950cd441c40aa3b076
                 game.blackplayer.isTurn = true;
                 game.whiteplayer.isTurn = false;
                             
                 //ChessGame.textarea.append("Black's turn to move \n");
             } else if (game.colorsTurn.equals("black")) {
                 game.colorsTurn = "white";
+<<<<<<< HEAD
                 gamelog.logCurrentTurn("white");
+=======
+                gamelog.logCurrentTurn("White");
+>>>>>>> 8e98803aa1b282c45b1e03950cd441c40aa3b076
                 game.blackplayer.isTurn = true;
                 game.whiteplayer.isTurn = false;
                 //ChessGame.textarea.append("White's turn to move \n");
