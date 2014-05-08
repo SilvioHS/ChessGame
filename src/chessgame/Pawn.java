@@ -40,7 +40,8 @@ public class Pawn extends ChessPiece{
             
             if(this.getBoardPosition() == newPosition-8 && ChessBoard.pieces[newPosition] == null){
                 validMove = true;
-            }else if(this.getBoardPosition() == newPosition-16 && firstMove){
+            }else if(this.getBoardPosition() == newPosition-16 && firstMove && ChessBoard.getIndex(newPosition-8)==null 
+                    && ChessBoard.getIndex(newPosition) == null){
                 validMove = true;
             }else if((Math.abs((int) ChessBoard.getRank(this.getBoardPosition()) - (int) ChessBoard.getRank(newPosition)) == 1)
                     && (ChessBoard.getFile(this.getBoardPosition()) - ChessBoard.getFile(newPosition) == 1)
@@ -53,7 +54,8 @@ public class Pawn extends ChessPiece{
         
             if(this.getBoardPosition() == newPosition +8 && ChessBoard.pieces[newPosition] == null){
                 validMove = true;
-            }else if(this.getBoardPosition() == newPosition+16 && firstMove){
+            }else if(this.getBoardPosition() == newPosition+16 && firstMove && ChessBoard.getIndex(newPosition+8)==null 
+                    && ChessBoard.getIndex(newPosition) == null){
                 validMove = true;
             }
             else if((Math.abs((int) ChessBoard.getRank(this.getBoardPosition()) - (int) ChessBoard.getRank(newPosition)) == 1)
