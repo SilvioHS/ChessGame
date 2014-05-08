@@ -35,7 +35,7 @@ public class GameLog {
             textlog.append(move);
         } else {
             //piece is just moving
-            move = temp.toString() + " moved to " + ChessBoard.getRank(game.index) + ChessBoard.getFile(game.index) + " \n";
+            move = temp.toString() + " moved to " + ChessBoard.getRank(game.index) + ChessBoard.getFile(game.index) + "  \n";
             textlog.append(move);
         }
     }
@@ -43,6 +43,10 @@ public class GameLog {
     public void logCurrentTurn(String turn){
         
         textlog.append(turn + "'s turn to move \n");
+    }
+    
+    public void logText(String s){
+        textlog.append(s + " \n");
     }
     
     public void logScore(){
