@@ -111,17 +111,18 @@ public class DragPieceListener implements MouseInputListener {
             //player in check. Illegal move 
             if (ChessBoard.pieces[game.index] != null) {
                 tmpPiece2 = ChessBoard.pieces[game.index];
-                tmpPiece2.setBoardPosition(64);
                 gamelog.setMove(tmpPiece);
                 //game.chessboard.remove(ChessBoard.pieces[game.index]);
                 ChessBoard.pieces[game.index] = null;
+                tmpPiece2.setBoardPosition(64);
                 ChessBoard.pieces[64] = tmpPiece2;
+                
 
             }
 
             //write piece movement 
             gamelog.logPieceAction(tmpPiece);
-
+            
             //update moving chess piece location 
             game.setChessLocation(tmpPiece, game.coordinate.getPieceX(game.index), game.coordinate.getPieceY(game.index));
             tmpPiece.setBoardPosition(game.index);
@@ -139,9 +140,8 @@ public class DragPieceListener implements MouseInputListener {
 
                 //if player was trying to take a piece put it back 
                 if (tmpPiece2 != null) {
-                    //game.setChessLocation(tmpPiece2, game.coordinate.getPieceX(game.index), game.coordinate.getPieceY(game.index));
-                    ChessBoard.pieces[game.index] = tmpPiece2;
                     tmpPiece2.setBoardPosition(game.index);
+                    ChessBoard.pieces[game.index] = tmpPiece2;
                     ChessBoard.pieces[64] = null;
                 } else {
                     ChessBoard.pieces[game.index] = null;
@@ -151,16 +151,17 @@ public class DragPieceListener implements MouseInputListener {
 
              //repeat for white 
             } else if (game.whiteplayer.isChecked() && game.colorsTurn.equals("white")) {
+                
                 gamelog.logText("Illegal Move, You're in check. Pick another move");
+                
                 game.setChessLocation(tmpPiece, game.coordinate.getPieceX(lastIndex), game.coordinate.getPieceY(lastIndex));
                 tmpPiece.setBoardPosition(lastIndex);
                 game.whiteplayer.setPositionOfKing(wKingPos);
                 ChessBoard.pieces[lastIndex] = tmpPiece;
-                //ChessBoard.pieces[game.index] = null;
-                if (tmpPiece2 != null) {
-                    //game.setChessLocation(tmpPiece2, game.coordinate.getPieceX(game.index), game.coordinate.getPieceY(game.index));
-                    ChessBoard.pieces[game.index] = tmpPiece2;
+                
+                if (tmpPiece2 != null) {                 
                     tmpPiece2.setBoardPosition(game.index);
+                    ChessBoard.pieces[game.index] = tmpPiece2;
                     ChessBoard.pieces[64] = null;
                 } else {
                     ChessBoard.pieces[game.index] = null;
@@ -169,31 +170,27 @@ public class DragPieceListener implements MouseInputListener {
                 return;
 
             }
+            
+            //if taking temp2 was legal remove it from the board 
+            if (tmpPiece2 != null) {
+                    game.chessboard.remove(ChessBoard.pieces[64]);
+                    ChessBoard.pieces[64] = null;
+                    //String s = "Removed piece at index: " + game.index;
+                    //gamelog.logText(s);
+                }
 
             if (game.colorsTurn.equals("white")) {
                 game.colorsTurn = "black";
                 gamelog.logCurrentTurn("Black");
                 game.blackplayer.isTurn = true;
                 game.whiteplayer.isTurn = false;
-                //if taking temp2 was legal remove it from the board 
-                if (tmpPiece2 != null) {
-                    game.chessboard.remove(tmpPiece2);
-                    ChessBoard.pieces[game.index] = null;
-                    ChessBoard.pieces[64] = null;
-                }
-
+                            
                 //ChessGame.textarea.append("Black's turn to move \n");
             } else if (game.colorsTurn.equals("black")) {
                 game.colorsTurn = "white";
                 gamelog.logCurrentTurn("White");
                 game.blackplayer.isTurn = true;
                 game.whiteplayer.isTurn = false;
-                if (tmpPiece2 != null) {
-                    game.chessboard.remove(tmpPiece2);
-                    ChessBoard.pieces[game.index] = null;
-                    ChessBoard.pieces[64] = null;
-                }
-
                 //ChessGame.textarea.append("White's turn to move \n");
             }
 

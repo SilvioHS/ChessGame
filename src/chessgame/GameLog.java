@@ -35,7 +35,7 @@ public class GameLog {
             textlog.append(move);
         } else {
             //piece is just moving
-            move = temp.toString() + " moved to " + ChessBoard.getRank(game.index) + ChessBoard.getFile(game.index) + " \n";
+            move = temp.toString() + " moved to " + ChessBoard.getRank(game.index) + ChessBoard.getFile(game.index) + "  \n";
             textlog.append(move);
         }
     }
