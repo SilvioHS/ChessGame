@@ -67,7 +67,8 @@ public class ChessGame extends JApplet implements Runnable {
 
         //new a JFrame window
         frame = new JFrame();
-
+        
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         //init gamelog
         gamelog = new GameLog(this);
         
