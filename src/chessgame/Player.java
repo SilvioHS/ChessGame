@@ -327,7 +327,8 @@ public class Player {
         //this is not as efficient as having each player have their own separate
         //arrayLists of pieces but that may be a hassle to keep track of/update.
         
-        for(int i = 0; i < ChessBoard.pieces.length; i++){
+        //0 to 63 don't want to check dummy index 
+        for(int i = 0; i < ChessBoard.pieces.length-1; i++){
             //these can be combined into 1 if but it's long so i broke into 2
             if (ChessBoard.getIndex(i) != null && ChessBoard.getIndex(i).getColor().equals(this.getColor()) == false){        
                 if(ChessBoard.getIndex(i).isValidMove(this.positionOfKing)){
@@ -345,22 +346,22 @@ public class Player {
     public boolean isCheckMated(){
         boolean checkmated = true;
         boolean occupiedSquare = false;
-        ChessPiece oldPiece = new Pawn(null, null, 0);
+
         
         //call isValidMove for this player's king on all index's +/- 9 , just a 
         //quick lazy way to see if it can move anywhere
-        /* pseudo code
+
         int oldKingPos;
         
         for(int i = this.positionOfKing-9; i < this.positionOfKing + 9; i++){
             if(ChessBoard.getIndex(this.positionOfKing).isValidMove(i)){
                 
                 //update king's location on board, remove pieces it can take
-                if(ChessBoard.pieces[i] != null && ChessBoard.pieces[i].getColor().equals(this.getColor())){
-                    oldPiece = ChessBoard.pieces[i];
-                    occupiedSquare = true;
+                if(ChessBoard.pieces[i] != null && !ChessBoard.pieces[i].getColor().equals(this.getColor())){
+                    ChessBoard.pieces[i].setBoardPosition(64);
+                    ChessBoard.pieces[64] = ChessBoard.pieces[i];
                 }
-                ChessBoard.pieces[i] = ChessBoard.getIndex(this.positionOfKing);
+                ChessBoard.pieces[i] = ChessBoard.pieces[this.positionOfKing];
                 oldKingPos = this.positionOfKing; 
                 this.positionOfKing = i;
                              
@@ -370,21 +371,25 @@ public class Player {
                     //back to there's
                     ChessBoard.pieces[oldKingPos] = ChessBoard.getIndex(this.positionOfKing);
                     if(occupiedSquare){
-                        ChessBoard.pieces[i] = oldPiece;
+                        ChessBoard.pieces[i] = ChessBoard.pieces[64];
+                        ChessBoard.pieces[64].setBoardPosition(i);
+                        ChessBoard.pieces[64] = null;
                     }
                     break;
                 }else{
                     //need to put them back anyway
                     ChessBoard.pieces[oldKingPos] = ChessBoard.getIndex(this.positionOfKing);
                     if(occupiedSquare){
-                        ChessBoard.pieces[i] = oldPiece;
+                        ChessBoard.pieces[i] = ChessBoard.pieces[64];
+                        ChessBoard.pieces[64].setBoardPosition(i);
+                        ChessBoard.pieces[64] = null;
                     }
                 }
             }
         }
                 
-                
-        
+               
+        /*
         //cycle through all of this player's color's pieces, simulate their moves
         //see if they're still in check.....
         
@@ -395,34 +400,49 @@ public class Player {
         //'taken' in the simulation, exclude checking that piece in the isChecked() method
         
         for (ChessPiece piece : ChessBoard.pieces) {
-            if(piece.getColor().equals(this.getColor())){
-                for(int i = 0; i < ChessBoard.pieces.length; i++){
+            if(piece != null && piece.getColor().equals(this.getColor())){
+                for(int i = 0; i < ChessBoard.pieces.length-1; i++){
+                    System.out.println(i);
                     if(piece.isValidMove(i)){
                         int oldIndex = i;
-                        
+                        occupiedSquare = false;
                         //this might need to be a deep copy? or something
                         //copy old piece before replacing
-                        if(ChessBoard.pieces[i] != null && ChessBoard.pieces[i].getColor().equals(this.getColor())){
-                            oldPiece = ChessBoard.pieces[i];
+                        if(ChessBoard.pieces[i] != null && !ChessBoard.pieces[i].getColor().equals(this.getColor())){
                             occupiedSquare = true;
+                            ChessBoard.pieces[64] = ChessBoard.pieces[i];
+                            ChessBoard.pieces[64].setBoardPosition(64);
                         }
                         //move this piece to new square
                         ChessBoard.pieces[i] = piece;
+                        piece.setBoardPosition(i);
                         
                         if(!this.isChecked){
                             checkmated = false;
                             if(occupiedSquare){
                                 //put the pieces back
-                                ChessBoard.pieces[i] = oldPiece;
+                                ChessBoard.pieces[i] = ChessBoard.pieces[64];
+                                ChessBoard.pieces[i].setBoardPosition(i);
                                 ChessBoard.pieces[oldIndex] = piece;
+                                ChessBoard.pieces[oldIndex].setBoardPosition(oldIndex);
+                            }else{
+                                ChessBoard.pieces[oldIndex] = piece;
+                                ChessBoard.pieces[oldIndex].setBoardPosition(oldIndex);
+                                ChessBoard.pieces[i] = null;
                             }
                             
                             break;
                         }else{
                             //put the pieces back
                             if(occupiedSquare){
-                                ChessBoard.pieces[i] = oldPiece;
+                                ChessBoard.pieces[oldIndex] = piece;ChessBoard.pieces[i] = ChessBoard.pieces[64];
+                                ChessBoard.pieces[i].setBoardPosition(i);
                                 ChessBoard.pieces[oldIndex] = piece;
+                                ChessBoard.pieces[oldIndex].setBoardPosition(oldIndex);
+                            }else{
+                                ChessBoard.pieces[oldIndex] = piece;
+                                ChessBoard.pieces[oldIndex].setBoardPosition(oldIndex);
+                                ChessBoard.pieces[i] = null;
                             }
                         }
                     }
@@ -430,8 +450,11 @@ public class Player {
             }
         }
         
-        
         */
+        
+        if(checkmated){
+            System.out.println("You've been CHECKMATED!");
+        }
         
         
         return checkmated;

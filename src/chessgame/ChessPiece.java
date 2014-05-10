@@ -38,6 +38,7 @@ public abstract class ChessPiece extends JButton {//Changed to extends JLabel, e
     
     public void setBoardPosition(int boardPosition){
         this.boardPosition = boardPosition;
+        //ChessBoard.pieces[boardPosition] = this;
     }
     
     @Override
