@@ -18,7 +18,7 @@ import java.awt.BorderLayout;
  */
 public  class ChessBoard extends JLayeredPane {
     private Image image;
-    public static ChessPiece[] pieces = new ChessPiece[65];
+    public static ChessPiece[] pieces = new ChessPiece[66];
     
     public  ChessBoard() {
         try {

@@ -85,6 +85,7 @@ public class DragPieceListener implements MouseInputListener {
     }
 
     public void mouseReleased(MouseEvent e) {
+                    
         ChessPiece tmpPiece = (ChessPiece) e.getSource();
         ChessPiece tmpPiece2 = null;
         //keep track of the king's position 
@@ -185,6 +186,10 @@ public class DragPieceListener implements MouseInputListener {
                 }
 
             if (game.colorsTurn.equals("white")) {
+                if(game.whiteplayer.isCheckMated()){
+                    System.out.println("white has been checkmated");
+                }
+                
                 game.colorsTurn = "black";
                 gamelog.logCurrentTurn("black");
                 game.blackplayer.isTurn = true;
@@ -192,6 +197,10 @@ public class DragPieceListener implements MouseInputListener {
                             
                 //ChessGame.textarea.append("Black's turn to move \n");
             } else if (game.colorsTurn.equals("black")) {
+                        
+                if(game.whiteplayer.isCheckMated()){
+                    System.out.println("white has been checkmated");
+                }
                 game.colorsTurn = "white";
                 gamelog.logCurrentTurn("white");
                 game.blackplayer.isTurn = true;
