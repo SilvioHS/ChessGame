@@ -186,8 +186,8 @@ public class DragPieceListener implements MouseInputListener {
                 }
 
             if (game.colorsTurn.equals("white")) {
-                if(game.whiteplayer.isCheckMated()){
-                    System.out.println("white has been checkmated");
+                if(game.blackplayer.isCheckMated()){
+                    //System.out.println("black has been checkmated");
                 }
                 
                 game.colorsTurn = "black";
@@ -199,7 +199,7 @@ public class DragPieceListener implements MouseInputListener {
             } else if (game.colorsTurn.equals("black")) {
                         
                 if(game.whiteplayer.isCheckMated()){
-                    System.out.println("white has been checkmated");
+                    //System.out.println("white has been checkmated");
                 }
                 game.colorsTurn = "white";
                 gamelog.logCurrentTurn("white");
