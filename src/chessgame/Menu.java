@@ -2,10 +2,7 @@
  * Class that provides user with a menu and functionalities for new, save, load game
  */
 
-/**
- *
- * @author Silvio Huebner
- */
+
 
 package chessgame;
 
@@ -20,9 +17,9 @@ import javax.swing.JMenuBar;
 import javax.swing.JFileChooser;
 
 
-/*
- * This class exists solely to show you what menus look like.
- * It has no menu-related event handling.
+/**
+ *
+ * @author Silvio Huebner
  */
 public class Menu implements ActionListener{
     

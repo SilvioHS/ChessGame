@@ -2,10 +2,7 @@
  * Bishop class that extends Chesspiece
  */
 
-/**
- *
- * @author Kevin Velasco
- */
+
 package chessgame;
 
 import java.awt.Image;

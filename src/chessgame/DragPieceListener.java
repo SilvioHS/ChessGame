@@ -2,10 +2,7 @@
  * class that handles dragging of pieces in chess game.
  */
 
-/**
- *
- * @author Kevin Velasco & Qilin Fu
- */
+
 package chessgame;
 
 import static chessgame.ChessGame.SQUAREDIM;
@@ -16,7 +13,7 @@ import javax.swing.event.MouseInputListener;
 
 /**
  *
- * @author Saitx
+ * @author Kevin Velasco & Qilin Fu
  */
 public class DragPieceListener implements MouseInputListener {
 

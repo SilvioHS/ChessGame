@@ -2,10 +2,7 @@
  * Class to allow users to save games in progress.
  */
 
-/**
- *
- * @author Silvio Huebner
- */
+
 package chessgame;
 
 import java.io.BufferedWriter;
@@ -15,7 +12,10 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
+/**
+ *
+ * @author Silvio Huebner
+ */
 public class SaveGame {
     private final File saveFile;
     private BufferedWriter saveWriter;

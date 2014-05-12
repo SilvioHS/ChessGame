@@ -2,10 +2,7 @@
  * Pawn class that extends Chesspiece
  */
 
-/**
- *
- * @author Nick Ottrando
- */
+
 
 package chessgame;
 
@@ -18,7 +15,7 @@ import javax.swing.ImageIcon;
 
 /**
  *
- * @author Nick
+ * @author Nick Ottrando
  */
 public class Pawn extends ChessPiece{
     boolean firstMove = true;

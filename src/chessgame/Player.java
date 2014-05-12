@@ -2,10 +2,6 @@
  * Player Class
  */
 
-/**
- *
- * @author Nick Ottrando
- */
 
 package chessgame;
 
@@ -18,7 +14,7 @@ import javax.swing.JLayeredPane;
 
 /**
  *
- * @author Nick
+ * @author Nick Ottrando
  */
 public class Player {
     public Image pawn_w, rook_w, knight_w, bishop_w, queen_w, king_w, pawn_b, rook_b,

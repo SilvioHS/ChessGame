@@ -2,10 +2,6 @@
  * queen class that extends Chesspiece
  */
 
-/**
- *
- * @authors Kevin Velasco & Nick Ottrando
- */
 
 package chessgame;
 
@@ -18,7 +14,7 @@ import javax.swing.ImageIcon;
 
 /**
  *
- * @author Nick
+ * @authors Kevin Velasco & Nick Ottrando
  */
 public class Queen extends ChessPiece{
     

@@ -2,17 +2,17 @@
  * Class for displaying a log of game moves to the user.
  */
 
-/**
- *
- * @author Silvio Huebner & Kevin Velasco
- */
+
 
 package chessgame;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-
+/**
+ *
+ * @author Silvio Huebner & Kevin Velasco
+ */
 public class GameLog {
     private ChessGame game;
     static JTextArea textlog;

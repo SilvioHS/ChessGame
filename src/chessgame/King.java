@@ -2,10 +2,7 @@
  * King class that extends Chesspiece
  */
 
-/**
- *
- * @author Nick Ottrando
- */
+
 package chessgame;
 
 import java.awt.Image;
@@ -14,7 +11,7 @@ import javax.swing.ImageIcon;
 
 /**
  *
- * @author Nick
+ * @author Nick Ottrando
  */
 public class King extends ChessPiece {
 

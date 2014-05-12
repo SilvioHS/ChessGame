@@ -2,10 +2,7 @@
  * Class to allow users to load previously saved games.
  */
 
-/**
- *
- * @author Silvio Huebner
- */
+
 package chessgame;
 
 import java.awt.Image;
@@ -22,7 +19,10 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
-
+/**
+ *
+ * @author Silvio Huebner
+ */
 public class LoadGame {
     private final File loadFile;
     private InputStream inStream;
