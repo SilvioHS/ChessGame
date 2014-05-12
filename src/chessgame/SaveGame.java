@@ -1,4 +1,11 @@
+/*
+ * Class to allow users to save games in progress.
+ */
 
+/**
+ *
+ * @author Silvio Huebner
+ */
 package chessgame;
 
 import java.io.BufferedWriter;

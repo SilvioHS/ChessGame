@@ -1,4 +1,11 @@
+/*
+ * Class to allow users to load previously saved games.
+ */
 
+/**
+ *
+ * @author Silvio Huebner
+ */
 package chessgame;
 
 import java.awt.Image;
