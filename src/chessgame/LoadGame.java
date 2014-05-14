@@ -1,8 +1,3 @@
-/*
- * Class to allow users to load previously saved games.
- */
-
-
 package chessgame;
 
 import java.awt.Image;
@@ -19,17 +14,15 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
-/**
- *
- * @author Silvio Huebner
- */
+
 public class LoadGame {
     private final File loadFile;
     private InputStream inStream;
     private BufferedReader loadReader;
     private final ChessBoard chessboard;
     private ChessGame game;
-    private String square;
+    private final GameLog gamelog;
+    private String square, logLine, turn;
     
     private int xlocation, ylocation;
     
@@ -37,11 +30,11 @@ public class LoadGame {
          knight_b, bishop_b, queen_b, king_b;
 
     
-    public LoadGame(File f, ChessBoard cb, ChessGame g){
+    public LoadGame(File f, ChessBoard cb, ChessGame g, GameLog gl){
         loadFile = f;
         chessboard = cb;
         game = g;
-        
+        gamelog = gl;
         
         loadFromFile();
     }
@@ -65,7 +58,6 @@ public class LoadGame {
             inStream = new FileInputStream(loadFile);
             loadReader = new BufferedReader(new InputStreamReader(inStream));
             
-            int rowCount = 0;
             
             for (int i = 0; i < 64; i++) {
                 
@@ -176,6 +168,17 @@ public class LoadGame {
                     bk.addMouseMotionListener(WhitePawnlistener);
                 }
             }
+            
+            //load correct players turn
+            turn = loadReader.readLine();
+            game.colorsTurn = turn;
+            
+            //load gamelog
+            while((logLine = loadReader.readLine()) != null){
+                gamelog.appendLog(logLine);
+            }
+
+            
         } catch (IOException ex) {
             Logger.getLogger(SaveGame.class.getName()).log(Level.SEVERE, null, ex);
             ex.printStackTrace();

@@ -120,7 +120,7 @@ public class ChessGame extends JApplet implements Runnable {
 
     //save piece array, player turn and score to file
     public void saveGame(File f) {
-        savegame = new SaveGame(f, chessboard);
+        savegame = new SaveGame(f, chessboard, gamelog, colorsTurn);
         System.out.println("Gamed Saved.");
 
     }
@@ -128,8 +128,10 @@ public class ChessGame extends JApplet implements Runnable {
     //load piece array, player turn and score from file
     public void loadGame(File f) {
         clearGame();
-        loadgame = new LoadGame(f, chessboard, this);
+        loadgame = new LoadGame(f, chessboard, this, gamelog);
         System.out.println("Gamed Loaded.");
+        
+        frame.update(frame.getGraphics());
 
     }
 
