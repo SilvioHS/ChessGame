@@ -3,15 +3,16 @@ package chessgame;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.text.DefaultCaret;
 
 /**
  *
  * @author Silvio
  */
 public class GameLog {
-    private ChessGame game;
-    static JTextArea textlog;
-    private JScrollPane scroll;
+    private final ChessGame game;
+    private static final JTextArea textlog = new JTextArea();
+    private static final JScrollPane scroll = new JScrollPane(textlog);
     private String move;
     private int whiteScore = 0;
     private int blackScore = 0;
@@ -21,18 +22,20 @@ public class GameLog {
         game = g;
         
         //game log text area
-        textlog = new JTextArea();
         textlog.setLocation(660, 300);
         textlog.setSize(300, 300);
         textlog.setLineWrap(true);
         textlog.setEditable(false);
         textlog.setVisible(true);
+        
         //scrolling pane for game log text area
-        scroll = new JScrollPane(textlog);
         scroll.setLocation(660, 490);
         scroll.setSize(375, 150);
         scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        //scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        DefaultCaret caret = (DefaultCaret)textlog.getCaret();
+        caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
+        
         g.frame.add(scroll);
         
         move = "";
@@ -70,8 +73,16 @@ public class GameLog {
         
     }
     
+    public void updateLog(){
+        textlog.update(textlog.getGraphics());
+    }
+    
     public String getLog(){
         return textlog.getText();
+    }
+    
+    public void appendLog(String s){
+        textlog.append(s + " \n");
     }
     
     public void clearLog(){

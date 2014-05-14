@@ -14,10 +14,14 @@ public class SaveGame {
     private BufferedWriter saveWriter;
     private final ChessBoard chessboard;
     private ChessPiece cp;
+    private final GameLog gamelog;
+    private String turn;
     
-    public SaveGame(File f, ChessBoard cb){
+    public SaveGame(File f, ChessBoard cb, GameLog gl, String t){
         saveFile = f;
         chessboard = cb;
+        gamelog = gl;
+        turn = t;
         saveToFile();
     }
    
@@ -72,6 +76,15 @@ public class SaveGame {
                     saveWriter.newLine();
                 }
             }
+            
+            //save turn to file
+            saveWriter.write(turn);
+            saveWriter.newLine();
+            
+            //save game log to file
+            saveWriter.write(gamelog.getLog());
+            
+            
         } catch (IOException ex) {
             Logger.getLogger(SaveGame.class.getName()).log(Level.SEVERE, null, ex);
             ex.printStackTrace();
