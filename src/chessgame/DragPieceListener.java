@@ -195,7 +195,8 @@ public class DragPieceListener implements MouseInputListener {
 
             }
             
-            /*
+            
+            //pawn promotion
             
             if (tmpPiece instanceof Pawn && tmpPiece.color.equals("white")&&
                     ChessBoard.getFile(game.index) == 1) {
@@ -204,9 +205,19 @@ public class DragPieceListener implements MouseInputListener {
                     System.out.println("promoted white pawn");
                     Queen queen = new Queen(queen_w, "white", game.index);
                     ChessBoard.pieces[game.index] = queen;
-                    //ChessGame.chessboard.add(queen,JLayeredPane.DEFAULT_LAYER);
+                    game.chessboard.add(queen,JLayeredPane.DEFAULT_LAYER);
+                    game.setChessLocation(queen, game.coordinate.getPieceX(game.index), game.coordinate.getPieceY(game.index));
+            }else if (tmpPiece instanceof Pawn && tmpPiece.color.equals("black")&&
+                    ChessBoard.getFile(game.index) == 8) {
+                    //tmpPiece = null;
+                    game.chessboard.remove(ChessBoard.pieces[game.index]);
+                    System.out.println("promoted black pawn");
+                    Queen queen = new Queen(queen_b, "black", game.index);
+                    ChessBoard.pieces[game.index] = queen;
+                    game.chessboard.add(queen,JLayeredPane.DEFAULT_LAYER);
+                    game.setChessLocation(queen, game.coordinate.getPieceX(game.index), game.coordinate.getPieceY(game.index));
             }
-            */
+            
             
             //if taking temp2 was legal remove it from the board 
             if (tmpPiece2 != null) {
