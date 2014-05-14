@@ -6,8 +6,15 @@
 package chessgame;
 
 import static chessgame.ChessGame.SQUAREDIM;
+import java.awt.Image;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.JLayeredPane;
 import javax.swing.SwingUtilities;
 import javax.swing.event.MouseInputListener;
 
@@ -31,10 +38,19 @@ public class DragPieceListener implements MouseInputListener {
     Point point = new Point(0, 0);
     ChessGame game;
     GameLog gamelog;
+    
+    Image queen_w, queen_b;
 
     public DragPieceListener(ChessGame game) {
         this.game = game;
         gamelog = new GameLog(game);
+        try {
+            queen_w = ImageIO.read(new File("src/image/queen_white.png"));
+            queen_b = ImageIO.read(new File("src/image/queen_black.png"));
+        } catch (IOException ex) {
+            Logger.getLogger(DragPieceListener.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     boolean contains(int x, int y) {
@@ -108,6 +124,8 @@ public class DragPieceListener implements MouseInputListener {
                 game.whiteplayer.setPositionOfKing(game.index);
             }
 
+            
+            
             //before removing a piece from the board with store it in temp2
             //and place it in index 64. taking temp2 cannot put the attacking 
             //player in check. Illegal move 
@@ -176,6 +194,19 @@ public class DragPieceListener implements MouseInputListener {
                 return;
 
             }
+            
+            /*
+            
+            if (tmpPiece instanceof Pawn && tmpPiece.color.equals("white")&&
+                    ChessBoard.getFile(game.index) == 1) {
+                    //tmpPiece = null;
+                    game.chessboard.remove(ChessBoard.pieces[game.index]);
+                    System.out.println("promoted white pawn");
+                    Queen queen = new Queen(queen_w, "white", game.index);
+                    ChessBoard.pieces[game.index] = queen;
+                    //ChessGame.chessboard.add(queen,JLayeredPane.DEFAULT_LAYER);
+            }
+            */
             
             //if taking temp2 was legal remove it from the board 
             if (tmpPiece2 != null) {
