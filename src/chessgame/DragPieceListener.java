@@ -218,6 +218,13 @@ public class DragPieceListener implements MouseInputListener {
                     game.setChessLocation(queen, game.coordinate.getPieceX(game.index), game.coordinate.getPieceY(game.index));
             }
             
+            //had to add this again at bottom because king's position wasn't updating...may have fixed bug but not sure
+            if (tmpPiece instanceof King && tmpPiece.color.equals("black")) {
+                game.blackplayer.setPositionOfKing(game.index);
+            } else if (tmpPiece instanceof King && tmpPiece.color.equals("white")) {
+                game.whiteplayer.setPositionOfKing(game.index);
+            }
+            
             
             //if taking temp2 was legal remove it from the board 
             if (tmpPiece2 != null) {
