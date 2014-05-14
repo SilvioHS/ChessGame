@@ -200,7 +200,7 @@ public class DragPieceListener implements MouseInputListener {
             
             if (tmpPiece instanceof Pawn && tmpPiece.color.equals("white")&&
                     ChessBoard.getFile(game.index) == 1) {
-                    //tmpPiece = null;
+                    tmpPiece = null;
                     game.chessboard.remove(ChessBoard.pieces[game.index]);
                     System.out.println("promoted white pawn");
                     Queen queen = new Queen(queen_w, "white", game.index);
@@ -209,7 +209,7 @@ public class DragPieceListener implements MouseInputListener {
                     game.setChessLocation(queen, game.coordinate.getPieceX(game.index), game.coordinate.getPieceY(game.index));
             }else if (tmpPiece instanceof Pawn && tmpPiece.color.equals("black")&&
                     ChessBoard.getFile(game.index) == 8) {
-                    //tmpPiece = null;
+                    tmpPiece = null;
                     game.chessboard.remove(ChessBoard.pieces[game.index]);
                     System.out.println("promoted black pawn");
                     Queen queen = new Queen(queen_b, "black", game.index);
