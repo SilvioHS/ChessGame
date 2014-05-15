@@ -31,8 +31,8 @@ public class Queen extends ChessPiece{
         this.setSize(65, 65);
         this.setIcon(new ImageIcon(image));
         
-        bishopQ = new Bishop(image, "x", this.boardPosition);
-        rookQ = new Rook(image, "x", this.boardPosition);
+        bishopQ = new Bishop(image, color, this.boardPosition);
+        rookQ = new Rook(image, color, this.boardPosition);
     }
 
     @Override
