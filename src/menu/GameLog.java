@@ -1,46 +1,52 @@
+package menu;
 
-package chessgame;
-
+import chessgame.ChessBoard;
+import chessgame.ChessGame;
+import chesspieces.ChessPiece;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.text.DefaultCaret;
 
 /**
  *
  * @author Silvio
  */
 public class GameLog {
-    private ChessGame game;
-    static JTextArea textlog;
-    private JScrollPane scroll;
+    private final ChessGame game;
+    private static final JTextArea textlog = new JTextArea();
+    private static final JScrollPane scroll = new JScrollPane(textlog);
     private String move;
     private int whiteScore = 0;
     private int blackScore = 0;
     
     
-    public GameLog(ChessGame g){
-        game = g;
+    
+    public GameLog(ChessGame game){
+        this.game = game;
         
         //game log text area
-        textlog = new JTextArea();
         textlog.setLocation(660, 300);
         textlog.setSize(300, 300);
         textlog.setLineWrap(true);
         textlog.setEditable(false);
         textlog.setVisible(true);
+        
         //scrolling pane for game log text area
-        scroll = new JScrollPane(textlog);
         scroll.setLocation(660, 490);
         scroll.setSize(375, 150);
         scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-        g.frame.add(scroll);
+        //scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        DefaultCaret caret = (DefaultCaret)textlog.getCaret();
+        caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
+        
+        game.getFrame().add(scroll);
         
         move = "";
     }
     
     public void setMove(ChessPiece temp){
         
-        move = temp.toString() + " took " + ChessBoard.pieces[game.index].toString() + " \n";
+        move = temp.toString() + " took " + ChessBoard.pieces[game.getIndex()].toString() + " \n";
         
     }
     
@@ -52,7 +58,7 @@ public class GameLog {
             textlog.append(move);
         } else {
             //piece is just moving
-            move = temp.toString() + " moved to " + ChessBoard.getRank(game.index) + ChessBoard.getFile(game.index) + "  \n";
+            move = temp.toString() + " moved to " + ChessBoard.getRank(game.getIndex()) + ChessBoard.getFile(game.getIndex()) + "  \n";
             textlog.append(move);
         }
     }
@@ -70,8 +76,16 @@ public class GameLog {
         
     }
     
+    public void updateLog(){
+        textlog.update(textlog.getGraphics());
+    }
+    
     public String getLog(){
         return textlog.getText();
+    }
+    
+    public void appendLog(String s){
+        textlog.append(s + " \n");
     }
     
     public void clearLog(){

@@ -1,12 +1,18 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Player Class
  */
+
 
 package chessgame;
 
-import static chessgame.ChessGame.setChessLocation;
+import mousemovement.DragPieceListener;
+import chesspieces.ChessPiece;
+import chesspieces.Bishop;
+import chesspieces.King;
+import chesspieces.Knight;
+import chesspieces.Pawn;
+import chesspieces.Queen;
+import chesspieces.Rook;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
@@ -15,18 +21,19 @@ import javax.swing.JLayeredPane;
 
 /**
  *
- * @author Nick
+ * @author Nick Ottrando
  */
 public class Player {
-    public Image pawn_w, rook_w, knight_w, bishop_w, queen_w, king_w, pawn_b, rook_b,
+    private Image pawn_w, rook_w, knight_w, bishop_w, queen_w, king_w, pawn_b, rook_b,
          knight_b, bishop_b, queen_b, king_b;
-    String color;
-    boolean isTurn;
-    boolean isChecked;
-    boolean isCheckmated;
+    private String color;
+    private boolean isTurn;
+    private boolean isChecked;
+    private boolean isCheckmated;
     //make it easy to keep track of king's position on board, if we do not have
     //each player have own array of pieces
-    int positionOfKing;
+   private int positionOfKing;
+   private ChessGame game;
     
     public Player(String color,JLayeredPane board,ChessGame game)
     {
@@ -35,6 +42,7 @@ public class Player {
         String black = new String();
         black = "black";
         this.color = color;
+        this.game = game;
         try {
             if (color.equals("white")) {
                 
@@ -96,23 +104,23 @@ public class Player {
                 board.add(knight2,JLayeredPane.DEFAULT_LAYER);
                 board.add(rook2,JLayeredPane.DEFAULT_LAYER);
 
-                ChessGame.setChessLocation(pawn, 8, 88);
-                ChessGame.setChessLocation(pawn2, 88, 88);
-                ChessGame.setChessLocation(pawn3, 168, 88);
-                ChessGame.setChessLocation(pawn4, 248, 88);
-                ChessGame.setChessLocation(pawn5, 328, 88);
-                ChessGame.setChessLocation(pawn6, 408, 88);
-                ChessGame.setChessLocation(pawn7, 488, 88);
-                ChessGame.setChessLocation(pawn8, 568, 88);
+                game.setChessLocation(pawn, 8, 88);
+                game.setChessLocation(pawn2, 88, 88);
+                game.setChessLocation(pawn3, 168, 88);
+                game.setChessLocation(pawn4, 248, 88);
+                game.setChessLocation(pawn5, 328, 88);
+                game.setChessLocation(pawn6, 408, 88);
+                game.setChessLocation(pawn7, 488, 88);
+                game.setChessLocation(pawn8, 568, 88);
 
-                ChessGame.setChessLocation(rook1, 8, 8);
-                ChessGame.setChessLocation(knight1, 88, 8);
-                ChessGame.setChessLocation(bishop1, 168, 8);
-                ChessGame.setChessLocation(queen, 248, 8);
-                ChessGame.setChessLocation(king, 328, 8);
-                ChessGame.setChessLocation(bishop2, 408, 8);
-                ChessGame.setChessLocation(knight2, 488, 8);
-                ChessGame.setChessLocation(rook2, 568, 8);
+                game.setChessLocation(rook1, 8, 8);
+                game.setChessLocation(knight1, 88, 8);
+                game.setChessLocation(bishop1, 168, 8);
+                game.setChessLocation(queen, 248, 8);
+                game.setChessLocation(king, 328, 8);
+                game.setChessLocation(bishop2, 408, 8);
+                game.setChessLocation(knight2, 488, 8);
+                game.setChessLocation(rook2, 568, 8);
 
                 DragPieceListener WhitePawnlistener = new DragPieceListener(game);  //white MouseListener
                 DragPieceListener WhitePawnlistener2 = new DragPieceListener(game);
@@ -225,23 +233,23 @@ public class Player {
                 board.add(b_knight2,JLayeredPane.DEFAULT_LAYER);
                 board.add(b_rook2,JLayeredPane.DEFAULT_LAYER);
 
-                setChessLocation(b_pawn, 8, 488);
-                setChessLocation(b_pawn2, 88, 488);
-                setChessLocation(b_pawn3, 168, 488);
-                setChessLocation(b_pawn4, 248, 488);
-                setChessLocation(b_pawn5, 328, 488);
-                setChessLocation(b_pawn6, 408, 488);
-                setChessLocation(b_pawn7, 488, 488);
-                setChessLocation(b_pawn8, 568, 488);
+                game.setChessLocation(b_pawn, 8, 488);
+                game.setChessLocation(b_pawn2, 88, 488);
+                game.setChessLocation(b_pawn3, 168, 488);
+                game.setChessLocation(b_pawn4, 248, 488);
+                game.setChessLocation(b_pawn5, 328, 488);
+                game.setChessLocation(b_pawn6, 408, 488);
+                game.setChessLocation(b_pawn7, 488, 488);
+                game.setChessLocation(b_pawn8, 568, 488);
 
-                setChessLocation(b_rook1, 8, 568);
-                setChessLocation(b_knight1, 88, 568);
-                setChessLocation(b_bishop1, 168, 568);
-                setChessLocation(b_queen, 248, 568);
-                setChessLocation(b_king, 328, 568);
-                setChessLocation(b_bishop2, 408, 568);
-                setChessLocation(b_knight2, 488, 568);
-                setChessLocation(b_rook2, 568, 568);
+                game.setChessLocation(b_rook1, 8, 568);
+                game.setChessLocation(b_knight1, 88, 568);
+                game.setChessLocation(b_bishop1, 168, 568);
+                game.setChessLocation(b_queen, 248, 568);
+                game.setChessLocation(b_king, 328, 568);
+                game.setChessLocation(b_bishop2, 408, 568);
+                game.setChessLocation(b_knight2, 488, 568);
+                game.setChessLocation(b_rook2, 568, 568);
 
                 DragPieceListener BlackPawnlistener = new DragPieceListener(game);  //black MouseListener
                 DragPieceListener BlackPawnlistener2 = new DragPieceListener(game);
@@ -430,7 +438,7 @@ public class Player {
                             if(piece instanceof King){
                                 this.positionOfKing = oldIndex;
                             }
-                            System.out.println("Piece at index " + oldIndex + " can uncheck you");
+                            //System.out.println("Piece at index " + oldIndex + " can uncheck you");
                             if(occupiedSquare){
                                 //put the pieces back
                                 ChessBoard.pieces[i].setBoardPosition(oldIndex);
@@ -470,9 +478,10 @@ public class Player {
         
         
         if(checkmated){
-            System.out.println("You've been CHECKMATED!");
+            System.out.println(this.getColor() + " has been CHECKMATED!");
+            game.getGameLog().appendLog(this.getColor() + " has been Checkmated");
         }else{
-            System.out.println(this.getColor() + " not checkmated");
+            //System.out.println(this.getColor() + " not checkmated");
         }
         
         

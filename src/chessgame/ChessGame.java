@@ -1,5 +1,11 @@
 package chessgame;
 
+import mousemovement.Coordinate;
+import menu.GameLog;
+import menu.LoadGame;
+import menu.SaveGame;
+import menu.Menu;
+import chesspieces.ChessPiece;
 import javax.swing.*;
 import java.io.File;
 
@@ -11,36 +17,39 @@ public class ChessGame extends JApplet implements Runnable {
 
     //CONSTANTS:
     // Dimension of chessboard square.
-    final static int SQUAREDIM = 80;
+    private final int SQUAREDIM = 80;
     // Dimension of chessboard
-    final static int BOARDDIM = 8 * SQUAREDIM;
+    private final int BOARDDIM = 8 * SQUAREDIM;
     // Dragging flag -- set to true when user presses mouse button over chess
     // and cleared to false when user releases mouse button.
 
     //new window
-    JFrame frame;
+    private JFrame frame;
 
     //chessboard panel
-    ChessBoard chessboard;
+    private ChessBoard chessboard;
 
     //main menu bar
-    Menu dropmenu;
-    GameLog gamelog;
+    private Menu dropmenu;
+
+    //GameLog gamelog;
+    private GameLog gamelog;
+
     
     //text area
-    JTextArea textarea;
-    JScrollPane scroll;
+    private JTextArea textarea;
+    private  JScrollPane scroll;
 
     //game objects
-    Player whiteplayer;
-    Player blackplayer;
-    Coordinate coordinate;
-    SaveGame savegame;
-    LoadGame loadgame;
+    private Player whiteplayer;
+    private Player blackplayer;
+    private Coordinate coordinate;
+    private SaveGame savegame;
+    private LoadGame loadgame;
 
     //fields
-    String colorsTurn = "white";
-    int index;
+    private String colorsTurn = "white";
+    private int index;
 
     //game thread
     private Thread thread;
@@ -122,7 +131,7 @@ public class ChessGame extends JApplet implements Runnable {
 
     //save piece array, player turn and score to file
     public void saveGame(File f) {
-        savegame = new SaveGame(f, chessboard);
+        savegame = new SaveGame(f, chessboard, gamelog, colorsTurn);
         System.out.println("Gamed Saved.");
 
     }
@@ -130,12 +139,14 @@ public class ChessGame extends JApplet implements Runnable {
     //load piece array, player turn and score from file
     public void loadGame(File f) {
         clearGame();
-        loadgame = new LoadGame(f, chessboard, this);
+        loadgame = new LoadGame(f, chessboard, this, gamelog);
         System.out.println("Gamed Loaded.");
+        
+        frame.update(frame.getGraphics());
 
     }
 
-    public static void setChessLocation(ChessPiece aPiece, int xx, int yy) {//Just for test, set the selected chess piece(a JButton)'s location
+    public void setChessLocation(ChessPiece aPiece, int xx, int yy) {//Just for test, set the selected chess piece(a JButton)'s location
         aPiece.setLocation(xx, yy);
 
     }
@@ -147,7 +158,47 @@ public class ChessGame extends JApplet implements Runnable {
     public void setIndex(int index) {
         this.index = index;
     }
-
+    
+    public GameLog getGameLog(){
+        return this.gamelog;
+    }
+    
+    public JFrame getFrame(){
+        return this.frame;
+    }
+    
+    public int getSqaureDim(){
+        return this.SQUAREDIM;
+    }
+    
+    public int getBoardDim(){
+        return this.BOARDDIM;
+    }
+    
+    public ChessBoard getChessBoard(){
+        return chessboard;
+    }
+    
+    public void setTurn(String color){
+        this.colorsTurn = color;
+    }
+    
+    public String getTurn(){
+        return this.colorsTurn;
+    }
+    
+    public Player getWhitePlayer(){
+        return this.whiteplayer;
+    }
+    
+    public Player getBlackPlayer(){
+        return this.blackplayer;
+    }
+    
+    public Coordinate getCoordinate(){
+        return this.coordinate;
+    }
+    
     public static void main(String[] args) {
 
         ChessGame demo = new ChessGame();

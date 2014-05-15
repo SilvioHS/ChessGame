@@ -1,13 +1,14 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Class that provides user with a menu and functionalities for new, save, load game
  */
 
-package chessgame;
+
+
+package menu;
 
 
 
+import chessgame.ChessGame;
 import java.awt.event.*;
 import java.io.File;
 import javax.swing.JMenu;
@@ -17,14 +18,14 @@ import javax.swing.JMenuBar;
 import javax.swing.JFileChooser;
 
 
-/*
- * This class exists solely to show you what menus look like.
- * It has no menu-related event handling.
+/**
+ *
+ * @author Silvio Huebner
  */
 public class Menu implements ActionListener{
     
-    ChessGame game;
-    JFileChooser fc;
+    private ChessGame game;
+    private JFileChooser fc;
         
     public Menu(ChessGame g){
         game = g;

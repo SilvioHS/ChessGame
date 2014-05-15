@@ -1,10 +1,14 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Class to represent the chess board.
+ */
+
+/**
+ *
+ * @author Nick Ottrando & Qilin Fu
  */
 
 package chessgame;
+import chesspieces.ChessPiece;
 import java.awt.*;
 import java.awt.geom.*;
 import javax.swing.*;
@@ -12,10 +16,7 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import java.awt.BorderLayout; 
-/**
- *
- * @author xiaoweii
- */
+
 public  class ChessBoard extends JLayeredPane {
     private Image image;
     public static ChessPiece[] pieces = new ChessPiece[66];

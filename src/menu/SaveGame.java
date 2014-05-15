@@ -1,6 +1,18 @@
+/*
+ * Class to allow users to save games in progress.
+ */
 
-package chessgame;
 
+package menu;
+
+import chessgame.ChessBoard;
+import chesspieces.ChessPiece;
+import chesspieces.Bishop;
+import chesspieces.King;
+import chesspieces.Knight;
+import chesspieces.Pawn;
+import chesspieces.Queen;
+import chesspieces.Rook;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -14,14 +26,18 @@ public class SaveGame {
     private BufferedWriter saveWriter;
     private final ChessBoard chessboard;
     private ChessPiece cp;
+    private final GameLog gamelog;
+    private String turn;
     
-    public SaveGame(File f, ChessBoard cb){
+    public SaveGame(File f, ChessBoard cb, GameLog gl, String t){
         saveFile = f;
         chessboard = cb;
+        gamelog = gl;
+        turn = t;
         saveToFile();
     }
    
-    public void saveToFile() {
+    private void saveToFile() {
         try {
             saveWriter = new BufferedWriter(new FileWriter(saveFile));
             for (int i = 0; i < 64; i++) {
@@ -72,6 +88,15 @@ public class SaveGame {
                     saveWriter.newLine();
                 }
             }
+            
+            //save turn to file
+            saveWriter.write(turn);
+            saveWriter.newLine();
+            
+            //save game log to file
+            saveWriter.write(gamelog.getLog());
+            
+            
         } catch (IOException ex) {
             Logger.getLogger(SaveGame.class.getName()).log(Level.SEVERE, null, ex);
             ex.printStackTrace();

@@ -1,11 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * queen class that extends Chesspiece
  */
 
-package chessgame;
 
+package chesspieces;
+
+import chesspieces.Rook;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
@@ -15,7 +15,7 @@ import javax.swing.ImageIcon;
 
 /**
  *
- * @author Nick
+ * @authors Kevin Velasco & Nick Ottrando
  */
 public class Queen extends ChessPiece{
     
@@ -32,8 +32,8 @@ public class Queen extends ChessPiece{
         this.setSize(65, 65);
         this.setIcon(new ImageIcon(image));
         
-        bishopQ = new Bishop(image, "x", this.boardPosition);
-        rookQ = new Rook(image, "x", this.boardPosition);
+        bishopQ = new Bishop(image, color, this.boardPosition);
+        rookQ = new Rook(image, color, this.boardPosition);
     }
 
     @Override

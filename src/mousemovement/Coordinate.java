@@ -1,4 +1,4 @@
-package chessgame;
+package mousemovement;
 
 /*
  * To provide the Coordinate to ChessGame
@@ -9,12 +9,12 @@ package chessgame;
  * @author Qilin Fu
  */
 public class Coordinate {
-    int[] boardX = new int[64];
-    int[] boardY = new int[64];
-    int[] pieceX = new int[64];
-    int[] pieceY = new int[64];
-    int[] pieceCenterX = new int[64];
-    int[] pieceCenterY = new int[64];
+    private int[] boardX = new int[64];
+    private int[] boardY = new int[64];
+    private int[] pieceX = new int[64];
+    private int[] pieceY = new int[64];
+    private int[] pieceCenterX = new int[64];
+    private int[] pieceCenterY = new int[64];
     
     public Coordinate(){
         for(int i=0; i<64; i++){

@@ -1,10 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Bishop class that extends Chesspiece
  */
-package chessgame;
 
+
+package chesspieces;
+
+import chessgame.ChessBoard;
 import java.awt.Image;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -27,13 +28,18 @@ public class Bishop extends ChessPiece {
     }
 
     @Override
-    public boolean isValidMove(int newPosition) {
+    public boolean isValidMove(int newPosition) 
+    {
         boolean isValid = false;
+        try
+        {
 
-        if (ChessBoard.getFile(this.getBoardPosition()) != ChessBoard.getFile(newPosition)) {
+        if (ChessBoard.getFile(this.getBoardPosition()) != ChessBoard.getFile(newPosition)) 
+        {
 
             if (this.getBoardPosition() < newPosition) {
-                if (Math.abs(this.getBoardPosition() - newPosition) % 7 == 0) {
+                if ((double)(ChessBoard.getFile(this.getBoardPosition()) - ChessBoard.getFile(newPosition))/(double)(ChessBoard.getRank(this.getBoardPosition()) - ChessBoard.getRank(newPosition)) == 1.0 ) 
+                {
                     isValid = true;
                     for (int i = this.getBoardPosition() + 7; i < newPosition; i += 7) {
                         if (ChessBoard.getIndex(i) != null) {
@@ -41,9 +47,12 @@ public class Bishop extends ChessPiece {
                             break;
                         }
                     }
-                } else if (Math.abs(this.getBoardPosition() - newPosition) % 9 == 0) {
+                } 
+                else if ((double)(ChessBoard.getFile(this.getBoardPosition()) - ChessBoard.getFile(newPosition))/(double) (ChessBoard.getRank(this.getBoardPosition()) - ChessBoard.getRank(newPosition)) == -1.0 ) 
+                {
                     isValid = true;
-                    for (int i = this.getBoardPosition() + 9; i < newPosition; i += 9) {
+                    for (int i = this.getBoardPosition() + 9; i < newPosition; i += 9) 
+                    {
                         if (ChessBoard.getIndex(i) != null) {
                             isValid = false;
                             break;
@@ -56,15 +65,20 @@ public class Bishop extends ChessPiece {
                     isValid = false;
                 }
             } else if (this.getBoardPosition() > newPosition) {
-                if (Math.abs(this.getBoardPosition() - newPosition) % 7 == 0) {
+                if ((double)(ChessBoard.getFile(this.getBoardPosition()) - ChessBoard.getFile(newPosition))/(double)(ChessBoard.getRank(this.getBoardPosition()) - ChessBoard.getRank(newPosition)) == 1.0 ) 
+                {
                     isValid = true;
-                    for (int i = this.getBoardPosition() - 7; i > newPosition; i -= 7) {
-                        if (ChessBoard.getIndex(i) != null) {
+                    for (int i = this.getBoardPosition() - 7; i > newPosition; i -= 7) 
+                    {
+                        if (ChessBoard.getIndex(i) != null) 
+                        {
                             isValid = false;
                             break;
                         }
                     }
-                } else if (Math.abs(this.getBoardPosition() - newPosition) % 9 == 0) {
+                } 
+                else if ((double)(ChessBoard.getFile(this.getBoardPosition()) - ChessBoard.getFile(newPosition))/(double)(ChessBoard.getRank(this.getBoardPosition()) - ChessBoard.getRank(newPosition)) == -1.0 )
+                {
                     isValid = true;
                     for (int i = this.getBoardPosition() - 9; i > newPosition; i -= 9) {
                         if (ChessBoard.getIndex(i) != null) {
@@ -80,10 +94,11 @@ public class Bishop extends ChessPiece {
                     }
                 }
             }
-
-        }
-
+        }   
+    }
+    catch(ArithmeticException ex)
+    {
+    }
         return isValid;
     }
-
 }
