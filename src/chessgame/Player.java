@@ -438,7 +438,7 @@ public class Player {
                             if(piece instanceof King){
                                 this.positionOfKing = oldIndex;
                             }
-                            //System.out.println("Piece at index " + oldIndex + " can uncheck you");
+                            System.out.println("Piece at index " + oldIndex + " can uncheck you");
                             if(occupiedSquare){
                                 //put the pieces back
                                 ChessBoard.pieces[i].setBoardPosition(oldIndex);
@@ -479,7 +479,7 @@ public class Player {
         
         if(checkmated){
             System.out.println(this.getColor() + " has been CHECKMATED!");
-            game.getGameLog().appendLog(this.getColor() + " has been Checkmated");
+            game.getGameLog().logText(this.getColor() + " has been Checkmated");
         }else{
             //System.out.println(this.getColor() + " not checkmated");
         }
