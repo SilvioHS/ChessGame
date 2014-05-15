@@ -207,6 +207,9 @@ public class DragPieceListener implements MouseInputListener {
                     ChessBoard.pieces[game.index] = queen;
                     game.chessboard.add(queen,JLayeredPane.DEFAULT_LAYER);
                     game.setChessLocation(queen, game.coordinate.getPieceX(game.index), game.coordinate.getPieceY(game.index));
+                    DragPieceListener newQueen = new DragPieceListener(game);
+                    queen.addMouseListener(newQueen);
+                    queen.addMouseMotionListener(newQueen);
             }else if (tmpPiece instanceof Pawn && tmpPiece.color.equals("black")&&
                     ChessBoard.getFile(game.index) == 8) {
                     tmpPiece = null;
@@ -216,6 +219,9 @@ public class DragPieceListener implements MouseInputListener {
                     ChessBoard.pieces[game.index] = queen;
                     game.chessboard.add(queen,JLayeredPane.DEFAULT_LAYER);
                     game.setChessLocation(queen, game.coordinate.getPieceX(game.index), game.coordinate.getPieceY(game.index));
+                    DragPieceListener newQueen = new DragPieceListener(game);
+                    queen.addMouseListener(newQueen);
+                    queen.addMouseMotionListener(newQueen);
             }
             
             //had to add this again at bottom because king's position wasn't updating...may have fixed bug but not sure
