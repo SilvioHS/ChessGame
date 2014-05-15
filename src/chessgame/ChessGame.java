@@ -26,7 +26,7 @@ public class ChessGame extends JApplet implements Runnable {
     //main menu bar
     Menu dropmenu;
 
-    GameLog gamelog;
+    static GameLog gamelog;
     
 
     //game objects

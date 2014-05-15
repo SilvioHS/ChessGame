@@ -470,6 +470,7 @@ public class Player {
         
         if(checkmated){
             System.out.println(this.getColor() + " has been CHECKMATED!");
+            ChessGame.gamelog.appendLog(this.getColor() + " has been Checkmated");
         }else{
             //System.out.println(this.getColor() + " not checkmated");
         }
