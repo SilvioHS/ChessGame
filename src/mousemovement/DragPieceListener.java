@@ -163,12 +163,12 @@ public class DragPieceListener implements MouseInputListener {
 
             //check to see if player performed an illegal move 
             if (game.getBlackPlayer().isChecked() && game.getTurn().equals("black")) {
-                rules.revertCheck(tmpPiece, tmpPiece2, lastIndex, bKingPos);
+                rules.revertCheck(tmpPiece, tmpPiece2, lastIndex, bKingPos, "black");
                 //exit function 
                 return;
              //repeat for white 
             } else if (game.getWhitePlayer().isChecked() && game.getTurn().equals("white")) {
-                rules.revertCheck(tmpPiece, tmpPiece2, lastIndex, wKingPos);
+                rules.revertCheck(tmpPiece, tmpPiece2, lastIndex, wKingPos, "white");
                 return;
 
             }

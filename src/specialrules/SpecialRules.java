@@ -67,12 +67,17 @@ public class SpecialRules {
 
     }
 
-    public void revertCheck(ChessPiece tmpPiece, ChessPiece tmpPiece2, int lastIndex, int kingPos) {
+    public void revertCheck(ChessPiece tmpPiece, ChessPiece tmpPiece2, int lastIndex, int kingPos, String color) {
         gamelog.logText("Illegal Move, You're in check. Pick another move");
         //reset last move that the player made and reset king's position 
         game.setChessLocation(tmpPiece, game.getCoordinate().getPieceX(lastIndex), game.getCoordinate().getPieceY(lastIndex));
         tmpPiece.setBoardPosition(lastIndex);
-        game.getBlackPlayer().setPositionOfKing(kingPos);
+        if(color.equals("black")){
+            game.getBlackPlayer().setPositionOfKing(kingPos);
+        }else{
+            game.getWhitePlayer().setPositionOfKing(kingPos);
+        }
+        
         ChessBoard.pieces[lastIndex] = tmpPiece;
 
         //if player was trying to take a piece put it back 
