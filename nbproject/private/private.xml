@@ -1,44 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-<<<<<<< HEAD
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
-        <file>
-            <url>src/chessgame/DragPieceListener.java</url>
-            <bookmark id="1">
-                <name/>
-                <line>160</line>
-                <key/>
-            </bookmark>
-        </file>
-    </editor-bookmarks>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/Nick/Documents/NetBeansProjects/ChessGame/src/chessgame/Coordinate.java</file>
-            <file>file:/C:/Users/Nick/Documents/NetBeansProjects/ChessGame/src/chessgame/ChessPiece.java</file>
-            <file>file:/C:/Users/Nick/Documents/NetBeansProjects/ChessGame/src/chessgame/Queen.java</file>
-            <file>file:/C:/Users/Nick/Documents/NetBeansProjects/ChessGame/src/chessgame/ChessGame.java</file>
-            <file>file:/C:/Users/Nick/Documents/NetBeansProjects/ChessGame/src/chessgame/Bishop.java</file>
-            <file>file:/C:/Users/Nick/Documents/NetBeansProjects/ChessGame/src/chessgame/DragPieceListener.java</file>
-            <file>file:/C:/Users/Nick/Documents/NetBeansProjects/ChessGame/src/chessgame/LoadGame.java</file>
-            <file>file:/C:/Users/Nick/Documents/NetBeansProjects/ChessGame/src/chessgame/ChessBoard.java</file>
-            <file>file:/C:/Users/Nick/Documents/NetBeansProjects/ChessGame/src/chessgame/Menu.java</file>
-            <file>file:/C:/Users/Nick/Documents/NetBeansProjects/ChessGame/src/chessgame/Rook.java</file>
-=======
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Kevin%20Velasco/Documents/NetBeansProjects/ChessGame/src/chessgame/ChessGame.java</file>
-            <file>file:/C:/Users/Kevin%20Velasco/Documents/NetBeansProjects/ChessGame/src/chessgame/GameLog.java</file>
-            <file>file:/C:/Users/Kevin%20Velasco/Documents/NetBeansProjects/ChessGame/src/chessgame/ChessBoard.java</file>
-            <file>file:/C:/Users/Kevin%20Velasco/Documents/NetBeansProjects/ChessGame/src/chessgame/Menu.java</file>
-            <file>file:/C:/Users/Kevin%20Velasco/Documents/NetBeansProjects/ChessGame/src/chessgame/Knight.java</file>
-            <file>file:/C:/Users/Kevin%20Velasco/Documents/NetBeansProjects/ChessGame/src/chessgame/King.java</file>
-            <file>file:/C:/Users/Kevin%20Velasco/Documents/NetBeansProjects/ChessGame/src/chessgame/Bishop.java</file>
-            <file>file:/C:/Users/Kevin%20Velasco/Documents/NetBeansProjects/ChessGame/src/chessgame/Player.java</file>
-            <file>file:/C:/Users/Kevin%20Velasco/Documents/NetBeansProjects/ChessGame/src/chessgame/LoadGame.java</file>
-            <file>file:/C:/Users/Kevin%20Velasco/Documents/NetBeansProjects/ChessGame/src/chessgame/ChessPiece.java</file>
-            <file>file:/C:/Users/Kevin%20Velasco/Documents/NetBeansProjects/ChessGame/src/chessgame/DragPieceListener.java</file>
->>>>>>> 31e5f569f7d70a25a70a415d942cda2fa3c61c5b
+            <file>file:/C:/Users/Kevin%20Velasco/Documents/NetBeansProjects/ChessGame/src/specialrules/SpecialRules.java</file>
+            <file>file:/C:/Users/Kevin%20Velasco/Documents/NetBeansProjects/ChessGame/src/mousemovement/Coordinate.java</file>
+            <file>file:/C:/Users/Kevin%20Velasco/Documents/NetBeansProjects/ChessGame/src/mousemovement/DragPieceListener.java</file>
         </group>
     </open-files>
 </project-private>
