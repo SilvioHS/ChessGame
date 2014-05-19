@@ -15,13 +15,14 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 /**
  *
- * @author xiaoweii
+ * @author Qilin Fu
  */
 public class Taken {
     private ChessGame game;
+    //show taken piece
     private JLabel whiteLabel[];
     private JLabel blackLabel[];
-    
+    //"White or black" indicates white or black piece has been taken
     private JLabel whiteLabel1;
     private JLabel blackLabel1;
 
@@ -65,7 +66,7 @@ public class Taken {
             
         }
     }
-    
+    //When a piece has been taken, set a JLabel for taken piece
     public void taken(ChessPiece temp){
         String a[] = temp.toString().split(" ");
         
@@ -86,7 +87,7 @@ public class Taken {
             game.setBlackCounter(game.getBlackCounter()+1);
         }
     }
-    
+    //return which white piece has been taken.
     public Image getWhiteImage(String s){
         if(s.equals("Pawn"))
             return pawn_w;
@@ -102,6 +103,7 @@ public class Taken {
             return rook_w;
         return null;
     }
+    //return which black piece has been taken.
     public Image getBlackImage(String s){
         if(s.equals("Pawn"))
             return pawn_b;

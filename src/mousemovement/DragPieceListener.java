@@ -64,6 +64,7 @@ public class DragPieceListener implements MouseInputListener {
 
     }
 
+    //return which black piece has been taken.
     boolean contains(int x, int y) {
         // Calculate center of draggable chess piece.
         int cox = ox + game.getSqaureDim() / 2;
@@ -71,6 +72,8 @@ public class DragPieceListener implements MouseInputListener {
         return (cox - x) * (cox - x) + (coy - y) * (coy - y) < game.getSqaureDim()* game.getSqaureDim();
     }
 
+    //When pressed on chess piece, record the point that mouse pressed 
+    //and calculate the index of 1D chess array reflecting selected chess piece position.
     public void mousePressed(MouseEvent e) {
         ChessPiece tmpPiece = (ChessPiece) e.getSource();
         point = SwingUtilities.convertPoint(tmpPiece, e.getPoint(), tmpPiece.getParent());
@@ -91,6 +94,8 @@ public class DragPieceListener implements MouseInputListener {
 
     }
 
+    //When dragging chess piece, dynamically reset the chess piece's location
+    //and calculate the index of chess array
     public void mouseDragged(MouseEvent e) {
         ChessPiece tmpPiece = (ChessPiece) e.getSource();
         Point newPoint = SwingUtilities.convertPoint(tmpPiece, e.getPoint(), tmpPiece.getParent());
@@ -111,6 +116,10 @@ public class DragPieceListener implements MouseInputListener {
         }
     }
 
+    //When released chess piece, check if it is valid move,
+    //check if it is checked or checkmated,
+    //check if a pawn get promotion,
+    //and check if a chess piece is taken.
     @Override
     public void mouseReleased(MouseEvent e) {
                     

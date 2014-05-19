@@ -21,6 +21,7 @@ public class Coordinate {
     private int[] blackY = new int[16];
     
     public Coordinate(){
+        //Create coordinate of each chessboard square, each chess piece, and each chess piece's center
         for(int i=0; i<64; i++){
             this.boardX[i] = i%8*80;
             this.boardY[i] = i/8*80;
@@ -29,7 +30,7 @@ public class Coordinate {
             this.pieceCenterX[i] = i%8*80+40;
             this.pieceCenterY[i] = i/8*80+40;
         }
-        
+        //Create coordinate of each taken piece on the right side of chessboard
          for(int i=0;i<16;i++){
             if(i<8){
                 this.whiteX[i] =660 + i*50;
@@ -45,7 +46,7 @@ public class Coordinate {
             }
         }
     }
-    
+    //getter of all kinds of coordinate
     public int getBoardX(int index){
         return this.boardX[index];
     }
