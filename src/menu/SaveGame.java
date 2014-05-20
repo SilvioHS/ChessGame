@@ -29,6 +29,21 @@ public class SaveGame {
     private final GameLog gamelog;
     private String turn;
     
+    /**
+     * 
+     * Constructs a SaveGame object. 
+     * <p>
+     * 
+     *<p>
+     * Save what is in each square on the ChessBoard, if there is nothing there, save as 0,
+     * if it is a piece, save as a letter code. Save current players turn and save all text in GameLog
+     *<p>
+     * 
+     * @param f The File to be saved to 
+     * @param cb The ChessBoard to save the ChessPieces to File
+     * @param gl The GameLog to save the ext from to the File
+     * @param t The color of the color who's turn it is to move 
+     */
     public SaveGame(File f, ChessBoard cb, GameLog gl, String t){
         saveFile = f;
         chessboard = cb;

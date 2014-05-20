@@ -16,6 +16,16 @@ import javax.swing.ImageIcon;
  */
 public class Bishop extends ChessPiece {
 
+     /**
+     * <p>
+     * Construct Bishop object give an image, color, and the starting board position
+     * of the Bishop. 
+     * <p>
+     * 
+     * @param image The image to be associated with this Bishop
+     * @param color the color of this Bishop, white or black
+     * @param boardPosition The starting position of this Bishop
+     */
     public Bishop(Image image, String color, int boardPosition) {
         super(image, color, boardPosition);
         
@@ -27,6 +37,22 @@ public class Bishop extends ChessPiece {
         this.setIcon(new ImageIcon(image));
     }
 
+    /**
+     * <p>
+     * Checks to see if the this Bishop is attempting a valid move from its current 
+     * board position to the new board position.
+     * <p>
+     * 
+     * <p>
+     * The bishop has no restrictions in distance for each move, but is limited to diagonal movement. 
+     * Bishops, like all other pieces except the knight, cannot jump over other pieces. 
+     * A bishop captures by occupying the square on which an enemy piece sits.
+     * <p>
+     * 
+     * 
+     * @param newPosition The position that this Bishop is attempting to move from its current position
+     * @return true if the move made by this Bishop was valid otherwise return false.
+     */
     @Override
     public boolean isValidMove(int newPosition) 
     {

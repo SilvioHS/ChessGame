@@ -35,6 +35,23 @@ public class Player {
    private int positionOfKing;
    private ChessGame game;
     
+   /**
+    * <p>
+     * Construct Player object give a color, ChessBoard, and ChessGame
+     * <p>
+     * 
+     * <p>
+     * Player will set up this Player's pieces in the 1D ChessBoard with all of the correct
+     * starting location given this Player's color. Will also set up the DragPieceListener 
+     * for each of this Player's pieces.
+     * <p>
+     * 
+     * 
+    * @param color The color of this Player
+    * @param board The ChessBoard to add this Player's ChessPieces to 
+    * @param game ChessGame object which will be set up the DragPieceListener for 
+    * each of this Player's pieces 
+    */
     public Player(String color,JLayeredPane board,ChessGame game)
     {
         String white = new String();
@@ -306,26 +323,63 @@ public class Player {
         }
     }
     
+    /**
+     * <p>
+     * Set whether it is this Player's turn or not 
+     * <p>
+     * 
+     * @param turn The new value of the isTurn flag
+     */
     public void setIsTurn(boolean turn){
         this.isTurn = turn;
     }
     
+    /**
+     * 
+     * @return True if it is the turn of this Player, false otherwise 
+     */
     public boolean getIsTurn(){
         return this.isTurn;
     }
     
+    /**
+     * 
+     * @return The color of this Player
+     */
     public String getColor(){
         return this.color;
     }
     
+    /**
+     * 
+     * @return The e of this Player's King 
+     */
     public int getPositionOfKing(){
         return this.positionOfKing;
     }
     
+    /**
+     * 
+     * @param positionOfKing The new position of this Player's King 
+     */
     public void setPositionOfKing(int positionOfKing){
         this.positionOfKing = positionOfKing; 
     }
     
+    /**
+     * <p>
+     * This Player is in check when it's King is under attack by at least one enemy piece. 
+     * A player may not make any move which places or leaves his King in check. The possible ways to get out of check are:
+     * <p>
+     * 
+     * <p>
+     * 1. Move the King to a square where it is not threatened.
+     * 2. Capture the threatening piece (possibly with the King).
+     * 3. Block the check by placing a piece between the King and the opponent's threatening piece
+     * <p>
+     * 
+     * @return True if this Player is in check, otherwise return false
+     */
    public boolean isChecked(){
         
         //index is piece that get's 'taken' in simulation for isChecked
@@ -351,6 +405,15 @@ public class Player {
         return this.isChecked;
     }
     
+   /**
+    * <p>
+    * If this Player's King is placed in check and there is no legal move that this Player can make to escape check, 
+    * then this is Player's King is said to be checkmated, the game ends, and this Player loses  
+    * Unlike other pieces, the King is never actually captured or removed from the board because checkmate ends the game
+    * <p>
+    * 
+    * @return True if this Player is checkmated, otherwise return false 
+    */
     public boolean isCheckMated(){
         boolean checkmated = true;
         boolean occupiedSquare = false;
@@ -488,7 +551,8 @@ public class Player {
         return checkmated;
     }
     
-    public void setIsChecked(boolean check){
+    
+    private void setIsChecked(boolean check){
         this.isChecked = check;
     }
     

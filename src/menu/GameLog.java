@@ -20,7 +20,16 @@ public class GameLog {
     private int blackScore = 0;
     
     
-    
+    /**
+     * <p>
+     * Constructs a GameLog object. GameLog keeps track of all the  moves that 
+     * happen in the ChessGame. GameLog will keep track if ChessPiece moves to a 
+     * new square, if a ChessPiece takes an enemy CheisssPiece, and if the a player
+     * is attempting to make an illegal move.
+     * <p>
+     * 
+     * @param game The ChessGame to which the GameLog will be added to
+     */
     public GameLog(ChessGame game){
         this.game = game;
         
@@ -44,12 +53,27 @@ public class GameLog {
         move = "";
     }
     
+    /**
+     * <p>
+     * Set move that a ChessPiece was just taken and records the move 
+     * <p>
+     * 
+     * @param temp The ChessPiece who's was attacking 
+     */
     public void setMove(ChessPiece temp){
         
         move = temp.toString() + " took " + ChessBoard.pieces[game.getIndex()].toString() + " \n";
         
     }
     
+    /**
+     * <p>
+     * Appends to the GameLog. If move was set display that a piece was taken.
+     * Otherwise display that ChessPiece move to an unoccupied square
+     * <p>
+     * 
+     * @param temp  The ChessPiece who's is to be recorded 
+     */
     public void logPieceAction(ChessPiece temp){
         
         
@@ -63,11 +87,27 @@ public class GameLog {
         }
     }
     
+    /**
+     * <p>
+     * Appends the text to the GameLog and displays which player turn it is 
+     * (e.g. white's turn to move)
+     * <p>
+     * 
+     * @param turn the player who's turn it will currently be 
+     */
     public void logCurrentTurn(String turn){
         
         textlog.append(turn + "'s turn to move \n");
     }
     
+     /**
+    * <p>
+    * Appends a string to the GameLog and ends the appending string with a new line character
+    * Displays the string to the GameLog
+    * <p>
+    * 
+    * @param s The string to be appended to the GameLog
+    */
     public void logText(String s){
         textlog.append(s + " \n");
     }
@@ -76,18 +116,36 @@ public class GameLog {
         
     }
     
+    /**
+     * 
+     */
     public void updateLog(){
         textlog.update(textlog.getGraphics());
     }
     
+    /**
+     * 
+     * @return The text that is in This GameLog
+     */
     public String getLog(){
         return textlog.getText();
     }
     
+   /**
+    * <p>
+    * Appends a string to the GameLog and ends the appending string with a new line character
+    * Displays the string to the GameLog
+    * <p>
+    * 
+    * @param s The string to be appended to the GameLog
+    */
     public void appendLog(String s){
         textlog.append(s + " \n");
     }
     
+    /**
+     * clear the text in the GameLog 
+     */
     public void clearLog(){
         textlog.setText("");
     }

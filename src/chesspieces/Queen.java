@@ -22,6 +22,16 @@ public class Queen extends ChessPiece{
     private ChessPiece bishopQ;
     private ChessPiece rookQ;
 
+      /**
+     * <p>
+     * Construct Queen object give an image, color, and the starting board position
+     * of the Queen. 
+     * <p>
+     * 
+     * @param image The image to be associated with this Queen
+     * @param color the color of this Pawn, white or Queen
+     * @param boardPosition The starting position of this Queen
+     */
     public Queen(Image image, String color, int boardPosition) {
         super(image, color, boardPosition);
 
@@ -36,6 +46,19 @@ public class Queen extends ChessPiece{
         rookQ = new Rook(image, color, this.boardPosition);
     }
 
+    /**
+     * <p>
+     * The queen can be moved any number of unoccupied squares in a straight line vertically, horizontally, 
+     * or diagonally, thus combining the moves of the rook and bishop.
+     * <p>
+     * 
+     * <p>
+     * The queen captures by occupying the square on which an enemy piece sits.
+     * <p>
+     * 
+     * @param newPosition The position that this Queen is attempting to move from its current position
+     * @return  true if the move made by this Queen was valid otherwise return false.
+     */
     @Override
     public boolean isValidMove(int newPosition) {
         
