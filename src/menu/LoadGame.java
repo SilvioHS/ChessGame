@@ -38,7 +38,21 @@ public class LoadGame {
     private Image pawn_w, rook_w, knight_w, bishop_w, queen_w, king_w, pawn_b, rook_b,
          knight_b, bishop_b, queen_b, king_b;
 
-    
+    /**
+     * Constructs a LoadGame object. 
+     * <p>
+     * 
+     * <p>
+     * Reads ChessPiece locations from a text file and instantiates them in the ChessBoard
+     * next read current players turn and sets it in the ChessGame. 
+     * next read GameLog text and puts it in the current GameLog.
+     * <p>
+     * 
+     * @param f The File to be read from 
+     * @param cb The ChessBoard to add the ChessPieces read from File to
+     * @param g  The ChessGame that the ChessPieces, GameLog, and ChessBoard will belong to
+     * @param gl The GameLog to write the text to that is read from File
+     */
     public LoadGame(File f, ChessBoard cb, ChessGame g, GameLog gl){
         loadFile = f;
         chessboard = cb;
@@ -48,7 +62,7 @@ public class LoadGame {
         loadFromFile();
     }
    
-    public void loadFromFile() {
+   private void loadFromFile() {
         try {
             pawn_w = ImageIO.read(new File("src/image/pawn_white.png"));
             rook_w = ImageIO.read(new File("src/image/rook_white.png"));

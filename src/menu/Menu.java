@@ -26,11 +26,28 @@ public class Menu implements ActionListener{
     
     private ChessGame game;
     private JFileChooser fc;
-        
+    
+    /**
+     * <p>
+     * Constructs a Menu object. Builds the Menu for the ChessGame GUI that this 
+     * menu object will belong to.
+     * <p>
+     * 
+     * 
+     * @param g The ChessGame to which this Menu will be added to
+     */
     public Menu(ChessGame g){
         game = g;
     }
     
+    
+    /**
+     * <p>
+     * Creates all menu items for the GUI 
+     * <p>
+     * 
+     * @return The built menu bar
+     */
     public JMenuBar createMenuBar() {
         JMenuBar menuBar;
         JMenu menu, submenu;
@@ -147,6 +164,13 @@ public class Menu implements ActionListener{
         return menuBar;
     }
     
+    /**
+     * <p>
+     * performs the specified menu action
+     * <p>
+     * 
+     * @param e The event which indicates the menu item that is pressed 
+     */
     public void actionPerformed(ActionEvent e) {
         
         if(e.getActionCommand().equals("New")){

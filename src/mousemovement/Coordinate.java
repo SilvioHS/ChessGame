@@ -20,6 +20,13 @@ public class Coordinate {
     private int[] blackX = new int[16];
     private int[] blackY = new int[16];
     
+    /**
+     * <p>
+     * Constructs a Coordinate object. Creates coordinates of each ChessBooard square, 
+     * each ChessPiece, and each ChessPiece center
+     * <p>
+     * 
+     */
     public Coordinate(){
         for(int i=0; i<64; i++){
             this.boardX[i] = i%8*80;
@@ -46,39 +53,92 @@ public class Coordinate {
         }
     }
     
+    /**
+     * 
+     * @param index The index of the given ChessBoard square
+     * @return The X coordinate of the ChessBoard square
+     */
     public int getBoardX(int index){
         return this.boardX[index];
     }
     
+    /**
+     * 
+     * @param index The index of the given ChessBoard square
+     * @return The Y coordinate of the ChessBoard square
+     */
     public int getBoardY(int index){
         return this.boardY[index];
     }
     
+    /**
+     * 
+     * @param index The position of the ChessPiece 
+     * @return The X coordinate of the ChessPiece 
+     */
     public int getPieceX(int index){
         return this.pieceX[index];
     }
     
+    /**
+     * 
+     * @param index The position of the ChessPiece 
+     * @return The Y coordinate of the ChessPiece 
+     */
     public int getPieceY(int index){
         return this.pieceY[index];
     }
     
+    /**
+     * 
+     * @param index The position of the ChessPiece 
+     * @return The X coordinate of the center of the ChessPiece 
+     */
     public int getPieceCenterX(int index){
         return this.pieceCenterX[index];
     }
     
+    /**
+     * 
+     * @param index The position of the ChessPiece 
+     * @return The Y coordinate of the center of the ChessPiece 
+     */
     public int getPieceCenterY(int index){
         return this.pieceCenterY[index];
     }
     
+    /**
+     * 
+     * @param index The position of the ChessPiece 
+     * @return The x coordinate of the white ChessPiece that is being taken 
+     */
     public int getWhiteX(int index){
         return this.whiteX[index];
     }
+    
+    /**
+     * 
+     * @param index The position of the ChessPiece 
+     * @return The y coordinate of the white ChessPiece that is being taken
+     */
     public int getWhiteY(int index){
         return this.whiteY[index];
     }
+    
+    /**
+     * 
+     * @param index The position of the ChessPiece 
+     * @return The x coordinate of the black ChessPiece that is being taken
+     */
     public int getBlackX(int index){
         return this.blackX[index];
     }
+    
+    /**
+     * 
+     * @param index The position of the ChessPiece 
+     * @return The y coordinate of the black ChessPiece that is being taken
+     */
     public int getBlackY(int index){
         return this.blackY[index];
     }

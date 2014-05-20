@@ -50,6 +50,13 @@ public class DragPieceListener implements MouseInputListener {
     
     private Image queen_w, queen_b;
 
+    /**
+     * <p>
+     * Constructs a DragPieceListener Object. DragPieceListener will allow 
+     * the ChessPiece to be Pressed, Dragged, and Released. 
+     * <p>
+     * @param game The ChessGame object that this DragPieceListenr will belong to 
+     */
     public DragPieceListener(ChessGame game) {
         this.game = game;
         gamelog = new GameLog(game);
@@ -64,17 +71,34 @@ public class DragPieceListener implements MouseInputListener {
 
     }
 
-    boolean contains(int x, int y) {
+    /**
+     * <p>
+     * Checks to see if the mouse is pressed on the ChessPiece 
+     * <p>
+     * 
+     * @param x The x coordinate use to calculate the center of the ChessPiece 
+     * @param y The y coordinate use to calculate the center of the ChessPiece 
+     * @return True if the ChessPiece was pressed, otherwise return false
+     */
+    private boolean contains(int x, int y) {
         // Calculate center of draggable chess piece.
         int cox = ox + game.getSqaureDim() / 2;
         int coy = oy + game.getSqaureDim() / 2;
         return (cox - x) * (cox - x) + (coy - y) * (coy - y) < game.getSqaureDim()* game.getSqaureDim();
     }
 
+    /**
+     * <p>
+     * When mouse is pressed on chess piece, record the point that the mouse pressed 
+     * and calculate the index of 1D chess array reflecting selected chess piece position.
+     * <p>
+     * 
+     * @param e The event which indicates the mouse action 
+     */
     public void mousePressed(MouseEvent e) {
         ChessPiece tmpPiece = (ChessPiece) e.getSource();
         point = SwingUtilities.convertPoint(tmpPiece, e.getPoint(), tmpPiece.getParent());
-
+ 
         int x = point.x;
         int y = point.y;
         ox = x / game.getSqaureDim() * game.getSqaureDim();
@@ -91,6 +115,15 @@ public class DragPieceListener implements MouseInputListener {
 
     }
 
+    /**
+     * <p>
+     * When dragging the ChessPiece with the mouse, dynamically reset the chess piece location
+     * and calculate the new index that ChessPiece is being dragged to in the 
+     * ChessBoard array
+     * <p>
+     * 
+     * @param e The event which indicates the mouse action 
+     */
     public void mouseDragged(MouseEvent e) {
         ChessPiece tmpPiece = (ChessPiece) e.getSource();
         Point newPoint = SwingUtilities.convertPoint(tmpPiece, e.getPoint(), tmpPiece.getParent());
@@ -111,6 +144,21 @@ public class DragPieceListener implements MouseInputListener {
         }
     }
 
+    /**
+     * <p>
+     * When the mouse releases the ChessPiece, check if it is valid move, if it is checked or checkmated,
+     * if a pawn get promotion, check if a chess piece is taken, and check if they tried to perform Castling
+     * 
+     * Also reverts an illegal move if Player made such a move 
+     * <p>
+     * 
+     * @see chessgame.Player#isChecked
+     * @see chessgame.Player#isCheckmated
+     * @see specialrules.SpecialRules#promote(java.lang.String, java.awt.Image) 
+     * @see specialrules.SpecialRules#castle(chesspieces.ChessPiece, int, int, int, int, java.lang.String) 
+     * @see specialrules.SpecialRules#revertCheck(chesspieces.ChessPiece, chesspieces.ChessPiece, int, int, java.lang.String) 
+     * @param e The event which indicates the mouse action 
+     */
     @Override
     public void mouseReleased(MouseEvent e) {
                     
@@ -148,7 +196,7 @@ public class DragPieceListener implements MouseInputListener {
                 ChessBoard.pieces[game.getIndex()] = null;
                 tmpPiece2.setBoardPosition(64);
                 ChessBoard.pieces[64] = tmpPiece2;
-                game.getTakenPiece().taken(tmpPiece2);
+                
                 
 
             }
@@ -200,6 +248,7 @@ public class DragPieceListener implements MouseInputListener {
          
             //if taking temp2 was legal remove it from the board 
             if (tmpPiece2 != null) {
+                    game.getTakenPiece().taken(tmpPiece2);
                     game.getChessBoard().remove(ChessBoard.pieces[64]);
                     ChessBoard.pieces[64] = null;
                     //String s = "Removed piece at index: " + game.index;

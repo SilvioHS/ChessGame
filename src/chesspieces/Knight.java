@@ -19,6 +19,16 @@ import javax.swing.ImageIcon;
  */
 public class Knight extends ChessPiece {
 
+   /**
+     * <p>
+     * Construct Knight object give an image, color, and the starting board position
+     * of the Knight. 
+     * <p>
+     * 
+     * @param image The image to be associated with this Knight
+     * @param color the color of this Knight, white or black
+     * @param boardPosition The starting position of this Knight
+     */
     public Knight(Image image, String color, int boardPosition) {
         super(image, color, boardPosition);
 
@@ -30,6 +40,23 @@ public class Knight extends ChessPiece {
         this.setIcon(new ImageIcon(image));
     }
 
+    /**
+     * <p>
+     * The knight move is unusual among chess pieces. When it moves, it can move 
+     * to a square that is two squares horizontally and one square vertically, or 
+     * two squares vertically and one square horizontally. 
+     * The complete move therefore looks like the letter L. 
+     * <p>
+     * 
+     * <p>
+     * Unlike all other chess pieces the knight can jump over all other pieces (of either color) 
+     * to its destination square.It captures an enemy piece by replacing it on its square
+     * <p>
+     * 
+     * 
+     * @param newPosition The position that this Knight is attempting to move from its current position
+     * @return true if the move made by this Knight was valid otherwise return false.
+     */
     @Override
     public boolean isValidMove(int newPosition) {
         boolean validMove = false;

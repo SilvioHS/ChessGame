@@ -27,6 +27,16 @@ public class Taken {
 
     public Image pawn_w, rook_w, knight_w, bishop_w, queen_w, king_w, pawn_b, rook_b,
          knight_b, bishop_b, queen_b, king_b;
+    
+    /**
+     * <p>
+     * Constructs a Taken Object. Taken will place a taken ChessPiece onto the 
+     * side GUI for player's to see which of their ChessPieces has been taken during 
+     * the course of the ChessGame 
+     * <p>
+     * 
+     * @param g The ChessGame object that this Taken object will belong to 
+     */
     public Taken(ChessGame g){
         game = g;
         try{
@@ -66,6 +76,13 @@ public class Taken {
         }
     }
     
+    /**
+     * <p>
+     * Places a scaled image of the taken ChessPiece onto the side GUI
+     * <P>
+     * 
+     * @param temp The ChessPiece that is being taken and put onto the side GUI
+     */
     public void taken(ChessPiece temp){
         String a[] = temp.toString().split(" ");
         
@@ -87,7 +104,16 @@ public class Taken {
         }
     }
     
-    public Image getWhiteImage(String s){
+    /**
+     * <p>
+     * Gets the scaled down version of white ChessPiece that are to appear 
+     * on the side GUI
+     * <p>
+     * 
+     * @param s The name of the ChessPiece 
+     * @return The image of the ChessPiece
+     */
+    private Image getWhiteImage(String s){
         if(s.equals("Pawn"))
             return pawn_w;
         else if(s.equals("Bishop"))
@@ -102,7 +128,17 @@ public class Taken {
             return rook_w;
         return null;
     }
-    public Image getBlackImage(String s){
+    
+     /**
+     * <p>
+     * Gets the scaled down version of black ChessPiece that are to appear 
+     * on the side GUI
+     * <p>
+     * 
+     * @param s The name of the ChessPiece 
+     * @return The image of the ChessPiece
+     */
+    private Image getBlackImage(String s){
         if(s.equals("Pawn"))
             return pawn_b;
         else if(s.equals("Bishop"))

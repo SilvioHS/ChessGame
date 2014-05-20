@@ -17,10 +17,30 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import java.awt.BorderLayout; 
 
+/**
+ *
+ * @author Kevin Velasco
+ */
 public  class ChessBoard extends JLayeredPane {
     private Image image;
+
+    /**
+    * <p>
+     * the ChessBoard is represent with a 1D array of ChessPieces. Where the 
+     * ChessPiece at index i is the position of the ChessPiece in the ChessBoard Array
+     * <p>
+     */
     public static ChessPiece[] pieces = new ChessPiece[66];
     
+    /**
+     * <p>
+     * Constructs ChessBoard object. The ChessBoard object is represent with a 1D
+     * array of ChessPieces. Where the ChessPiece at index i is the position of the 
+     * ChessPiece in the ChessBoard Array
+     * <p>
+     * 
+     * 
+     */
     public  ChessBoard() {
         try {
             image = ImageIO.read(new File("src/image/ChessBoard80X80.jpg"));
@@ -36,10 +56,36 @@ public  class ChessBoard extends JLayeredPane {
         
     }
     
+    /**
+     * <p>
+     * retrieves a reference to a chess piece at the specified index in the chess board
+     * <p>
+     * 
+     * @param index the position of the chess piece in the chess board that is 
+     *                to be retrieved
+     * <p>
+     * 
+     * @return A reference to the chess piece that is at the specified index
+     * <p>
+     * 
+     */
     public static ChessPiece getIndex(int index){
         return pieces[index];
     }
     
+    /**
+     * <p>
+     * A row of the chessboard. 
+     * Files are numbered 1–8 starting at 1 from the left bottom most side of the board
+     * and moving upwards to 8
+     * <p>
+     * 
+     * @param pos The position of the chess piece who's file is to be retrieved 
+     * <p>
+     * 
+     * @return The current file of the chess piece given the position. 
+     *           The file is returned as an integer 
+     */
     public static int getFile(int pos){
         int file = 0;
         
@@ -64,6 +110,18 @@ public  class ChessBoard extends JLayeredPane {
         return file;
     }
     
+    /**
+     * <p>
+     * A column of the chessboard. 
+     * Ranks are lettered A–H starting from the left most side of the board
+     * <p>
+     * 
+     * @param pos The position of the chess piece who's rank is to be retrieved 
+     * <p>
+     * @return The current rank of the chess piece given the position. 
+     *           The rank is returned as a char 
+     *              
+     */
     public static char getRank(int pos){
         char rank = 'x';
         
