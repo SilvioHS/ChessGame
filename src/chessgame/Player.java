@@ -419,70 +419,19 @@ public class Player {
         boolean occupiedSquare = false;
 
         
-        //call isValidMove for this player's king on all index's +/- 9 , just a 
-        //quick lazy way to see if it can move anywhere
-        //UPDATE: i realized this is redundent and doesn't need to be done, but it
-        //can be to make less conditions checks happen in some cases
-  /*
-        int oldKingPos;
-        
-        for(int i = this.positionOfKing-9; i < this.positionOfKing + 9; i++){
-            if(ChessBoard.getIndex(this.positionOfKing).isValidMove(i)){
-                
-                //update king's location on board, remove pieces it can take
-                if(ChessBoard.pieces[i] != null && !ChessBoard.pieces[i].getColor().equals(this.getColor())){
-                    ChessBoard.pieces[i].setBoardPosition(65);
-                    ChessBoard.pieces[65] = ChessBoard.pieces[i];
-                }
-                ChessBoard.pieces[i] = ChessBoard.pieces[this.positionOfKing];
-                oldKingPos = this.positionOfKing; 
-                this.positionOfKing = i;
-                             
-                if(this.isChecked() == false){
-                    checkmated = false;       
-                    //put king back to it's original location, put pieces it took
-                    //back to there's
-                    ChessBoard.pieces[oldKingPos] = ChessBoard.getIndex(this.positionOfKing);
-                    if(occupiedSquare){
-                        ChessBoard.pieces[i] = ChessBoard.pieces[65];
-                        ChessBoard.pieces[65].setBoardPosition(i);
-                        ChessBoard.pieces[65] = null;
-                    }
-                    break;
-                }else{
-                    //need to put them back anyway
-                    ChessBoard.pieces[oldKingPos] = ChessBoard.getIndex(this.positionOfKing);
-                    if(occupiedSquare){
-                        ChessBoard.pieces[i] = ChessBoard.pieces[65];
-                        ChessBoard.pieces[65].setBoardPosition(i);
-                        ChessBoard.pieces[65] = null;
-                    }
-                }
-            }
-        }
-                
-        
-        */     
+           
         
         //cycle through all of this player's color's pieces, simulate their moves
         //see if they're still in check.....
         
-        //does this work? netbeans recommend it "enhanced loop" apparently it does
-        // https://blogs.oracle.com/CoreJavaTechTips/entry/using_enhanced_for_loops_with
         
-        //new idea 4/28: give isChecked a parameter index of whatever piece gets
-        //'taken' in the simulation, exclude checking that piece in the isChecked() method
-        
-        //MAY NEED TO MOVE THEM TO 65TH INDEX NOT 64TH BECAUSE INTERFERES WITH 
-        //THE 64TH INDEX BEING DONE BY DRAG LISTENER
         for (ChessPiece piece : ChessBoard.pieces) {
             if(piece != null && piece.getColor().equals(this.getColor())){
                 for(int i = 0; i < ChessBoard.pieces.length-1; i++){
                     if(piece.isValidMove(i)){
                         int oldIndex = piece.getBoardPosition();
-                        occupiedSquare = false;
-                        //this might need to be a deep copy? or something
-                        //copy old piece before replacing
+
+                        //if they move to a square that's occupied by opponent piece, need to simulate 'taking'
                         if(ChessBoard.pieces[i] != null && !ChessBoard.pieces[i].getColor().equals(this.getColor())){
                             occupiedSquare = true;
                             ChessBoard.pieces[oldIndex].setBoardPosition(65);
@@ -496,6 +445,7 @@ public class Player {
                             this.positionOfKing = i;
                         }                    
                         
+                        //see if this move will uncheck them
                         if(!this.isChecked()){
                             checkmated = false;
                             if(piece instanceof King){
@@ -543,8 +493,6 @@ public class Player {
         if(checkmated){
             System.out.println(this.getColor() + " has been CHECKMATED!");
             game.getGameLog().logText(this.getColor() + " has been Checkmated");
-        }else{
-            //System.out.println(this.getColor() + " not checkmated");
         }
         
         
