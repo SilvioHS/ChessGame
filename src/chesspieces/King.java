@@ -50,7 +50,7 @@ public class King extends ChessPiece {
 
     /**
      * <p>
-     * Set the first move flag of this Knight to either true or false
+     * Set the first move flag of this King to either true or false
      * <p>
      * 
      * @param firstMove The new value of the first move flag 
